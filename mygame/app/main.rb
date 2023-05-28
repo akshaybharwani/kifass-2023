@@ -81,12 +81,37 @@ class TetrisGame
     #render_grid_border(-1, -1, @grid_w + 2, @grid_h + 2)
   end
 
-  def render_planet
+  def render_planet(args)
+    args.state.rotate_amount ||= 0
+    args.state.rotate_amount  += 1
+
+    if args.state.rotate_amount >= 360
+      args.state.rotate_amount = 0
+    end
+
+    planet_starting_position = {
+      x: 640 + 150,
+      y: 360 + 150
+    }
+
+    # rotate point around center screen
+    rotate_amount = args.geometry.rotate_point planet_starting_position,
+                                                 args.state.rotate_amount,
+                                                 x: 640, y: 360
+
     planet_width = 150
     planet_height = 150
-    planet_x_pos = (1280 / 2) - (planet_width / 2)
-    planet_y_pos = (720 / 2) - (planet_height / 2)
+    planet_x_pos = rotate_amount.x - (planet_width / 2)
+    planet_y_pos = rotate_amount.y - (planet_height / 2)
     @args.outputs.sprites << [planet_x_pos, planet_y_pos, 150, 150, 'sprites/planet03.png']
+  end
+
+  def render_sun
+    sun_width = 150
+    sun_height = 150
+    sun_x_pos = (1280 / 2) - (sun_width / 2)
+    sun_y_pos = (720 / 2) - (sun_height / 2)
+    @args.outputs.sprites << [sun_x_pos, sun_y_pos, 150, 150, 'sprites/sphere0.png', 0, 255, 255, 165, 0]
   end
 
   def render_piece(piece, piece_x, piece_y)
@@ -119,9 +144,10 @@ class TetrisGame
     @args.outputs.labels << [200, 450, "GAME OVER", 100, 255, 255, 255, 255] if @game_over
   end
 
-  def render
+  def render(args)
     render_background
-    render_planet
+    render_sun
+    render_planet(args)
     #render_grid
     #render_current_piece
     #render_next_piece
@@ -286,10 +312,10 @@ class TetrisGame
   end
 
   # Your own Tick function, can do everything here
-  def tick
+  def tick(args)
     #input
     #iterate
-    render
+    render(args)
   end
 end
 
@@ -298,5 +324,5 @@ end
 def tick(args)
   # Only need to do this once, creating a new object
   args.state.game ||= TetrisGame.new(args)
-  args.state.game.tick
+  args.state.game.tick(args)
 end
