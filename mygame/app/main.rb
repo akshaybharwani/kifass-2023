@@ -77,9 +77,16 @@ class TetrisGame
   end
 
   def render_background
-    #@args.outputs.sprites << [75, 300, 300, 300, 'console-logo.png']
     @args.outputs.solids << [0, 0, 1280, 720, 0, 0, 0]
     #render_grid_border(-1, -1, @grid_w + 2, @grid_h + 2)
+  end
+
+  def render_planet
+    planet_width = 150
+    planet_height = 150
+    planet_x_pos = (1280 / 2) - (planet_width / 2)
+    planet_y_pos = (720 / 2) - (planet_height / 2)
+    @args.outputs.sprites << [planet_x_pos, planet_y_pos, 150, 150, 'sprites/planet03.png']
   end
 
   def render_piece(piece, piece_x, piece_y)
@@ -114,6 +121,7 @@ class TetrisGame
 
   def render
     render_background
+    render_planet
     #render_grid
     #render_current_piece
     #render_next_piece
