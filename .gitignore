@@ -5,6 +5,7 @@
 /docs
 /.dragonruby
 /dragonruby*
+.idea/
 console-logo.png
 ctags-emacs
 ctags-vim
