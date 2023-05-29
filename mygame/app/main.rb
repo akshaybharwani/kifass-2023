@@ -81,6 +81,15 @@ class TetrisGame
     #render_grid_border(-1, -1, @grid_w + 2, @grid_h + 2)
   end
 
+  def render_spaceship
+    spaceship_width = 45
+    spaceship_height = 45
+    spaceship_x_pos = 900 - (spaceship_width / 2)
+    spaceship_y_pos = 200 - (spaceship_height / 2)
+
+    @args.outputs.sprites << [spaceship_x_pos, spaceship_y_pos, spaceship_width, spaceship_height, 'sprites/ship_A.png']
+  end
+
   def render_planet
     @args.state.rotate_amount ||= 0
     @args.state.rotate_amount  += 1
@@ -148,6 +157,7 @@ class TetrisGame
     render_background
     render_sun
     render_planet
+    render_spaceship
     #render_grid
     #render_current_piece
     #render_next_piece
