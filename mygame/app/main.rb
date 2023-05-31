@@ -1,11 +1,51 @@
 # Helpful thing to erase the screen, might wanna take it out when publishing
 $gtk.reset
 
+# This is the only function that DragonRuby cares about. And it runs 60 times a second
+# So that we don't have to worry about Delta time and stuff
+def tick(args)
+  # Only need to do this once, creating a new object
+  args.state.game ||= TetrisGame.new(args)
+  args.state.game.tick(args)
+end
+
 class TetrisGame
   def initialize(args)
     @args = args
     @score = 0
     @game_over = false
+  end
+
+  # Your own Tick function, can do everything here
+  def tick(args)
+    #input
+    #iterate
+    render
+  end
+
+  def input
+    # we should always check the input first, before other logic
+    # so that players don't get a 60ms lag
+    # this is a local variable
+    keyboard = @args.inputs.keyboard
+    controller = @args.inputs.controller_one
+    # check for game restart
+    if @game_over && (keyboard.key_down.space || controller.key_down.start)
+      $gtk.reset
+    end
+  end
+
+  def iterate
+    if @game_over
+      return
+    end
+  end
+
+  def render
+    render_background
+    render_sun
+    render_planet
+    render_spaceship
   end
 
   def render_background
@@ -53,45 +93,4 @@ class TetrisGame
     sun_y_pos = (720 / 2) - (sun_height / 2)
     @args.outputs.sprites << [sun_x_pos, sun_y_pos, sun_width, sun_height, 'sprites/sphere0.png', 0, 255, 255, 165, 0]
   end
-
-  def render(args)
-    render_background
-    render_sun
-    render_planet
-    render_spaceship
-  end
-
-  def input
-    # we should always check the input first, before other logic
-    # so that players don't get a 60ms lag
-    # this is a local variable
-    keyboard = @args.inputs.keyboard
-    controller = @args.inputs.controller_one
-    # check for game restart
-    # move the piece left
-    if @game_over && (keyboard.key_down.space || controller.key_down.start)
-      $gtk.reset
-    end
-  end
-
-  def iterate
-    if @game_over
-      return
-    end
-  end
-
-  # Your own Tick function, can do everything here
-  def tick(args)
-    #input
-    #iterate
-    render(args)
-  end
-end
-
-# This is the only function that DragonRuby cares about. And it runs 60 times a second
-# So that we don't have to worry about Delta time and stuff
-def tick(args)
-  # Only need to do this once, creating a new object
-  args.state.game ||= TetrisGame.new(args)
-  args.state.game.tick(args)
 end
