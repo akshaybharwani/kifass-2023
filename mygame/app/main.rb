@@ -23,6 +23,7 @@ class TetrisGame
     args.state.enemy_min_spawn_rate   ||= 30
     args.state.enemy_spawn_countdown  ||= random_spawn_countdown(args.state.enemy_min_spawn_rate)
     args.state.enemies                ||= []
+    args.state.spaceship_moving       ||= false
   end
 
   # Your own Tick function, can do everything here
@@ -34,6 +35,7 @@ class TetrisGame
   end
 
   def input
+    @args.state.spaceship_moving = false
     # we should always check the input first, before other logic
     # so that players don't get a 60ms lag
     # this is a local variable
@@ -47,18 +49,22 @@ class TetrisGame
 
     # movement
     if inputs.up
+      @args.state.spaceship_moving = true
       @args.state.spaceship.y += @spaceship_speed
     elsif inputs.down
+      @args.state.spaceship_moving = true
       @args.state.spaceship.y -= @spaceship_speed
     end
 
     if inputs.left
+      @args.state.spaceship_moving = true
       @args.state.spaceship.x -= @spaceship_speed
     elsif inputs.right
+      @args.state.spaceship_moving = true
       @args.state.spaceship.x += @spaceship_speed
     end
 
-    # movement
+    # rotation
     if inputs.mouse.moved
       @args.state.spaceship.angle = (inputs.mouse.position.angle_from [@args.state.spaceship.x, @args.state.spaceship.y])
       # TODO: This sets the proper angle, figure out why
@@ -84,6 +90,8 @@ class TetrisGame
 
   # Decreases the enemy spawn countdown by 1 if it has a value greater than 0.
   def calc_spawn_enemy
+    return if @args.state.spaceship_moving == false
+
     if @args.state.enemy_spawn_countdown > 0
       @args.state.enemy_spawn_countdown -= 1
       return
@@ -111,6 +119,7 @@ class TetrisGame
   # Moves all enemies towards the center of the screen.
   # All enemies that reach the center (640, 360) are rejected from the enemies collection and disappear.
   def calc_move_enemies
+    return if @args.state.spaceship_moving == false
     @args.state.enemies.each do |z| # for each zombie in the collection
       z.y = z.y.towards(@args.state.planet_y_pos, @enemy_speed) # move the zombie towards the center (640, 360) at a rate of 0.1
       z.x = z.x.towards(@args.state.planet_x_pos, @enemy_speed) # change 0.1 to 1.1 and see how much faster the enemies move to the center
@@ -140,13 +149,15 @@ class TetrisGame
 
   def render_planet
     @args.state.rotate_amount ||= 0
-    @args.state.rotate_amount  += 0.5
+    if @args.state.spaceship_moving
+      @args.state.rotate_amount  += 0.5
 
-    if @args.state.rotate_amount >= 360
-      @args.state.rotate_amount = 0
+      if @args.state.rotate_amount >= 360
+        @args.state.rotate_amount = 0
+      end
     end
 
-    planet_starting_position = {
+    planet_starting_position ||= {
       x: 640 + 150,
       y: 360 + 150
     }
