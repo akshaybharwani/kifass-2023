@@ -1,3 +1,7 @@
+# samples referred
+# 02_input_basics\01_moving_a_sprite: movement spaceship
+# 05_mouse\02_mouse_move:             rotating spaceship, enemy spawning
+
 # Helpful thing to erase the screen, might wanna take it out when publishing
 $gtk.reset
 
@@ -14,13 +18,18 @@ class TetrisGame
     @args = args
     @score = 0
     @game_over = false
-    @spaceship_speed = 10
+    @spaceship_speed = 5
+    @enemy_speed = 0.5
+    args.state.enemy_min_spawn_rate   ||= 30
+    args.state.enemy_spawn_countdown  ||= random_spawn_countdown(args.state.enemy_min_spawn_rate)
+    args.state.enemies                ||= []
   end
 
   # Your own Tick function, can do everything here
   def tick(args)
     input
     #iterate
+    calc
     render
   end
 
@@ -56,7 +65,7 @@ class TetrisGame
       @args.state.spaceship.angle -= 90
     end
 
-    @args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
+    #@args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
   end
 
   def iterate
@@ -65,15 +74,93 @@ class TetrisGame
     end
   end
 
+  # Calls all methods necessary for performing calculations.
+  def calc
+    calc_spawn_enemy
+    calc_move_enemies
+    #calc_player
+    #calc_kill_enemy
+  end
+
+  # Decreases the enemy spawn countdown by 1 if it has a value greater than 0.
+  def calc_spawn_enemy
+    if @args.state.enemy_spawn_countdown > 0
+      @args.state.enemy_spawn_countdown -= 1
+      return
+    end
+
+    # New enemies are created, positioned on the screen, and added to the enemies collection.
+    @args.state.enemies << @args.state.new_entity(:enemy) do |z| # each enemy is declared a new entity
+      if rand > 0.5
+        z.x = @args.grid.rect.w.randomize(:ratio) # random x position on screen (within grid scope)
+        z.y = [-10, 730].sample # y position is set to either -10 or 730 (randomly chosen)
+        # the possible values exceed the screen's scope so enemies appear to be coming from far away
+      else
+        z.x = [-10, 1290].sample # x position is set to either -10 or 1290 (randomly chosen)
+        z.y = @args.grid.rect.w.randomize(:ratio) # random y position on screen
+      end
+    end
+
+    # Calls random_spawn_countdown method (determines how fast new enemies appear)
+    @args.state.enemy_spawn_countdown = random_spawn_countdown(@args.state.enemy_min_spawn_rate)
+    @args.state.enemy_min_spawn_rate -= 1
+    # set to either the current enemy_min_spawn_rate or 0, depending on which value is greater
+    @args.state.enemy_min_spawn_rate  = @args.state.enemy_min_spawn_rate.greater(0)
+  end
+
+  # Moves all enemies towards the center of the screen.
+  # All enemies that reach the center (640, 360) are rejected from the enemies collection and disappear.
+  def calc_move_enemies
+    @args.state.enemies.each do |z| # for each zombie in the collection
+      z.y = z.y.towards(@args.state.planet_y_pos, @enemy_speed) # move the zombie towards the center (640, 360) at a rate of 0.1
+      z.x = z.x.towards(@args.state.planet_x_pos, @enemy_speed) # change 0.1 to 1.1 and see how much faster the enemies move to the center
+    end
+    @args.state.enemies = @args.state.enemies.reject { |z| z.y == @args.state.planet_y_pos && z.x == @args.state.planet_x_pos } # remove enemies that are in center
+  end
+
   def render
     render_background
     render_sun
     render_planet
     render_spaceship
+    render_enemies
   end
 
   def render_background
     @args.outputs.solids << [0, 0, 1280, 720, 0, 0, 0]
+  end
+
+  def render_sun
+    sun_width = 150
+    sun_height = 150
+    sun_x_pos = (1280 / 2) - (sun_width / 2)
+    sun_y_pos = (720 / 2) - (sun_height / 2)
+    @args.outputs.sprites << [sun_x_pos, sun_y_pos, sun_width, sun_height, 'sprites/sphere0.png', 0, 255, 255, 165, 0]
+  end
+
+  def render_planet
+    @args.state.rotate_amount ||= 0
+    @args.state.rotate_amount  += 0.5
+
+    if @args.state.rotate_amount >= 360
+      @args.state.rotate_amount = 0
+    end
+
+    planet_starting_position = {
+      x: 640 + 150,
+      y: 360 + 150
+    }
+
+    # rotate point around center screen
+    rotate_point = @args.geometry.rotate_point planet_starting_position,
+                                                 @args.state.rotate_amount,
+                                                 x: 640, y: 360
+
+    planet_width = 100
+    planet_height = 100
+    @args.state.planet_x_pos = rotate_point.x - (planet_width / 2)
+    @args.state.planet_y_pos = rotate_point.y - (planet_height / 2)
+    @args.outputs.sprites << [@args.state.planet_x_pos, @args.state.planet_y_pos, planet_width, planet_height, 'sprites/planet03.png']
   end
 
   def render_spaceship
@@ -92,36 +179,19 @@ class TetrisGame
                               angle: @args.state.spaceship.angle }
   end
 
-  def render_planet
-    @args.state.rotate_amount ||= 0
-    @args.state.rotate_amount  += 1
-
-    if @args.state.rotate_amount >= 360
-      @args.state.rotate_amount = 0
+# Outputs the enemies on the screen and sets values for the sprites, such as the position, width, height, and animation.
+  def render_enemies
+    @args.outputs.sprites << @args.state.enemies.map do |z| # performs action on all zombies in the collection
+      angle = ([@args.state.planet_x_pos, @args.state.planet_y_pos].angle_from [z.x, z.y])
+      angle -= 90
+      z.sprite = [z.x, z.y, 30, 30, 'sprites/enemy_A.png', angle].sprite # sets definition for sprite, calls animation_sprite method
+      z.sprite
     end
-
-    planet_starting_position = {
-      x: 640 + 150,
-      y: 360 + 150
-    }
-
-    # rotate point around center screen
-    rotate_point = @args.geometry.rotate_point planet_starting_position,
-                                                 @args.state.rotate_amount,
-                                                 x: 640, y: 360
-
-    planet_width = 100
-    planet_height = 100
-    planet_x_pos = rotate_point.x - (planet_width / 2)
-    planet_y_pos = rotate_point.y - (planet_height / 2)
-    @args.outputs.sprites << [planet_x_pos, planet_y_pos, planet_width, planet_height, 'sprites/planet03.png']
   end
 
-  def render_sun
-    sun_width = 150
-    sun_height = 150
-    sun_x_pos = (1280 / 2) - (sun_width / 2)
-    sun_y_pos = (720 / 2) - (sun_height / 2)
-    @args.outputs.sprites << [sun_x_pos, sun_y_pos, sun_width, sun_height, 'sprites/sphere0.png', 0, 255, 255, 165, 0]
+  # Sets the enemy spawn's countdown to a random number.
+  # How fast enemies appear (change the 60 to 6 and too many enemies will appear at once!)
+  def random_spawn_countdown(minimum)
+    10.randomize(:ratio, :sign).to_i + 60
   end
 end
