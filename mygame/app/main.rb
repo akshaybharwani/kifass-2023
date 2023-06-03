@@ -14,11 +14,12 @@ class TetrisGame
     @args = args
     @score = 0
     @game_over = false
+    @spaceship_speed = 10
   end
 
   # Your own Tick function, can do everything here
   def tick(args)
-    #input
+    input
     #iterate
     render
   end
@@ -27,11 +28,24 @@ class TetrisGame
     # we should always check the input first, before other logic
     # so that players don't get a 60ms lag
     # this is a local variable
+    inputs = @args.inputs
     keyboard = @args.inputs.keyboard
     controller = @args.inputs.controller_one
     # check for game restart
     if @game_over && (keyboard.key_down.space || controller.key_down.start)
       $gtk.reset
+    end
+
+    if inputs.up
+      @args.state.spaceship.y += @spaceship_speed
+    elsif inputs.down
+      @args.state.spaceship.y -= @spaceship_speed
+    end
+
+    if inputs.left
+      @args.state.spaceship.x -= @spaceship_speed
+    elsif inputs.right
+      @args.state.spaceship.x += @spaceship_speed
     end
   end
 
@@ -53,12 +67,16 @@ class TetrisGame
   end
 
   def render_spaceship
-    spaceship_width = 45
-    spaceship_height = 45
-    spaceship_x_pos = 900 - (spaceship_width / 2)
-    spaceship_y_pos = 200 - (spaceship_height / 2)
+    @args.state.spaceship.w ||= 45
+    @args.state.spaceship.h ||= 45
+    @args.state.spaceship.x ||= 900 - (@args.state.spaceship.w / 2)
+    @args.state.spaceship.y ||= 200 - (@args.state.spaceship.h / 2)
 
-    @args.outputs.sprites << [spaceship_x_pos, spaceship_y_pos, spaceship_width, spaceship_height, 'sprites/ship_A.png']
+    @args.outputs.sprites << { x: @args.state.spaceship.x,
+                              y: @args.state.spaceship.y,
+                              w: @args.state.spaceship.w,
+                              h: @args.state.spaceship.h,
+                              path: 'sprites/ship_A.png' }
   end
 
   def render_planet
