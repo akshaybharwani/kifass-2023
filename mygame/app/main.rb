@@ -36,6 +36,7 @@ class TetrisGame
       $gtk.reset
     end
 
+    # movement
     if inputs.up
       @args.state.spaceship.y += @spaceship_speed
     elsif inputs.down
@@ -47,6 +48,15 @@ class TetrisGame
     elsif inputs.right
       @args.state.spaceship.x += @spaceship_speed
     end
+
+    # movement
+    if inputs.mouse.moved
+      @args.state.spaceship.angle = (inputs.mouse.position.angle_from [@args.state.spaceship.x, @args.state.spaceship.y])
+      # TODO: This sets the proper angle, figure out why
+      @args.state.spaceship.angle -= 90
+    end
+
+    @args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
   end
 
   def iterate
@@ -71,12 +81,15 @@ class TetrisGame
     @args.state.spaceship.h ||= 45
     @args.state.spaceship.x ||= 900 - (@args.state.spaceship.w / 2)
     @args.state.spaceship.y ||= 200 - (@args.state.spaceship.h / 2)
+    @args.state.spaceship.angle ||= 0
+
 
     @args.outputs.sprites << { x: @args.state.spaceship.x,
                               y: @args.state.spaceship.y,
                               w: @args.state.spaceship.w,
                               h: @args.state.spaceship.h,
-                              path: 'sprites/ship_A.png' }
+                              path: 'sprites/ship_A.png',
+                              angle: @args.state.spaceship.angle }
   end
 
   def render_planet
