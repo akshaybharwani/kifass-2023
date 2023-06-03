@@ -1,3 +1,54 @@
+* 4.14
+** [Pro] [iOS] Fixed iOS binaries so that they will be accepted by TestFlight.
+   We have temporarily disabled $gtk.http_* apis until we isolate what part of that machinery
+   is causing the binary to be rejected by TestFlight (instead of waiting for Apple to fix the bug
+   on their end).
+** [Pro] [iOS] Fixed scaling issue for games running on the iPhone 13 mini.
+** [Support] ~$gtk.platform~ returns "Steam Deck" if the game is being run on the Steam Deck.
+** [Bugfix] Removed mouse wheel debug statements.
+** [Docs] Added docs for deploying to a local Steam Deck.
+* 4.13
+** [Indie] [Pro] [Support] Beta release of Steam distribution.
+   ~dragonruby-publish~ now supports the creation of a Steam package containing Linux, Mac, and Windows
+   binaries of your game. A "Deploying to Steam" section has been added to documentation (which is available
+   locally at http://localhost:9001 while DragonRuby is running, and online at docs.dragonruby.org).
+
+   This is a beta iteration with some rough edges. Let us know if you hit any snags and we'll improve
+   on what's there.
+
+   This enhancement to ~dragonruby-publish~ streamlines should prove to be a significant time
+   saver over creating payload using the Steamworks toolchain :-)
+** [Bugfix] Pixel arrays are now fully unlocked in the Standard license tier. I swear it'll work this time.
+** [Performance] Increased the polling interval between simulation ticks for web builds.
+   The faster interval helped top end machines, but taxed lower end machines a bit too much. Frame rates
+   will be more stable, but a little lower.
+** [Bugfix] Mouse wheel input will now be captured during game play recording.
+* 4.12
+** [Bugfix] Fixed Raspberry Pi and Web Builds.
+   Tweetcart updates had an unintended side effect and broke Raspberry Pi and Web. Regression suites
+   have been put into place to make sure this doesn't happen again. We are unsure of why only those platforms
+   failed, but think it's a bug in mRuby's byte-code compilation (further research needed).
+
+   The Tweetcart source has been mostly reverted except for the addition of the ~pixels!~ and ~color~
+   method. We will work with OSS contributers to flesh out a fuller api (and get closer to finding the
+   mRuby bug).
+* 4.11
+** [Support] $args.pixel_arrays unlocked for all license tiers!
+   All license tiers can now use both sound synthesis and pixel arrays, woo hoo!
+** [OSS] Tweetcart apis enhanced given that everyone can now use pixel arrays.
+   Source code for tweetcart.rb is available locally at =./docs/oss.txt= and
+   online at https://github.com/DragonRuby/dragonruby-game-toolkit-contrib/blob/main/dragon/tweetcart.rb.
+
+   You can download the GitHub version by invoking the following function in the DragonRuby Console:
+
+   $gtk.download_stb_rb "dragonruby", "dragonruby-game-toolkit-contrib", "tweetcart.rb"
+
+** [Support] A "Close Console" button is available in a production build.
+   It's helpful to have this button if you're running the game on a touch device w/o a keyboard.
+** [Bugfix] render_targets will no longer be randomly lost on Windows+DirectX when the game window is resized.
+   No really. This time we definitely maybe have this resolved.
+** [Performance] Performance improvements to web builds.
+   Invocation of ~tick~ should happen more frequently bringing web games closer to 60fps.
 * 4.10
 ** [Samples] Added sample app that shows how to orchestrate a sequence of animations (eg cutscenes).
    Sample app location: =./samples/08_tweening_lerping_easing_functions/08_cutscenes=
