@@ -1,6 +1,7 @@
-# samples referred
-# 02_input_basics\01_moving_a_sprite: movement spaceship
-# 05_mouse\02_mouse_move:             rotating spaceship, enemy spawning
+# samples/docs referred
+# ./samples/02_input_basics/01_moving_a_sprite: movement spaceship
+# ./samples/05_mouse/02_mouse_move:             rotating spaceship, enemy spawning
+# ./docs/docs.html#----ray_test-:               raycast from spaceship to enemies
 
 # Helpful thing to erase the screen, might wanna take it out when publishing
 $gtk.reset
@@ -20,6 +21,10 @@ class TetrisGame
     @game_over = false
     @spaceship_speed = 5
     @enemy_speed = 0.5
+    args.state.spaceship.x ||= 0
+    args.state.spaceship.y ||= 0
+    args.state.spaceship.w ||= 45
+    args.state.spaceship.h ||= 45
     args.state.enemy_min_spawn_rate   ||= 30
     args.state.enemy_spawn_countdown  ||= random_spawn_countdown(args.state.enemy_min_spawn_rate)
     args.state.enemies                ||= []
@@ -71,6 +76,12 @@ class TetrisGame
       @args.state.spaceship.angle -= 90
     end
 
+    # create a point based off of the mouse location
+    @args.state.mouse_location = {
+      x: inputs.mouse.x,
+      y: inputs.mouse.y
+    }
+
     #@args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
   end
 
@@ -84,9 +95,39 @@ class TetrisGame
   def calc
     calc_spawn_enemy
     calc_move_enemies
+    calc_spaceship_to_mouse
     #calc_player
     #calc_kill_enemy
   end
+
+  def calc_spaceship_to_mouse
+    # draw a line from spaceship to mouse location
+    spaceship_to_mouse_line = {
+      x: @args.state.spaceship.x + @args.state.spaceship.w / 2,
+      y: @args.state.spaceship.y + @args.state.spaceship.h / 2,
+      x2: @args.state.mouse_location.x,
+      y2: @args.state.mouse_location.y,
+      r: 255,
+      g: 255,
+      b: 255
+    }
+
+    # perform ray_test on point and line
+    ray = @args.geometry.ray_test @args.state.mouse_location, spaceship_to_mouse_line
+
+    # output the results of ray test at mouse location
+    @args.outputs.labels << {
+      x: @args.state.mouse_location.x,
+      y: @args.state.mouse_location.y + 25,
+      text: "#{ray}",
+      alignment_enum: 1,
+      vertical_alignment_enum: 1,
+    }
+
+    # render line
+    @args.outputs.lines << spaceship_to_mouse_line
+  end
+
 
   # Decreases the enemy spawn countdown by 1 if it has a value greater than 0.
   def calc_spawn_enemy
