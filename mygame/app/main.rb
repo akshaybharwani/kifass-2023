@@ -17,14 +17,20 @@ end
 class TetrisGame
   def initialize(args)
     @args = args
+
+    # game
     @score = 0
     @game_over = false
+
+    # spaceship
     @spaceship_speed = 5
-    @enemy_speed = 0.5
     args.state.spaceship.x ||= 0
     args.state.spaceship.y ||= 0
     args.state.spaceship.w ||= 45
     args.state.spaceship.h ||= 45
+
+    # enemies
+    @enemy_speed = 0.5
     args.state.enemy_min_spawn_rate   ||= 30
     args.state.enemy_spawn_countdown  ||= random_spawn_countdown(args.state.enemy_min_spawn_rate)
     args.state.enemies                ||= []
@@ -95,39 +101,10 @@ class TetrisGame
   def calc
     calc_spawn_enemy
     calc_move_enemies
-    calc_spaceship_to_mouse
+    calc_shooting_line
     #calc_player
     #calc_kill_enemy
   end
-
-  def calc_spaceship_to_mouse
-    # draw a line from spaceship to mouse location
-    spaceship_to_mouse_line = {
-      x: @args.state.spaceship.x + @args.state.spaceship.w / 2,
-      y: @args.state.spaceship.y + @args.state.spaceship.h / 2,
-      x2: @args.state.mouse_location.x,
-      y2: @args.state.mouse_location.y,
-      r: 255,
-      g: 255,
-      b: 255
-    }
-
-    # perform ray_test on point and line
-    ray = @args.geometry.ray_test @args.state.mouse_location, spaceship_to_mouse_line
-
-    # output the results of ray test at mouse location
-    @args.outputs.labels << {
-      x: @args.state.mouse_location.x,
-      y: @args.state.mouse_location.y + 25,
-      text: "#{ray}",
-      alignment_enum: 1,
-      vertical_alignment_enum: 1,
-    }
-
-    # render line
-    @args.outputs.lines << spaceship_to_mouse_line
-  end
-
 
   # Decreases the enemy spawn countdown by 1 if it has a value greater than 0.
   def calc_spawn_enemy
@@ -161,11 +138,60 @@ class TetrisGame
   # All enemies that reach the center (640, 360) are rejected from the enemies collection and disappear.
   def calc_move_enemies
     return if @args.state.spaceship_moving == false
-    @args.state.enemies.each do |z| # for each zombie in the collection
-      z.y = z.y.towards(@args.state.planet_y_pos, @enemy_speed) # move the zombie towards the center (640, 360) at a rate of 0.1
+    @args.state.enemies.each do |z| # for each enemy in the collection
+      z.y = z.y.towards(@args.state.planet_y_pos, @enemy_speed) # move the enemy towards the center (640, 360) at a rate of 0.1
       z.x = z.x.towards(@args.state.planet_x_pos, @enemy_speed) # change 0.1 to 1.1 and see how much faster the enemies move to the center
     end
     @args.state.enemies = @args.state.enemies.reject { |z| z.y == @args.state.planet_y_pos && z.x == @args.state.planet_x_pos } # remove enemies that are in center
+  end
+
+  def calc_shooting_line
+    return if @args.state.spaceship_moving
+    # draw a line from spaceship to mouse location
+    @args.state.shooting_line = {
+      x: @args.state.spaceship.x + @args.state.spaceship.w / 2,
+      y: @args.state.spaceship.y + @args.state.spaceship.h / 2,
+      x2: @args.state.mouse_location.x,
+      y2: @args.state.mouse_location.y,
+      r: 255,
+      g: 255,
+      b: 255
+    }
+
+    shortest_distance = nil
+    closest_enemy = nil
+
+    @args.state.enemies.each do |enemy|
+      # Calculate the distance between enemy and mouse position using args.geometry.distance
+      distance = @args.geometry.distance(
+        [enemy.x, enemy.y],
+        [@args.state.mouse_location.x, @args.state.mouse_location.y]
+      )
+
+      # Check if the current enemy is the closest one
+      if shortest_distance.nil? || distance < shortest_distance
+        shortest_distance = distance
+        if closest_enemy != enemy
+          closest_enemy = enemy
+        end
+      end
+    end
+
+    if closest_enemy
+      @args.state.closest_enemy = closest_enemy
+      @args.outputs.borders << {
+          x: closest_enemy.x,
+          y: closest_enemy.y,
+          w: 30,
+          h: 30,
+          r: 255,
+          g: 255,
+          b: 255
+        }
+    end
+
+    # perform ray_test on point and line
+    #ray = @args.geometry.ray_test @args.state.mouse_location, @args.state.shooting_line
   end
 
   def render
@@ -174,6 +200,7 @@ class TetrisGame
     render_planet
     render_spaceship
     render_enemies
+    render_shooting_line
   end
 
   def render_background
@@ -245,5 +272,11 @@ class TetrisGame
   # How fast enemies appear (change the 60 to 6 and too many enemies will appear at once!)
   def random_spawn_countdown(minimum)
     10.randomize(:ratio, :sign).to_i + 60
+  end
+
+  def render_shooting_line
+    return if @args.state.spaceship_moving
+    # render line
+    @args.outputs.lines << @args.state.shooting_line
   end
 end
