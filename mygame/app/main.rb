@@ -40,6 +40,12 @@ class TetrisGame
     args.state.current_shooting_origin      ||= nil
     args.state.last_destination_enemy_index ||= 0
     args.state.closest_enemy_index          ||= 0
+
+    # actual shooting
+    args.state.animation_type     ||= [:quad]
+    args.state.animation_duration ||= 10.seconds
+    args.state.animation_progress ||= 0
+    args.state.shooting           ||= false
   end
 
   # Your own Tick function, can do everything here
@@ -63,6 +69,45 @@ class TetrisGame
       $gtk.reset
     end
 
+    player_movement(inputs)
+    
+
+    # create a point based off of the mouse location
+    @args.state.mouse_location = {
+      x: inputs.mouse.x,
+      y: inputs.mouse.y
+    }
+
+    # controlling shooting lines
+    if !@args.state.spaceship_moving
+      if keyboard.key_up.space
+        @args.state.shooting = true
+      end
+      if @args.state.shooting
+        shoot
+      end
+
+      if inputs.mouse.button_left # save the line on mouse left button click
+        if !does_shooting_line_already_exist?(@args.state.closest_enemy_index)
+          shooting_line = {
+            origin_index: @args.state.last_destination_enemy_index,
+            destination_index: @args.state.closest_enemy_index
+          }
+          @args.state.shooting_lines.push(shooting_line)
+          @args.state.last_destination_enemy_index = @args.state.closest_enemy_index
+        end
+      elsif @args.inputs.mouse.button_right && @args.inputs.mouse.click # delete the last line on mouse right button click
+        @args.state.shooting_lines.pop
+      elsif inputs.mouse.button_middle # delete all the lines on mouse middle button click
+        @args.state.shooting_lines.clear
+      end
+    end
+
+    #@args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
+  end
+
+  def player_movement(inputs)
+    return if @args.state.shooting
     # movement
     if inputs.up
       @args.state.spaceship_moving = true
@@ -86,33 +131,24 @@ class TetrisGame
       # TODO: This sets the proper angle, figure out why
       @args.state.spaceship.angle -= 90
     end
+  end
 
-    # create a point based off of the mouse location
-    @args.state.mouse_location = {
-      x: inputs.mouse.x,
-      y: inputs.mouse.y
-    }
+  def shoot
+    if !@args.state.shooting_lines.empty?
+      @args.state.shooting_lines.each do |current_line|
+        origin_enemy = @args.state.enemies[current_line[:origin_index]]
+        destination_enemy = @args.state.enemies[current_line[:destination_index]]
+        progress = @args.state.animation_duration.ease(@args.state.animation_duration, @args.state.animation_type)
+          
+        calc_x = origin_enemy.x + (destination_enemy.x - origin_enemy.x) * progress
+        calc_y = origin_enemy.y + (destination_enemy.y - origin_enemy.y) * progress
 
-    # controlling shooting lines
-
-    if !@args.state.spaceship_moving
-      if inputs.mouse.button_left # save the line on mouse left button click
-        if !does_shooting_line_already_exist?(@args.state.closest_enemy_index)
-          shooting_line = {
-            origin_index: @args.state.last_destination_enemy_index,
-            destination_index: @args.state.closest_enemy_index
-          }
-          @args.state.shooting_lines.push(shooting_line)
-          @args.state.last_destination_enemy_index = @args.state.closest_enemy_index
-        end
-      elsif inputs.mouse.button_right # delete the last line on mouse right button click
-        @args.state.shooting_lines.pop
-      elsif inputs.mouse.button_middle # delete all the lines on mouse middle button click
-        @args.state.shooting_lines.clear
+        @args.state.spaceship.x = calc_x
+        @args.state.spaceship.y = calc_y
       end
+      @args.state.shooting = false
+      @args.state.shooting_lines.clear
     end
-
-    #@args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
   end
 
   def iterate
@@ -317,6 +353,7 @@ class TetrisGame
   def render_shooting_line(origin, destination) 
     return if @args.state.spaceship_moving
     shooting_line = {
+
       x:  origin.x,
       y:  origin.y,
       x2: destination.x,
