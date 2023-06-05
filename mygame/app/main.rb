@@ -1,7 +1,6 @@
 # samples/docs referred
 # ./samples/02_input_basics/01_moving_a_sprite: movement spaceship
 # ./samples/05_mouse/02_mouse_move:             rotating spaceship, enemy spawning
-# ./docs/docs.html#----ray_test-:               raycast from spaceship to enemies
 
 # Helpful thing to erase the screen, might wanna take it out when publishing
 $gtk.reset
@@ -23,18 +22,22 @@ class TetrisGame
     @game_over = false
 
     # spaceship
-    @spaceship_speed = 5
+    @spaceship_speed ||= 5
     args.state.spaceship.x ||= 0
     args.state.spaceship.y ||= 0
     args.state.spaceship.w ||= 45
     args.state.spaceship.h ||= 45
 
     # enemies
-    @enemy_speed = 0.5
-    args.state.enemy_min_spawn_rate   ||= 30
+    @enemy_speed                      ||= 0.5
+    args.state.enemy_min_spawn_rate   ||= 60
     args.state.enemy_spawn_countdown  ||= random_spawn_countdown(args.state.enemy_min_spawn_rate)
     args.state.enemies                ||= []
     args.state.spaceship_moving       ||= false
+
+    # shooting lines
+    args.state.shooting_lines           ||= []
+    args.state.current_shooting_origin  ||= nil
   end
 
   # Your own Tick function, can do everything here
@@ -87,6 +90,24 @@ class TetrisGame
       x: inputs.mouse.x,
       y: inputs.mouse.y
     }
+
+    # controlling shooting lines
+
+    if !@args.state.spaceship_moving
+      if inputs.mouse.button_left # save the line on mouse left button click
+        shooting_line = {
+          origin: @args.state.current_shooting_origin,
+          destination: [@args.state.closest_enemy.x, @args.state.closest_enemy.y]
+        }
+        @args.state.shooting_lines.push(shooting_line)
+      elsif inputs.mouse.button_right # delete the last line on mouse right button click
+        @args.state.shooting_lines.pop
+      elsif inputs.mouse.button_middle # delete all the lines on mouse middle button click
+        @args.state.shooting_lines.clear
+      end
+    elsif @args.state.spaceship_moving && @args.state.shooting_lines.any?
+      @args.state.shooting_lines.clear
+    end
 
     #@args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
   end
@@ -147,17 +168,32 @@ class TetrisGame
 
   def calc_shooting_line
     return if @args.state.spaceship_moving
-    # draw a line from spaceship to mouse location
-    @args.state.shooting_line = {
-      x: @args.state.spaceship.x + @args.state.spaceship.w / 2,
-      y: @args.state.spaceship.y + @args.state.spaceship.h / 2,
-      x2: @args.state.mouse_location.x,
-      y2: @args.state.mouse_location.y,
-      r: 255,
-      g: 255,
-      b: 255
-    }
 
+    find_closest_enemy
+
+    # Draw saved lines
+    if !@args.state.shooting_lines.empty?
+      @args.state.shooting_lines.each_with_index do |current_line, index|
+        render_shooting_line(current_line[:origin], current_line[:destination])
+        if index == @args.state.shooting_lines.size - 1
+          @args.state.current_shooting_origin = current_line[:destination]
+        end
+      end
+    else # if no saved lines, shoot from spaceship
+      @args.state.spaceship_shooting_origin = {
+        x: @args.state.spaceship.x + @args.state.spaceship.w / 2,
+        y: @args.state.spaceship.y + @args.state.spaceship.h / 2
+      }
+      @args.state.current_shooting_origin = @args.state.spaceship_shooting_origin
+    end
+    render_shooting_line(@args.state.current_shooting_origin, @args.state.closest_enemy)
+
+    # perform ray_test on point and line
+    #ray = @args.geometry.ray_test @args.state.mouse_location, @args.state.shooting_line
+  end
+
+  def find_closest_enemy
+    # find closest enemy
     shortest_distance = nil
     closest_enemy = nil
 
@@ -179,19 +215,8 @@ class TetrisGame
 
     if closest_enemy
       @args.state.closest_enemy = closest_enemy
-      @args.outputs.borders << {
-          x: closest_enemy.x,
-          y: closest_enemy.y,
-          w: 30,
-          h: 30,
-          r: 255,
-          g: 255,
-          b: 255
-        }
+      @args.outputs.borders << {x: closest_enemy.x, y: closest_enemy.y, w: 30, h: 30, r: 255, g: 255, b: 255}
     end
-
-    # perform ray_test on point and line
-    #ray = @args.geometry.ray_test @args.state.mouse_location, @args.state.shooting_line
   end
 
   def render
@@ -200,7 +225,6 @@ class TetrisGame
     render_planet
     render_spaceship
     render_enemies
-    render_shooting_line
   end
 
   def render_background
@@ -249,7 +273,6 @@ class TetrisGame
     @args.state.spaceship.y ||= 200 - (@args.state.spaceship.h / 2)
     @args.state.spaceship.angle ||= 0
 
-
     @args.outputs.sprites << { x: @args.state.spaceship.x,
                               y: @args.state.spaceship.y,
                               w: @args.state.spaceship.w,
@@ -271,12 +294,21 @@ class TetrisGame
   # Sets the enemy spawn's countdown to a random number.
   # How fast enemies appear (change the 60 to 6 and too many enemies will appear at once!)
   def random_spawn_countdown(minimum)
-    10.randomize(:ratio, :sign).to_i + 60
+    10.randomize(:ratio, :sign).to_i + minimum
   end
 
-  def render_shooting_line
+  def render_shooting_line(origin, destination) 
     return if @args.state.spaceship_moving
+    shooting_line = {
+      x:  origin.x,
+      y:  origin.y,
+      x2: destination.x,
+      y2: destination.y,
+      r:  255,
+      g:  255,
+      b:  255
+    }
     # render line
-    @args.outputs.lines << @args.state.shooting_line
+    @args.outputs.lines << shooting_line
   end
 end
