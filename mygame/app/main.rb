@@ -43,7 +43,8 @@ class TetrisGame
 
     # actual shooting
     args.state.animation_type     ||= [:quad]
-    args.state.animation_duration ||= 10.seconds
+    args.state.animation_duration ||= 1.seconds
+    args.state.startup_time       ||= 1.seconds
     args.state.animation_progress ||= 0
     args.state.shooting           ||= false
   end
@@ -135,10 +136,10 @@ class TetrisGame
 
   def shoot
     if !@args.state.shooting_lines.empty?
-      @args.state.shooting_lines.each do |current_line|
+      @args.state.shooting_lines.each_with_index do |current_line, index|
         origin_enemy = @args.state.enemies[current_line[:origin_index]]
         destination_enemy = @args.state.enemies[current_line[:destination_index]]
-        progress = @args.state.animation_duration.ease(@args.state.animation_duration, @args.state.animation_type)
+        progress = (index * @args.state.animation_duration + @args.state.startup_time).ease(@args.state.animation_duration, @args.state.animation_type)
           
         calc_x = origin_enemy.x + (destination_enemy.x - origin_enemy.x) * progress
         calc_y = origin_enemy.y + (destination_enemy.y - origin_enemy.y) * progress
