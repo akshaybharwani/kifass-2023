@@ -87,7 +87,7 @@ class TetrisGame
         shoot
       end
 
-      if inputs.mouse.button_left # save the line on mouse left button click
+      if inputs.mouse.button_left && inputs.mouse.click  # save the line on mouse left button click
         if !does_shooting_line_already_exist?(@args.state.closest_enemy_index)
           shooting_line = {
             origin_index: @args.state.last_destination_enemy_index,
@@ -96,9 +96,9 @@ class TetrisGame
           @args.state.shooting_lines.push(shooting_line)
           @args.state.last_destination_enemy_index = @args.state.closest_enemy_index
         end
-      elsif @args.inputs.mouse.button_right && @args.inputs.mouse.click # delete the last line on mouse right button click
+      elsif inputs.mouse.button_right && inputs.mouse.click # delete the last line on mouse right button click
         @args.state.shooting_lines.pop
-      elsif inputs.mouse.button_middle # delete all the lines on mouse middle button click
+      elsif inputs.mouse.button_middle && inputs.mouse.click # delete all the lines on mouse middle button click
         @args.state.shooting_lines.clear
       end
     end
