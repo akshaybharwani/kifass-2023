@@ -1,3 +1,9 @@
+* 4.15
+** [Bug] Removed mouse wheel debug statements.
+** [Bug] Fixed regression where ~args.inputs.mouse.click~ no longer returned true for middle and right mouse buttons.
+** [Support] Added ~args.inputs.keyboard.active~ and ~args.inputs.controller.active~.
+   This property will return true if any of keys or buttons were pressed on the frame. It's useful
+   for instructions contextually to which input device the player is using.
 * 4.14
 ** [Pro] [iOS] Fixed iOS binaries so that they will be accepted by TestFlight.
    We have temporarily disabled $gtk.http_* apis until we isolate what part of that machinery
