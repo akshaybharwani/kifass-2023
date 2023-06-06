@@ -1,14 +1,4 @@
 /builds
 /logs
 /tmp
-/samples
-/docs
-/.dragonruby
-/dragonruby*
 .idea/
-console-logo.png
-ctags-emacs
-ctags-vim
-eula.txt
-font.ttf
-open-source-licenses.txt
