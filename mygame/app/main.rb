@@ -18,7 +18,7 @@ class TetrisGame
     @args = args
 
     # game
-    @score = 0
+    @score     = 0
     @game_over = false
 
     # spaceship
@@ -235,7 +235,7 @@ class TetrisGame
   # Moves all enemies towards the center of the screen.
   # All enemies that reach the center (640, 360) are rejected from the enemies collection and disappear.
   def calc_move_enemies
-    return if @args.state.spaceship_moving == false
+    return if !@args.state.spaceship_moving
     @args.state.enemies.each do |z| # for each enemy in the collection
       z.y = z.y.towards(@args.state.planet_y_pos, @enemy_speed) # move the enemy towards the center (640, 360) at a rate of 0.1
       z.x = z.x.towards(@args.state.planet_x_pos, @enemy_speed) # change 0.1 to 1.1 and see how much faster the enemies move to the center
@@ -248,25 +248,8 @@ class TetrisGame
 
     find_closest_enemy_entity
 
-    @args.state.spaceship_shooting_position = {
-      x: @args.state.spaceship.x + @args.state.spaceship.w / 2,
-      y: @args.state.spaceship.y + @args.state.spaceship.h / 2
-    }
-
-    # then check saved lines
     if !@args.state.shooting_lines.empty?
-
-      @args.state.shooting_lines.each_with_index do |current_line, index|
-        origin_entity = current_line[:origin_entity]
-        destination_entity = current_line[:destination_entity]
-
-        render_shooting_line(origin_entity, destination_entity)
-
-        if index == @args.state.shooting_lines.size - 1
-          @args.state.current_shooting_entity = destination_entity
-        end
-
-      end
+      render_all_shooting_lines
     else 
       @args.state.current_shooting_entity = @args.state.spaceship
     end
@@ -302,6 +285,19 @@ class TetrisGame
     if closest_enemy_entity
       @args.state.closest_enemy_entity = closest_enemy_entity
       @args.outputs.borders << {x: closest_enemy_entity.x, y: closest_enemy_entity.y, w: 30, h: 30, r: 255, g: 255, b: 255}
+    end
+  end
+
+  def render_all_shooting_lines
+    @args.state.shooting_lines.each_with_index do |current_line, index|
+      origin_entity = current_line[:origin_entity]
+      destination_entity = current_line[:destination_entity]
+
+      render_shooting_line(origin_entity, destination_entity)
+
+      if index == @args.state.shooting_lines.size - 1
+        @args.state.current_shooting_entity = destination_entity
+      end
     end
   end
 
