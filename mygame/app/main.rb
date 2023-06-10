@@ -147,21 +147,37 @@ class TetrisGame
 
   def shoot
     if !@args.state.shooting_lines.empty?
-      @args.state.shooting_lines.each_with_index do |current_line, index|
-        origin_enemy = @args.state.enemies[current_line[:origin_index]]
-        destination_enemy = @args.state.enemies[current_line[:destination_index]]
-        progress = (index * @args.state.animation_duration + @args.state.startup_time).ease(@args.state.animation_duration, @args.state.animation_type)
-          
-        calc_x = origin_enemy.x + (destination_enemy.x - origin_enemy.x) * progress
-        calc_y = origin_enemy.y + (destination_enemy.y - origin_enemy.y) * progress
+      @args.state.current_shooting_destination_entity_index ||= 0
+      @args.state.current_shooting_destination_entity ||= @args.state.shooting_lines[0][:destination_entity]
+      destination_entity = @args.state.current_shooting_destination_entity
+      spaceship = @args.state.spaceship
 
-        @args.state.spaceship.x = calc_x
-        @args.state.spaceship.y = calc_y
+      tolerance = 5  # Adjust the tolerance as needed
+
+      # if spaceship has reached the current destination entity
+      if (spaceship.x - destination_entity.x).abs < tolerance && (spaceship.y - destination_entity.y).abs < tolerance
+        # if current destination entity is the last one
+        if @args.state.current_shooting_destination_entity_index == @args.state.shooting_lines.size - 1
+          @args.state.shooting = false
+          @args.state.shooting_lines.clear
+          return
+        else
+          # go to next destination entity
+          @args.state.current_shooting_destination_entity_index += 1
+          @args.state.current_shooting_destination_entity = @args.state.shooting_lines[@args.state.current_shooting_destination_entity_index][:destination_entity]
+        end
+      else
+        # move towards the destination
+        angle = Math.atan2(destination_entity.y - spaceship.y, destination_entity.x - spaceship.x)
+        velocity_x = Math.cos(angle) * 10
+        velocity_y = Math.sin(angle) * 10
+
+        spaceship.x += velocity_x
+        spaceship.y += velocity_y
       end
-      @args.state.shooting = false
-      @args.state.shooting_lines.clear
     end
   end
+
 
   def iterate
     if @game_over
