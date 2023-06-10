@@ -80,7 +80,7 @@ class TetrisGame
 
     # controlling shooting lines
     if !@args.state.spaceship_moving
-      if keyboard.key_up.space
+      if keyboard.key_up.space && !@args.state.shooting
         @args.state.shooting = true
       end
       if @args.state.shooting
@@ -144,16 +144,14 @@ class TetrisGame
 
   def shoot
     if !@args.state.shooting_lines.empty?
-      @args.state.current_shooting_destination_entity       ||= @args.state.shooting_lines[0][:destination_entity]
+      @args.state.current_shooting_destination_entity ||= @args.state.shooting_lines[0][:destination_entity]
       
       destination_entity = @args.state.current_shooting_destination_entity
       spaceship          = @args.state.spaceship
 
       tolerance = @shooting_speed / 2
 
-      # if spaceship has reached the current destination entity
       if (spaceship.x - destination_entity.x).abs < tolerance && (spaceship.y - destination_entity.y).abs < tolerance
-        # if current destination entity is the last one
         if @args.state.shooting_lines.size > 0
           set_next_shooting_destination_entity
         end
@@ -170,10 +168,14 @@ class TetrisGame
   end
 
   def set_next_shooting_destination_entity
-    @args.state.shooting_lines.delete_at(0)
-    @args.state.enemies.delete(@args.state.current_shooting_destination_entity)
+    destroy_enemy(@args.state.current_shooting_destination_entity)
 
+    @args.state.shooting_lines.delete_at(0)
     @args.state.current_shooting_destination_entity = @args.state.shooting_lines[0][:destination_entity]
+  end
+
+  def destroy_enemy(enemy)
+    @args.state.enemies.delete(enemy)
   end
 
   def move_towards_destination_entity(spaceship, destination_entity)
@@ -219,6 +221,8 @@ class TetrisGame
         z.x = [-10, 1290].sample # x position is set to either -10 or 1290 (randomly chosen)
         z.y = @args.grid.rect.w.randomize(:ratio) # random y position on screen
       end
+      z.w = 30
+      z.h = 30
     end
 
     # Calls random_spawn_countdown method (determines how fast new enemies appear)
@@ -259,18 +263,18 @@ class TetrisGame
         render_shooting_line(origin_entity, destination_entity)
 
         if index == @args.state.shooting_lines.size - 1
-          @args.state.current_shooting_position = [destination_entity.x, destination_entity.y]
+          @args.state.current_shooting_entity = destination_entity
         end
 
       end
     else 
-      @args.state.current_shooting_position = @args.state.spaceship_shooting_position
+      @args.state.current_shooting_entity = @args.state.spaceship
     end
 
     closest_enemy = @args.state.closest_enemy_entity
 
     if closest_enemy && !does_shooting_line_already_exist?(closest_enemy)
-      render_shooting_line(@args.state.current_shooting_position, closest_enemy)
+      render_shooting_line(@args.state.current_shooting_entity, closest_enemy)
     end
   end
 
@@ -361,12 +365,12 @@ class TetrisGame
                                angle: @args.state.spaceship.angle }
   end
 
-# Outputs the enemies on the screen and sets values for the sprites, such as the position, width, height, and animation.
+  # Outputs the enemies on the screen and sets values for the sprites, such as the position, width, height, and animation.
   def render_enemies
     @args.outputs.sprites << @args.state.enemies.map do |z| # performs action on all zombies in the collection
       angle = ([@args.state.planet_x_pos, @args.state.planet_y_pos].angle_from [z.x, z.y])
       angle -= 90
-      z.sprite = [z.x, z.y, 30, 30, 'sprites/enemy_A.png', angle].sprite # sets definition for sprite, calls animation_sprite method
+      z.sprite = [z.x, z.y, z.w, z.h, 'sprites/enemy_A.png', angle].sprite # sets definition for sprite, calls animation_sprite method
       z.sprite
     end
   end
@@ -381,10 +385,10 @@ class TetrisGame
     return if @args.state.spaceship_moving
     shooting_line = {
 
-      x:  origin.x,
-      y:  origin.y,
-      x2: destination.x,
-      y2: destination.y,
+      x:  origin.x + origin.w / 2,
+      y:  origin.y + origin.h / 2,
+      x2: destination.x + destination.w / 2,
+      y2: destination.y + destination.h / 2,
       r:  255,
       g:  255,
       b:  255
