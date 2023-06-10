@@ -45,10 +45,7 @@ class TetrisGame
     args.state.closest_enemy_entity          ||= nil
 
     # actual shooting
-    args.state.animation_type     ||= [:quad]
-    args.state.animation_duration ||= 1.seconds
-    args.state.startup_time       ||= 1.seconds
-    args.state.animation_progress ||= 0
+    @shooting_speed               ||= 30
     args.state.shooting           ||= false
   end
 
@@ -148,36 +145,46 @@ class TetrisGame
   def shoot
     if !@args.state.shooting_lines.empty?
       @args.state.current_shooting_destination_entity_index ||= 0
-      @args.state.current_shooting_destination_entity ||= @args.state.shooting_lines[0][:destination_entity]
+      @args.state.current_shooting_destination_entity       ||= @args.state.shooting_lines[0][:destination_entity]
+      
       destination_entity = @args.state.current_shooting_destination_entity
-      spaceship = @args.state.spaceship
+      spaceship          = @args.state.spaceship
 
-      tolerance = 5  # Adjust the tolerance as needed
+      tolerance = @shooting_speed / 2
 
       # if spaceship has reached the current destination entity
       if (spaceship.x - destination_entity.x).abs < tolerance && (spaceship.y - destination_entity.y).abs < tolerance
         # if current destination entity is the last one
         if @args.state.current_shooting_destination_entity_index == @args.state.shooting_lines.size - 1
-          @args.state.shooting = false
-          @args.state.shooting_lines.clear
+          finish_shooting
           return
         else
-          # go to next destination entity
-          @args.state.current_shooting_destination_entity_index += 1
-          @args.state.current_shooting_destination_entity = @args.state.shooting_lines[@args.state.current_shooting_destination_entity_index][:destination_entity]
+          set_next_shooting_destination_entity
         end
       else
-        # move towards the destination
-        angle = Math.atan2(destination_entity.y - spaceship.y, destination_entity.x - spaceship.x)
-        velocity_x = Math.cos(angle) * 10
-        velocity_y = Math.sin(angle) * 10
-
-        spaceship.x += velocity_x
-        spaceship.y += velocity_y
+        move_towards_destination_entity(spaceship, destination_entity)
       end
     end
   end
 
+  def finish_shooting
+    @args.state.shooting = false
+    @args.state.shooting_lines.clear
+  end
+
+  def set_next_shooting_destination_entity
+    @args.state.current_shooting_destination_entity_index += 1
+    @args.state.current_shooting_destination_entity = @args.state.shooting_lines[@args.state.current_shooting_destination_entity_index][:destination_entity]
+  end
+
+  def move_towards_destination_entity(spaceship, destination_entity)
+    angle = Math.atan2(destination_entity.y - spaceship.y, destination_entity.x - spaceship.x)
+    velocity_x = Math.cos(angle) * @shooting_speed
+    velocity_y = Math.sin(angle) * @shooting_speed
+
+    spaceship.x += velocity_x
+    spaceship.y += velocity_y
+  end
 
   def iterate
     if @game_over
