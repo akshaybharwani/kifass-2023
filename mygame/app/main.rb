@@ -144,7 +144,6 @@ class TetrisGame
 
   def shoot
     if !@args.state.shooting_lines.empty?
-      @args.state.current_shooting_destination_entity_index ||= 0
       @args.state.current_shooting_destination_entity       ||= @args.state.shooting_lines[0][:destination_entity]
       
       destination_entity = @args.state.current_shooting_destination_entity
@@ -155,26 +154,26 @@ class TetrisGame
       # if spaceship has reached the current destination entity
       if (spaceship.x - destination_entity.x).abs < tolerance && (spaceship.y - destination_entity.y).abs < tolerance
         # if current destination entity is the last one
-        if @args.state.current_shooting_destination_entity_index == @args.state.shooting_lines.size - 1
-          finish_shooting
-          return
-        else
+        if @args.state.shooting_lines.size > 0
           set_next_shooting_destination_entity
         end
       else
         move_towards_destination_entity(spaceship, destination_entity)
       end
+    else
+      finish_shooting
     end
   end
 
   def finish_shooting
     @args.state.shooting = false
-    @args.state.shooting_lines.clear
   end
 
   def set_next_shooting_destination_entity
-    @args.state.current_shooting_destination_entity_index += 1
-    @args.state.current_shooting_destination_entity = @args.state.shooting_lines[@args.state.current_shooting_destination_entity_index][:destination_entity]
+    @args.state.shooting_lines.delete_at(0)
+    @args.state.enemies.delete(@args.state.current_shooting_destination_entity)
+
+    @args.state.current_shooting_destination_entity = @args.state.shooting_lines[0][:destination_entity]
   end
 
   def move_towards_destination_entity(spaceship, destination_entity)
