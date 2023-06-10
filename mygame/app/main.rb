@@ -39,10 +39,10 @@ class TetrisGame
     args.state.spaceship_moving       ||= false
 
     # shooting lines
-    args.state.shooting_lines               ||= []
-    args.state.current_shooting_origin      ||= nil
-    args.state.last_destination_enemy_index ||= 0
-    args.state.closest_enemy_index          ||= 0
+    args.state.shooting_lines                ||= []
+    args.state.current_shooting_origin       ||= nil
+    args.state.last_destination_enemy_entity ||= nil
+    args.state.closest_enemy_entity          ||= nil
 
     # actual shooting
     args.state.animation_type     ||= [:quad]
@@ -74,7 +74,6 @@ class TetrisGame
     end
 
     player_movement(inputs)
-    
 
     # create a point based off of the mouse location
     @args.state.mouse_location = {
@@ -92,13 +91,10 @@ class TetrisGame
       end
 
       if inputs.mouse.button_left && inputs.mouse.click  # save the line on mouse left button click
-        if !does_shooting_line_already_exist?(@args.state.closest_enemy_index)
-          shooting_line = {
-            origin_index: @args.state.last_destination_enemy_index,
-            destination_index: @args.state.closest_enemy_index
-          }
-          @args.state.shooting_lines.push(shooting_line)
-          @args.state.last_destination_enemy_index = @args.state.closest_enemy_index
+        if @args.state.shooting_lines.empty?
+          add_shooting_line(@args.state.spaceship, @args.state.closest_enemy_entity)
+        else
+          add_shooting_line(@args.state.last_destination_enemy_entity, @args.state.closest_enemy_entity)
         end
       elsif inputs.mouse.button_right && inputs.mouse.click # delete the last line on mouse right button click
         @args.state.shooting_lines.pop
@@ -108,6 +104,18 @@ class TetrisGame
     end
 
     #@args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
+  end
+
+  def add_shooting_line(origin_entity, destination_entity)
+    return if does_shooting_line_already_exist?(destination_entity)
+
+    shooting_line = {
+      origin_entity: origin_entity,
+      destination_entity: destination_entity
+    }
+
+    @args.state.shooting_lines.push(shooting_line)
+    @args.state.last_destination_enemy_entity = destination_entity
   end
 
   def player_movement(inputs)
@@ -212,7 +220,7 @@ class TetrisGame
   def calc_shooting_line
     return if @args.state.spaceship_moving
 
-    find_closest_enemy
+    find_closest_enemy_entity
 
     @args.state.spaceship_shooting_position = {
       x: @args.state.spaceship.x + @args.state.spaceship.w / 2,
@@ -221,35 +229,35 @@ class TetrisGame
 
     # then check saved lines
     if !@args.state.shooting_lines.empty?
+
       @args.state.shooting_lines.each_with_index do |current_line, index|
-        origin_enemy = @args.state.enemies[current_line[:origin_index]]
-        destination_enemy = @args.state.enemies[current_line[:destination_index]]
-        if index == 0
-          render_shooting_line(@args.state.spaceship_shooting_position, destination_enemy)
-        else 
-          render_shooting_line(origin_enemy, destination_enemy)
-        end
+        origin_entity = current_line[:origin_entity]
+        destination_entity = current_line[:destination_entity]
+
+        render_shooting_line(origin_entity, destination_entity)
+
         if index == @args.state.shooting_lines.size - 1
-          @args.state.current_shooting_position = [destination_enemy.x, destination_enemy.y]
+          @args.state.current_shooting_position = [destination_entity.x, destination_entity.y]
         end
+
       end
     else 
       @args.state.current_shooting_position = @args.state.spaceship_shooting_position
     end
-    closest_enemy = @args.state.enemies[@args.state.closest_enemy_index]
-    if closest_enemy && !does_shooting_line_already_exist?(@args.state.closest_enemy_index)
+
+    closest_enemy = @args.state.closest_enemy_entity
+
+    if closest_enemy && !does_shooting_line_already_exist?(closest_enemy)
       render_shooting_line(@args.state.current_shooting_position, closest_enemy)
     end
-    # perform ray_test on point and line
-    #ray = @args.geometry.ray_test @args.state.mouse_location, @args.state.shooting_line
   end
 
-  def find_closest_enemy
+  def find_closest_enemy_entity
     # find closest enemy
     shortest_distance = nil
-    closest_enemy_index = nil
+    closest_enemy_entity = nil
 
-    @args.state.enemies.each_with_index do |enemy, index|
+    @args.state.enemies.each_with_index do |enemy|
       # Calculate the distance between enemy and mouse position using args.geometry.distance
       distance = @args.geometry.distance(
         [enemy.x, enemy.y],
@@ -259,21 +267,20 @@ class TetrisGame
       # Check if the current enemy is the closest one
       if shortest_distance.nil? || distance < shortest_distance
         shortest_distance = distance
-        if closest_enemy_index != index && !does_shooting_line_already_exist?(index)
-          closest_enemy_index = index
+        if closest_enemy_entity != enemy && !does_shooting_line_already_exist?(enemy)
+          closest_enemy_entity = enemy
         end
       end
     end
 
-    if closest_enemy_index
-      @args.state.closest_enemy_index = closest_enemy_index
-      closest_enemy = @args.state.enemies[@args.state.closest_enemy_index]
-      @args.outputs.borders << {x: closest_enemy.x, y: closest_enemy.y, w: 30, h: 30, r: 255, g: 255, b: 255}
+    if closest_enemy_entity
+      @args.state.closest_enemy_entity = closest_enemy_entity
+      @args.outputs.borders << {x: closest_enemy_entity.x, y: closest_enemy_entity.y, w: 30, h: 30, r: 255, g: 255, b: 255}
     end
   end
 
-  def does_shooting_line_already_exist?(target_index)
-    @args.state.shooting_lines.any? { |line| line[:origin_index] == target_index }
+  def does_shooting_line_already_exist?(target_entity)
+    @args.state.shooting_lines.any? { |line| line[:destination_entity] == target_entity }
   end
 
   def render
