@@ -22,11 +22,14 @@ class TetrisGame
     @game_over = false
 
     # spaceship
-    @spaceship_speed ||= 5
-    args.state.spaceship.x ||= 0
-    args.state.spaceship.y ||= 0
-    args.state.spaceship.w ||= 45
-    args.state.spaceship.h ||= 45
+    args.state.spaceship ||= args.state.new_entity(:spaceship) do |spaceship|
+      spaceship.speed = 5
+      spaceship.w     = 45
+      spaceship.h     = 45
+      spaceship.x     = 900 - (spaceship.w / 2)
+      spaceship.y     = 200 - (spaceship.h / 2)
+      spaceship.angle = 0
+    end
 
     # enemies
     @enemy_speed                      ||= 0.5
@@ -112,18 +115,18 @@ class TetrisGame
     # movement
     if inputs.up
       @args.state.spaceship_moving = true
-      @args.state.spaceship.y += @spaceship_speed
+      @args.state.spaceship.y += @args.state.spaceship.speed
     elsif inputs.down
       @args.state.spaceship_moving = true
-      @args.state.spaceship.y -= @spaceship_speed
+      @args.state.spaceship.y -= @args.state.spaceship.speed
     end
 
     if inputs.left
       @args.state.spaceship_moving = true
-      @args.state.spaceship.x -= @spaceship_speed
+      @args.state.spaceship.x -= @args.state.spaceship.speed
     elsif inputs.right
       @args.state.spaceship_moving = true
-      @args.state.spaceship.x += @spaceship_speed
+      @args.state.spaceship.x += @args.state.spaceship.speed
     end
 
     # rotation
@@ -321,18 +324,12 @@ class TetrisGame
   end
 
   def render_spaceship
-    @args.state.spaceship.w ||= 45
-    @args.state.spaceship.h ||= 45
-    @args.state.spaceship.x ||= 900 - (@args.state.spaceship.w / 2)
-    @args.state.spaceship.y ||= 200 - (@args.state.spaceship.h / 2)
-    @args.state.spaceship.angle ||= 0
-
     @args.outputs.sprites << { x: @args.state.spaceship.x,
-                              y: @args.state.spaceship.y,
-                              w: @args.state.spaceship.w,
-                              h: @args.state.spaceship.h,
-                              path: 'sprites/ship_A.png',
-                              angle: @args.state.spaceship.angle }
+                               y: @args.state.spaceship.y,
+                               w: @args.state.spaceship.w,
+                               h: @args.state.spaceship.h,
+                               path: 'sprites/ship_A.png',
+                               angle: @args.state.spaceship.angle }
   end
 
 # Outputs the enemies on the screen and sets values for the sprites, such as the position, width, height, and animation.
