@@ -18,8 +18,11 @@ class TetrisGame
     @args = args
 
     # game
-    @score     = 0
-    @game_over = false
+    @game_screen_width      ||= 1280
+    @game_screen_height     ||= 720
+    args.state.score        ||= 0
+    args.state.game_over    ||= false
+    args.state.boings_limit ||= 3
 
     # spaceship
     args.state.spaceship ||= args.state.new_entity(:spaceship) do |spaceship|
@@ -33,7 +36,7 @@ class TetrisGame
 
     # enemies
     @enemy_speed                      ||= 0.5
-    args.state.enemy_min_spawn_rate   ||= 60
+    args.state.enemy_min_spawn_rate   ||= 30
     args.state.enemy_spawn_countdown  ||= random_spawn_countdown(args.state.enemy_min_spawn_rate)
     args.state.enemies                ||= []
     args.state.spaceship_moving       ||= false
@@ -45,8 +48,8 @@ class TetrisGame
     args.state.closest_enemy_entity          ||= nil
 
     # actual shooting
-    @shooting_speed               ||= 30
-    args.state.shooting           ||= false
+    @shooting_speed     ||= 30
+    args.state.shooting ||= false
   end
 
   # Your own Tick function, can do everything here
@@ -105,6 +108,7 @@ class TetrisGame
 
   def add_shooting_line(origin_entity, destination_entity)
     return if does_shooting_line_already_exist?(destination_entity)
+    return if !can_shoot?
 
     shooting_line = {
       origin_entity: origin_entity,
@@ -256,13 +260,12 @@ class TetrisGame
 
     closest_enemy = @args.state.closest_enemy_entity
 
-    if closest_enemy && !does_shooting_line_already_exist?(closest_enemy)
+    if closest_enemy && !does_shooting_line_already_exist?(closest_enemy) && can_shoot?
       render_shooting_line(@args.state.current_shooting_entity, closest_enemy)
     end
   end
 
   def find_closest_enemy_entity
-    # find closest enemy
     shortest_distance = nil
     closest_enemy_entity = nil
 
@@ -282,9 +285,9 @@ class TetrisGame
       end
     end
 
-    if closest_enemy_entity
+    if closest_enemy_entity && can_shoot?
       @args.state.closest_enemy_entity = closest_enemy_entity
-      @args.outputs.borders << {x: closest_enemy_entity.x, y: closest_enemy_entity.y, w: 30, h: 30, r: 255, g: 255, b: 255}
+      @args.outputs.borders << {x: closest_enemy_entity.x, y: closest_enemy_entity.y, w: closest_enemy_entity.w, h: closest_enemy_entity.h, r: 255, g: 255, b: 255}
     end
   end
 
@@ -305,23 +308,28 @@ class TetrisGame
     @args.state.shooting_lines.any? { |line| line[:destination_entity] == target_entity }
   end
 
+  def can_shoot?
+    @args.state.shooting_lines.size < @args.state.boings_limit 
+  end
+
   def render
     render_background
     render_sun
     render_planet
     render_spaceship
     render_enemies
+    render_ui
   end
 
   def render_background
-    @args.outputs.solids << [0, 0, 1280, 720, 0, 0, 0]
+    @args.outputs.solids << [0, 0, @game_screen_width, @game_screen_height, 0, 0, 0]
   end
 
   def render_sun
     sun_width = 150
     sun_height = 150
-    sun_x_pos = (1280 / 2) - (sun_width / 2)
-    sun_y_pos = (720 / 2) - (sun_height / 2)
+    sun_x_pos = (@game_screen_width / 2) - (sun_width / 2)
+    sun_y_pos = (@game_screen_height / 2) - (sun_height / 2)
     @args.outputs.sprites << [sun_x_pos, sun_y_pos, sun_width, sun_height, 'sprites/sphere0.png', 0, 255, 255, 165, 0]
   end
 
@@ -336,14 +344,14 @@ class TetrisGame
     end
 
     planet_starting_position ||= {
-      x: 640 + 150,
-      y: 360 + 150
+      x: @game_screen_width / 2 + 150,
+      y: @game_screen_height / 2 + 150
     }
 
     # rotate point around center screen
     rotate_point = @args.geometry.rotate_point planet_starting_position,
                                                  @args.state.rotate_amount,
-                                                 x: 640, y: 360
+                                                 x: @game_screen_width / 2, y: @game_screen_height / 2
 
     planet_width = 100
     planet_height = 100
@@ -369,6 +377,20 @@ class TetrisGame
       z.sprite = [z.x, z.y, z.w, z.h, 'sprites/enemy_A.png', angle].sprite # sets definition for sprite, calls animation_sprite method
       z.sprite
     end
+  end
+
+  def render_ui
+    render_score
+    render_boings
+  end
+
+  def render_score
+    
+  end
+
+  def render_boings
+    boings_margin = 40
+    @args.outputs.labels << [@game_screen_width - boings_margin, @game_screen_height - boings_margin, "#{@args.state.boings_limit}", 255, 255, 255]
   end
 
   # Sets the enemy spawn's countdown to a random number.
