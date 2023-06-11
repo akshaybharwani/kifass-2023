@@ -422,10 +422,10 @@ class Game
       y: @game_screen_height - height * 2
     }
 
+    @args.outputs.primitives << [level_bar.x, level_bar.y, get_current_level_progress(margin), height, 255,
+                                 255, 255].solid
     @args.outputs.borders << { x: level_bar.x, y: level_bar.y, w: @game_screen_width - (margin * 2), h: height, r: 255,
                                g: 255, b: 255 }
-    @args.outputs.solids << { x: level_bar.x, y: level_bar.y, w: get_current_level_progress(margin), h: height, r: 255,
-                              g: 255, b: 255 }
   end
 
   def get_current_level_progress(margin)
