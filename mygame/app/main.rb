@@ -18,15 +18,19 @@ class TetrisGame
     @args = args
 
     # game
-    @game_screen_width      ||= 1280
-    @game_screen_height     ||= 720
-    args.state.score        ||= 0
-    args.state.game_over    ||= false
-    args.state.boings_limit ||= 3
+    @game_screen_width       ||= 1280
+    @game_screen_height      ||= 720
+    args.state.score         ||= 0
+    args.state.game_over     ||= false
+    args.state.boings_limit  ||= 3
+    args.state.current_level ||= 0
+
+    # planet
+    @planet_speed ||= 0.3 
 
     # spaceship
     args.state.spaceship ||= args.state.new_entity(:spaceship) do |spaceship|
-      spaceship.speed = 5
+      spaceship.speed = 4
       spaceship.w     = 45
       spaceship.h     = 45
       spaceship.x     = 900 - (spaceship.w / 2)
@@ -35,11 +39,11 @@ class TetrisGame
     end
 
     # enemies
-    @enemy_speed                      ||= 0.5
-    args.state.enemy_min_spawn_rate   ||= 30
-    args.state.enemy_spawn_countdown  ||= random_spawn_countdown(args.state.enemy_min_spawn_rate)
-    args.state.enemies                ||= []
-    args.state.spaceship_moving       ||= false
+    @enemy_speed                     ||= 0.5
+    args.state.enemy_min_spawn_rate  ||= 50
+    args.state.enemy_spawn_countdown ||= random_spawn_countdown(args.state.enemy_min_spawn_rate)
+    args.state.enemies               ||= []
+    args.state.spaceship_moving      ||= false
 
     # shooting lines
     args.state.shooting_lines                ||= []
@@ -183,7 +187,7 @@ class TetrisGame
   end
 
   def move_towards_destination_entity(spaceship, destination_entity)
-    angle = Math.atan2(destination_entity.y - spaceship.y, destination_entity.x - spaceship.x)
+    angle      = Math.atan2(destination_entity.y - spaceship.y, destination_entity.x - spaceship.x)
     velocity_x = Math.cos(angle) * @shooting_speed
     velocity_y = Math.sin(angle) * @shooting_speed
 
@@ -336,7 +340,7 @@ class TetrisGame
   def render_planet
     @args.state.rotate_amount ||= 0
     if @args.state.spaceship_moving
-      @args.state.rotate_amount  += 0.5
+      @args.state.rotate_amount  += 1 * @planet_speed
 
       if @args.state.rotate_amount >= 360
         @args.state.rotate_amount = 0
@@ -365,7 +369,7 @@ class TetrisGame
                                y: @args.state.spaceship.y,
                                w: @args.state.spaceship.w,
                                h: @args.state.spaceship.h,
-                               path: 'sprites/ship_A.png',
+                               path: 'sprites/Main Ship - Base - Full health.png',
                                angle: @args.state.spaceship.angle }
   end
 
@@ -380,12 +384,28 @@ class TetrisGame
   end
 
   def render_ui
-    render_score
-    render_boings
+    render_level_ui
+    #render_boings
   end
 
-  def render_score
-    
+  def render_level_ui
+    render_level_bar
+  end
+
+  def render_level_bar
+    margin = 40
+    height = 40
+    level_bar = {
+      x: margin, 
+      y: @game_screen_height - (height)
+    }
+
+    @args.outputs.solids << {x: level_bar.x, y: level_bar.y, w: get_current_level_progress, h: height, r: 255, g: 255, b: 255}
+    @args.outputs.borders << {x: level_bar.x, y: level_bar.y, w: @game_screen_width - (margin * 2), h: height, r: 255, g: 255, b: 255}
+  end
+
+  def get_current_level_progress
+    (@args.state.rotate_amount.to_i / 360) * (@game_screen_width - (40 * 2))
   end
 
   def render_boings
