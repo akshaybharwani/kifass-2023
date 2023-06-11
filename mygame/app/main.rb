@@ -332,6 +332,8 @@ class Game
   end
 
   def render_background
+    @args.outputs.solids << [0, 0, @game_screen_width, @game_screen_height, 0, 0, 0]
+=begin
     start_looping_at = 0
     number_of_sprites = 9
     number_of_frames_to_show_each_sprite = 4
@@ -348,6 +350,7 @@ class Game
       0, 0, @game_screen_width, @game_screen_height,
       "sprites/background/Starry background#{sprite_index}.png"
     ]
+=end
   end
 
   def render_sun
@@ -400,7 +403,7 @@ class Game
     @args.outputs.sprites << @args.state.enemies.map do |z| # performs action on all zombies in the collection
       angle = ([@args.state.planet_x_pos, @args.state.planet_y_pos].angle_from [z.x, z.y])
       angle -= 90
-      z.sprite = [z.x, z.y, z.w, z.h, 'sprites/enemy_A.png', angle].sprite # sets definition for sprite, calls animation_sprite method
+      z.sprite = [z.x, z.y, z.w, z.h, 'sprites/Klaed - Battlecruiser - Base.png', angle].sprite # sets definition for sprite, calls animation_sprite method
       z.sprite
     end
   end
