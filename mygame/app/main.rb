@@ -9,11 +9,11 @@ $gtk.reset
 # So that we don't have to worry about Delta time and stuff
 def tick(args)
   # Only need to do this once, creating a new object
-  args.state.game ||= TetrisGame.new(args)
+  args.state.game ||= Game.new(args)
   args.state.game.tick(args)
 end
 
-class TetrisGame
+class Game
   def initialize(args)
     @args = args
 
@@ -22,11 +22,11 @@ class TetrisGame
     @game_screen_height      ||= 720
     args.state.score         ||= 0
     args.state.game_over     ||= false
-    args.state.boings_limit  ||= 3
+    args.state.boings_limit  ||= 10
     args.state.current_level ||= 0
 
     # planet
-    @planet_speed ||= 0.3 
+    @planet_speed ||= 0.3
 
     # spaceship
     args.state.spaceship ||= args.state.new_entity(:spaceship) do |spaceship|
@@ -59,7 +59,7 @@ class TetrisGame
   # Your own Tick function, can do everything here
   def tick(args)
     input
-    #iterate
+    # iterate
     calc
     render
   end
@@ -94,7 +94,7 @@ class TetrisGame
         shoot
       end
 
-      if inputs.mouse.button_left && inputs.mouse.click  # save the line on mouse left button click
+      if inputs.mouse.button_left && inputs.mouse.click # save the line on mouse left button click
         if @args.state.shooting_lines.empty?
           add_shooting_line(@args.state.spaceship, @args.state.closest_enemy_entity)
         else
@@ -107,12 +107,12 @@ class TetrisGame
       end
     end
 
-    #@args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
+    # @args.outputs.debug << { x: 640, y: 25, text: @args.state.spaceship.angle, size_enum: -2, alignment_enum: 1, r: 255, g: 255, b: 255 }.label!
   end
 
   def add_shooting_line(origin_entity, destination_entity)
     return if does_shooting_line_already_exist?(destination_entity)
-    return if !can_shoot?
+    return unless can_shoot?
 
     shooting_line = {
       origin_entity: origin_entity,
@@ -125,6 +125,7 @@ class TetrisGame
 
   def player_movement(inputs)
     return if @args.state.shooting
+
     # movement
     if inputs.up
       @args.state.spaceship_moving = true
@@ -144,7 +145,8 @@ class TetrisGame
 
     # rotation
     if inputs.mouse.moved
-      @args.state.spaceship.angle = (inputs.mouse.position.angle_from [@args.state.spaceship.x, @args.state.spaceship.y])
+      @args.state.spaceship.angle = (inputs.mouse.position.angle_from [@args.state.spaceship.x,
+                                                                       @args.state.spaceship.y])
       # TODO: This sets the proper angle, figure out why
       @args.state.spaceship.angle -= 90
     end
@@ -153,7 +155,7 @@ class TetrisGame
   def shoot
     if !@args.state.shooting_lines.empty?
       @args.state.current_shooting_destination_entity ||= @args.state.shooting_lines[0][:destination_entity]
-      
+
       destination_entity = @args.state.current_shooting_destination_entity
       spaceship          = @args.state.spaceship
 
@@ -206,8 +208,8 @@ class TetrisGame
     calc_spawn_enemy
     calc_move_enemies
     calc_shooting_line
-    #calc_player
-    #calc_kill_enemy
+    # calc_player
+    # calc_kill_enemy
   end
 
   # Decreases the enemy spawn countdown by 1 if it has a value greater than 0.
@@ -244,11 +246,14 @@ class TetrisGame
   # All enemies that reach the center (640, 360) are rejected from the enemies collection and disappear.
   def calc_move_enemies
     return if !@args.state.spaceship_moving
+
     @args.state.enemies.each do |z| # for each enemy in the collection
       z.y = z.y.towards(@args.state.planet_y_pos, @enemy_speed) # move the enemy towards the center (640, 360) at a rate of 0.1
       z.x = z.x.towards(@args.state.planet_x_pos, @enemy_speed) # change 0.1 to 1.1 and see how much faster the enemies move to the center
     end
-    @args.state.enemies = @args.state.enemies.reject { |z| z.y == @args.state.planet_y_pos && z.x == @args.state.planet_x_pos } # remove enemies that are in center
+    @args.state.enemies = @args.state.enemies.reject { |z|
+      z.y == @args.state.planet_y_pos && z.x == @args.state.planet_x_pos
+    } # remove enemies that are in center
   end
 
   def calc_shooting_line
@@ -258,7 +263,7 @@ class TetrisGame
 
     if !@args.state.shooting_lines.empty?
       render_all_shooting_lines
-    else 
+    else
       @args.state.current_shooting_entity = @args.state.spaceship
     end
 
@@ -291,7 +296,8 @@ class TetrisGame
 
     if closest_enemy_entity && can_shoot?
       @args.state.closest_enemy_entity = closest_enemy_entity
-      @args.outputs.borders << {x: closest_enemy_entity.x, y: closest_enemy_entity.y, w: closest_enemy_entity.w, h: closest_enemy_entity.h, r: 255, g: 255, b: 255}
+      @args.outputs.borders << { x: closest_enemy_entity.x, y: closest_enemy_entity.y, w: closest_enemy_entity.w,
+                                 h: closest_enemy_entity.h, r: 255, g: 255, b: 255 }
     end
   end
 
@@ -313,7 +319,7 @@ class TetrisGame
   end
 
   def can_shoot?
-    @args.state.shooting_lines.size < @args.state.boings_limit 
+    @args.state.shooting_lines.size < @args.state.boings_limit
   end
 
   def render
@@ -326,7 +332,22 @@ class TetrisGame
   end
 
   def render_background
-    @args.outputs.solids << [0, 0, @game_screen_width, @game_screen_height, 0, 0, 0]
+    start_looping_at = 0
+    number_of_sprites = 9
+    number_of_frames_to_show_each_sprite = 4
+    does_sprite_loop = true
+
+    sprite_index =
+      start_looping_at.frame_index(number_of_sprites,
+                                   number_of_frames_to_show_each_sprite,
+                                   does_sprite_loop)
+
+    sprite_index ||= 0
+
+    @args.outputs.sprites << [
+      0, 0, @game_screen_width, @game_screen_height,
+      "sprites/background/Starry background#{sprite_index}.png"
+    ]
   end
 
   def render_sun
@@ -340,7 +361,7 @@ class TetrisGame
   def render_planet
     @args.state.rotate_amount ||= 0
     if @args.state.spaceship_moving
-      @args.state.rotate_amount  += 1 * @planet_speed
+      @args.state.rotate_amount += 1 * @planet_speed
 
       if @args.state.rotate_amount >= 360
         @args.state.rotate_amount = 0
@@ -354,14 +375,15 @@ class TetrisGame
 
     # rotate point around center screen
     rotate_point = @args.geometry.rotate_point planet_starting_position,
-                                                 @args.state.rotate_amount,
-                                                 x: @game_screen_width / 2, y: @game_screen_height / 2
+                                               @args.state.rotate_amount,
+                                               x: @game_screen_width / 2, y: @game_screen_height / 2
 
     planet_width = 100
     planet_height = 100
     @args.state.planet_x_pos = rotate_point.x - (planet_width / 2)
     @args.state.planet_y_pos = rotate_point.y - (planet_height / 2)
-    @args.outputs.sprites << [@args.state.planet_x_pos, @args.state.planet_y_pos, planet_width, planet_height, 'sprites/planet03.png']
+    @args.outputs.sprites << [@args.state.planet_x_pos, @args.state.planet_y_pos, planet_width, planet_height,
+                              'sprites/planet03.png']
   end
 
   def render_spaceship
@@ -385,7 +407,7 @@ class TetrisGame
 
   def render_ui
     render_level_ui
-    #render_boings
+    # render_boings
   end
 
   def render_level_ui
@@ -393,24 +415,27 @@ class TetrisGame
   end
 
   def render_level_bar
-    margin = 40
+    margin = 80
     height = 40
     level_bar = {
-      x: margin, 
-      y: @game_screen_height - (height)
+      x: margin,
+      y: @game_screen_height - height * 2
     }
 
-    @args.outputs.solids << {x: level_bar.x, y: level_bar.y, w: get_current_level_progress, h: height, r: 255, g: 255, b: 255}
-    @args.outputs.borders << {x: level_bar.x, y: level_bar.y, w: @game_screen_width - (margin * 2), h: height, r: 255, g: 255, b: 255}
+    @args.outputs.borders << { x: level_bar.x, y: level_bar.y, w: @game_screen_width - (margin * 2), h: height, r: 255,
+                               g: 255, b: 255 }
+    @args.outputs.solids << { x: level_bar.x, y: level_bar.y, w: get_current_level_progress(margin), h: height, r: 255,
+                              g: 255, b: 255 }
   end
 
-  def get_current_level_progress
-    (@args.state.rotate_amount.to_i / 360) * (@game_screen_width - (40 * 2))
+  def get_current_level_progress(margin)
+    (@args.state.rotate_amount.to_i / 360) * (@game_screen_width - (margin * 2))
   end
 
   def render_boings
     boings_margin = 40
-    @args.outputs.labels << [@game_screen_width - boings_margin, @game_screen_height - boings_margin, "#{@args.state.boings_limit}", 255, 255, 255]
+    @args.outputs.labels << [@game_screen_width - boings_margin, @game_screen_height - boings_margin,
+                             "#{@args.state.boings_limit}", 255, 255, 255]
   end
 
   # Sets the enemy spawn's countdown to a random number.
@@ -419,17 +444,19 @@ class TetrisGame
     10.randomize(:ratio, :sign).to_i + minimum
   end
 
-  def render_shooting_line(origin, destination) 
+  def render_shooting_line(origin, destination)
     return if @args.state.spaceship_moving
+
     shooting_line = {
 
-      x:  origin.x + origin.w / 2,
-      y:  origin.y + origin.h / 2,
+      x: origin.x + origin.w / 2,
+      y: origin.y + origin.h / 2,
       x2: destination.x + destination.w / 2,
       y2: destination.y + destination.h / 2,
-      r:  255,
-      g:  255,
-      b:  255
+      r: 255,
+      g: 255,
+      b: 255
+
     }
     # render line
     @args.outputs.lines << shooting_line
