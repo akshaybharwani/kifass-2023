@@ -48,9 +48,11 @@ Assert	./dragon/assert.rb	/^  class Assert$/;"	c	class:GTK.test_this_works.Asser
 Assert	./dragon/assert.rb	/^class Assert$/;"	c	class:GTK.test_this_works
 AsyncRequire	./dragon/runtime/async_require.rb	/^    module AsyncRequire$/;"	m	class:GTK.Runtime
 AttrGTK	./dragon/attr_gtk.rb	/^module AttrGTK$/;"	m
+AttrLabel	./dragon/attr_label.rb	/^module AttrLabel$/;"	m
 AttrLine	./dragon/attr_line.rb	/^module AttrLine$/;"	m
 AttrRect	./dragon/attr_sprite.rb	/^module AttrRect$/;"	m
 AttrSprite	./dragon/attr_sprite.rb	/^module AttrSprite$/;"	m
+AutoTest	./dragon/runtime/auto_test.rb	/^    module AutoTest$/;"	m	class:GTK.Runtime
 Autocomplete	./dragon/runtime/autocomplete.rb	/^    module Autocomplete$/;"	m	class:GTK.Runtime
 Backup	./dragon/runtime/backup.rb	/^  module Backup$/;"	m	class:GTK
 BareDefinitionsContainer	./dragon/object.rb	/^class BareDefinitionsContainer$/;"	c
@@ -143,6 +145,7 @@ GTK	./dragon/recording.rb	/^module GTK$/;"	m
 GTK	./dragon/remote_hotload_client.rb	/^module GTK$/;"	m
 GTK	./dragon/runtime.rb	/^module GTK$/;"	m
 GTK	./dragon/runtime/async_require.rb	/^module GTK$/;"	m
+GTK	./dragon/runtime/auto_test.rb	/^module GTK$/;"	m
 GTK	./dragon/runtime/autocomplete.rb	/^module GTK$/;"	m
 GTK	./dragon/runtime/backup.rb	/^module GTK$/;"	m
 GTK	./dragon/runtime/benchmark.rb	/^module GTK$/;"	m
@@ -164,7 +167,7 @@ GTK	./dragon/strict_entity.rb	/^module GTK$/;"	m
 GTK	./dragon/tests.rb	/^module GTK$/;"	m
 GTK	./dragon/top_level.rb	/^module GTK$/;"	m
 GTK	./dragon/trace.rb	/^module GTK$/;"	m
-GTK	./dragon/wizards.rb	/^module GTK$/;"	m
+GTK	./dragon/wizards.rb	/^module GTK$/;"	m	class:Wizard
 GenericOutputsArray	./dragon/outputs.rb	/^  class GenericOutputsArray < OutputsArray$/;"	c	class:GTK
 Geometry	./dragon/geometry.rb	/^  module Geometry$/;"	m	class:GTK
 Geometry	./dragon/geometry_docs.rb	/^module Geometry$/;"	m	class:GeometryDocs.docs_create_quad_tree
@@ -215,11 +218,11 @@ Numeric	./dragon/numeric_docs.rb	/^class Numeric$/;"	c
 NumericDeprecated	./dragon/numeric_deprecated.rb	/^module NumericDeprecated$/;"	m
 NumericDocs	./dragon/numeric_docs.rb	/^module NumericDocs$/;"	m
 Object	./dragon/attr_gtk.rb	/^class Object$/;"	c
+Object	./dragon/attr_label.rb	/^class Object$/;"	c
 Object	./dragon/attr_line.rb	/^class Object$/;"	c
 Object	./dragon/attr_sprite.rb	/^class Object$/;"	c
 Object	./dragon/log.rb	/^class Object$/;"	c
 Object	./dragon/object.rb	/^class Object$/;"	c
-Object	./dragon/runtime.rb	/^class Object$/;"	c	class:GTK
 ObjectMetadata	./dragon/object.rb	/^class ObjectMetadata$/;"	c
 OpenEntity	./dragon/open_entity.rb	/^  class OpenEntity$/;"	c	class:GTK
 OpenEntity	./dragon/runtime/save_state_load_state.rb	/^  class OpenEntity$/;"	c	class:GTK
@@ -235,7 +238,6 @@ Player	./dragon/array_docs.rb	/^    class Player$/;"	c	class:ArrayDocs.docs_reje
 Point	./dragon/primitive.rb	/^    module Point$/;"	m	class:GTK.Primitive
 Primitive	./dragon/primitive.rb	/^  module Primitive$/;"	m	class:GTK
 Primitive	./dragon/primitive_deprecated.rb	/^  module Primitive$/;"	m	class:GTK
-Private	./dragon/runtime.rb	/^  module Private$/;"	m	class:GTK.grep_source_file
 ProcessARGSV	./dragon/runtime/process_argsv.rb	/^    module ProcessARGSV$/;"	m	class:GTK.Runtime
 Prompt	./dragon/console_prompt.rb	/^    class Prompt$/;"	c	class:GTK.Console
 ReadMe	./dragon/readme_docs.rb	/^  class ReadMe$/;"	c	class:GTK.ReadMeDocs.docs_hello_world.docs_new_project.docs_deployment.docs_deployment_steam.docs_troubleshooting_performance.docs_faq
@@ -248,6 +250,7 @@ RemoteHotloadClientWrapper	./dragon/runtime.rb	/^  class RemoteHotloadClientWrap
 Replay	./dragon/recording.rb	/^  class Replay$/;"	c	class:GTK
 Runtime	./dragon/runtime.rb	/^  class Runtime$/;"	c	class:GTK
 Runtime	./dragon/runtime/async_require.rb	/^  class Runtime$/;"	c	class:GTK
+Runtime	./dragon/runtime/auto_test.rb	/^  class Runtime$/;"	c	class:GTK
 Runtime	./dragon/runtime/autocomplete.rb	/^  class Runtime$/;"	c	class:GTK
 Runtime	./dragon/runtime/benchmark.rb	/^  class Runtime$/;"	c	class:GTK
 Runtime	./dragon/runtime/c_bridge.rb	/^  class Runtime$/;"	c	class:GTK
@@ -287,8 +290,8 @@ Vec2	./dragon/matrix.rb	/^class Vec2 < Hash$/;"	c
 Vec3	./dragon/matrix.rb	/^class Vec3 < Hash$/;"	c
 Vec4	./dragon/matrix.rb	/^class Vec4 < Hash$/;"	c
 Wizard	./dragon/wizards.rb	/^class Wizard$/;"	c
-WizardException	./dragon/wizards.rb	/^class WizardException < Exception$/;"	c
-Wizards	./dragon/wizards.rb	/^  class Wizards$/;"	c	class:GTK
+WizardException	./dragon/wizards.rb	/^class WizardException < Exception$/;"	c	class:Wizard
+Wizards	./dragon/wizards.rb	/^  class Wizards$/;"	c	class:Wizard.GTK
 []	./dragon/outputs.rb	/^    def [] *args$/;"	f	class:GTK.OutputsArray
 []	./dragon/outputs.rb	/^    def [] value$/;"	f	class:GTK.Outputs
 []	./dragon/strict_entity.rb	/^    def [] key$/;"	f	class:GTK.StrictEntity
@@ -338,7 +341,7 @@ __raise_deprecated_primitive_assignment__	./dragon/outputs_deprecated.rb	/^    d
 __raise_property_renamed__	./dragon/outputs_deprecated.rb	/^    def __raise_property_renamed__ old_name, new_name$/;"	f	class:GTK.OutputsDeprecated
 __raise_triangle_primitive_not_supported__	./dragon/primitive.rb	/^      def __raise_triangle_primitive_not_supported__ m$/;"	f	class:GTK.Triangle
 __reserved_keys__	./dragon/open_entity.rb	/^    def __reserved_keys__$/;"	f	class:GTK.OpenEntity
-__reset__	./dragon/runtime.rb	/^    def __reset__ rng_override = nil, seed: seed$/;"	f	class:GTK.Runtime
+__reset__	./dragon/runtime.rb	/^    def __reset__ rng_override = nil, seed: seed, include_sprites: true$/;"	f	class:GTK.Runtime
 __reset_id__	./dragon/entity.rb	/^    def self.__reset_id__!$/;"	F	class:GTK.Entity
 __sdl_tick__	./dragon/runtime.rb	/^    def __sdl_tick__ sdl_tick$/;"	f	class:GTK.Runtime
 __sdl_tick__simulation__	./dragon/runtime.rb	/^    def __sdl_tick__simulation__$/;"	f	class:GTK.Runtime
@@ -448,9 +451,9 @@ any?	./dragon/inputs.rb	/^    def any? keys$/;"	f	class:GTK.KeyboardKeys
 any_intersect_rect?	./dragon/array.rb	/^  def any_intersect_rect? other, tolerance = 0.1$/;"	f	class:Array.product
 any_intersects_rect?	./dragon/array_deprecated.rb	/^  def any_intersects_rect? *args$/;"	f	class:ArrayDeprecated
 app_metadata_retrieval_steps	./dragon/ios_wizard.rb	/^  def app_metadata_retrieval_steps$/;"	f	class:IOSWizard
-app_name	./dragon/ios_wizard.rb	/^  def app_name$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+app_name	./dragon/ios_wizard.rb	/^  def app_name$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 app_path	./dragon/ios_wizard.rb	/^  def app_path$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
-app_version	./dragon/ios_wizard.rb	/^  def app_version$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+app_version	./dragon/ios_wizard.rb	/^  def app_version$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 append_file	./dragon/runtime.rb	/^    def append_file file_name, text$/;"	f	class:GTK.Runtime
 append_file_root	./dragon/runtime.rb	/^    def append_file_root file_name, text$/;"	f	class:GTK.Runtime
 apply	./dragon/fn.rb	/^    def self.apply array, block$/;"	F	class:GTK.Fn
@@ -481,6 +484,8 @@ attr	./dragon/object.rb	/^  def self.attr *vars$/;"	F	class:Object
 attr_accessor	./dragon/object.rb	/^  def self.attr_accessor *vars$/;"	F	class:Object
 attr_gtk	./dragon/attr_gtk.rb	/^  def attr_gtk$/;"	f	class:Object
 attr_gtk	./dragon/attr_gtk.rb	/^  def self.attr_gtk$/;"	F	class:Object
+attr_label	./dragon/attr_label.rb	/^  def attr_label$/;"	f	class:Object
+attr_label	./dragon/attr_label.rb	/^  def self.attr_label$/;"	F	class:Object
 attr_line	./dragon/attr_line.rb	/^  def attr_line$/;"	f	class:Object
 attr_line	./dragon/attr_line.rb	/^  def self.attr_line$/;"	F	class:Object
 attr_rect	./dragon/attr_sprite.rb	/^  def attr_rect$/;"	f	class:Object
@@ -493,6 +498,9 @@ attributes=	./dragon/open_entity.rb	/^    def attributes= *opts$/;"	f	class:GTK.
 attributes=	./dragon/strict_entity.rb	/^    def attributes= *opts$/;"	f	class:GTK.StrictEntity
 audio	./dragon/attr_gtk.rb	/^  def audio$/;"	f	class:AttrGTK
 audio	./dragon/runtime.rb	/^    def audio$/;"	f	class:GTK.Runtime
+auto_test_initialize	./dragon/runtime/auto_test.rb	/^      def auto_test_initialize$/;"	f	class:GTK.Runtime.AutoTest
+auto_test_run	./dragon/runtime/auto_test.rb	/^      def auto_test_run$/;"	f	class:GTK.Runtime.AutoTest
+auto_test_run_tests	./dragon/runtime/auto_test.rb	/^      def auto_test_run_tests$/;"	f	class:GTK.Runtime.AutoTest
 autocomplete	./dragon/console_prompt.rb	/^      def autocomplete$/;"	f	class:GTK.Console.Prompt
 autocomplete_filter_methods	./dragon/runtime/autocomplete.rb	/^      def autocomplete_filter_methods keys, *ignores$/;"	f	class:GTK.Runtime.Autocomplete
 autocomplete_methods	./dragon/args.rb	/^    def autocomplete_methods$/;"	f	class:GTK.Args
@@ -565,7 +573,7 @@ calc_row_offset	./dragon/layout.rb	/^    def calc_row_offset opts = {}$/;"	f	cla
 calc_wrapper	./dragon/runtime.rb	/^    def calc_wrapper tick_override_lambda = nil$/;"	f	class:GTK.Runtime
 calcspritebox	./dragon/runtime.rb	/^    def calcspritebox str$/;"	f	class:GTK
 calcstringbox	./dragon/runtime.rb	/^    def calcstringbox str, size_enum = 0, font = "font.ttf"$/;"	f	class:GTK
-callable_methods	./dragon/runtime.rb	/^    def callable_methods$/;"	f	class:GTK.grep_source_file.Private
+can_auto_test?	./dragon/runtime/auto_test.rb	/^      def can_auto_test?$/;"	f	class:GTK.Runtime.AutoTest
 can_screenshot?	./dragon/outputs.rb	/^    def can_screenshot?$/;"	f	class:GTK.Outputs
 cancel	./dragon/recording.rb	/^    def cancel$/;"	f	class:GTK.Recording
 cancel_recording	./dragon/runtime.rb	/^    def cancel_recording$/;"	f	class:GTK.Runtime
@@ -583,7 +591,7 @@ center_inside_rect_x	./dragon/geometry.rb	/^    def center_inside_rect_x other_r
 center_inside_rect_x	./dragon/geometry.rb	/^    def self.center_inside_rect_x rect, other_rect$/;"	F	class:GTK.Geometry
 center_inside_rect_y	./dragon/geometry.rb	/^    def center_inside_rect_y other_rect$/;"	f	class:GTK.Geometry
 center_inside_rect_y	./dragon/geometry.rb	/^    def self.center_inside_rect_y rect, other_rect$/;"	F	class:GTK.Geometry
-certificate_name	./dragon/ios_wizard.rb	/^  def certificate_name$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+certificate_name	./dragon/ios_wizard.rb	/^  def certificate_name$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 char_byte	./dragon/string.rb	/^  def char_byte$/;"	f	class:String
 char_to_method	./dragon/inputs.rb	/^    def self.char_to_method char, int = nil$/;"	F	class:GTK.KeyboardKeys
 char_to_method_hash	./dragon/inputs.rb	/^    def self.char_to_method_hash$/;"	F	class:GTK.KeyboardKeys
@@ -626,6 +634,7 @@ clear_payload_directory	./dragon/ios_wizard.rb	/^  def clear_payload_directory$/
 clear_pixel_arrays	./dragon/args.rb	/^    def clear_pixel_arrays$/;"	f	class:GTK.Args
 clear_render_targets	./dragon/args.rb	/^    def clear_render_targets$/;"	f	class:GTK.Args
 clear_replay_stopped_at!	./dragon/recording.rb	/^    def clear_replay_stopped_at!$/;"	f	class:GTK.Recording.stop_recording
+clear_summary	./dragon/tests.rb	/^    def clear_summary$/;"	f	class:GTK
 clear_tmp_directory	./dragon/ios_wizard.rb	/^  def clear_tmp_directory$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 clear_toast	./dragon/console.rb	/^    def clear_toast$/;"	f	class:GTK.Console
 cli_app_exist?	./dragon/ios_wizard.rb	/^  def cli_app_exist? app$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
@@ -651,7 +660,7 @@ color_for_log_entry	./dragon/console.rb	/^    def color_for_log_entry(log_entry)
 color_for_plain_text	./dragon/console.rb	/^    def color_for_plain_text log_entry$/;"	f	class:GTK.Console
 combinations	./dragon/numeric.rb	/^  def combinations other_int$/;"	f	class:Numeric
 comment	./dragon/object.rb	/^  def comment$/;"	f	class:Object.__pretty_format_exception_text_uninitialized_constant__.method_missing_core
-compile_icons	./dragon/ios_wizard.rb	/^  def compile_icons$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+compile_icons	./dragon/ios_wizard.rb	/^  def compile_icons$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 connected_devices	./dragon/ios_wizard.rb	/^  def connected_devices$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 console_button_primitive	./dragon/runtime.rb	/^    def console_button_primitive$/;"	f	class:GTK.Runtime
 console_text_width	./dragon/console.rb	/^    def console_text_width$/;"	f	class:GTK.Console
@@ -689,11 +698,12 @@ cos_d	./dragon/numeric.rb	/^  def cos_d$/;"	f	class:Fixnum
 cos_d	./dragon/numeric.rb	/^  def cos_d$/;"	f	class:Float
 cos_r	./dragon/numeric.rb	/^  def cos_r$/;"	f	class:Fixnum
 cos_r	./dragon/numeric.rb	/^  def cos_r$/;"	f	class:Float
+create_dev_payload_directory	./dragon/ios_wizard.rb	/^  def create_dev_payload_directory$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 create_ipa	./dragon/ios_wizard.rb	/^  def create_ipa$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 create_payload	./dragon/ios_wizard.rb	/^  def create_payload$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
-create_payload_directory_dev	./dragon/ios_wizard.rb	/^  def create_payload_directory_dev$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
-create_payload_directory_prod	./dragon/ios_wizard.rb	/^  def create_payload_directory_prod$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+create_prod_payload_directory	./dragon/ios_wizard.rb	/^  def create_prod_payload_directory$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 create_quad_tree	./dragon/geometry_quad_tree.rb	/^      def create_quad_tree rects$/;"	f	class:GTK.Geometry
+create_sim_payload_directory	./dragon/ios_wizard.rb	/^  def create_sim_payload_directory$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 create_tweetcart_palette	./dragon/tweetcart.rb	/^  def create_tweetcart_palette$/;"	f
 created_at_elapsed	./dragon/inputs.rb	/^    def created_at_elapsed$/;"	f	class:GTK.GTK.MousePoint
 created_at_elapsed	./dragon/open_entity.rb	/^    def created_at_elapsed$/;"	f	class:GTK.OpenEntity
@@ -723,17 +733,19 @@ delete_file	./dragon/runtime.rb	/^    def delete_file path$/;"	f	class:GTK.Runti
 delete_file_if_exist	./dragon/runtime.rb	/^    def delete_file_if_exist path$/;"	f	class:GTK.Runtime
 delete_file_if_exist?	./dragon/runtime.rb	/^    def delete_file_if_exist? path$/;"	f	class:GTK.Runtime
 delta_framerate	./dragon/runtime/framerate.rb	/^      def delta_framerate$/;"	f	class:GTK.Runtime.Framerate
-deploy	./dragon/ios_wizard.rb	/^  def deploy$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 deploy	./dragon/itch_wizard.rb	/^  def deploy$/;"	f	class:ItchWizard
+deploy_to_device	./dragon/ios_wizard.rb	/^  def deploy_to_device$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+deploy_to_sim	./dragon/ios_wizard.rb	/^  def deploy_to_sim$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 dequeue_sounds	./dragon/runtime.rb	/^    def dequeue_sounds pass$/;"	f	class:GTK.Runtime
 deserialize_state	./dragon/runtime/save_state_load_state.rb	/^      def deserialize_state *args$/;"	f	class:GTK.Runtime.SaveStateLoadState
 destructure	./dragon/args.rb	/^    def destructure$/;"	f	class:GTK.Args
 determine_app_id	./dragon/ios_wizard.rb	/^  def determine_app_id$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 determine_app_name	./dragon/ios_wizard.rb	/^  def determine_app_name$/;"	f	class:IOSWizard.ios_metadata.game_metadata
-determine_app_version	./dragon/ios_wizard.rb	/^  def determine_app_version$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+determine_app_version	./dragon/ios_wizard.rb	/^  def determine_app_version$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 determine_devcert	./dragon/ios_wizard.rb	/^  def determine_devcert$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 determine_prodcert	./dragon/ios_wizard.rb	/^  def determine_prodcert$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 determine_team_identifier	./dragon/ios_wizard.rb	/^  def determine_team_identifier$/;"	f	class:IOSWizard.ios_metadata.game_metadata
+dev_build?	./dragon/ios_wizard.rb	/^  def dev_build?$/;"	f	class:IOSWizard
 development_write_info_plist	./dragon/ios_wizard.rb	/^  def development_write_info_plist$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 device_and_render_sizes	./dragon/runtime/c_bridge.rb	/^      def device_and_render_sizes allscreen_left, allscreen_right, allscreen_top, allscreen_bottom,$/;"	f	class:GTK.Runtime.CBridge
 device_orientation_xml	./dragon/ios_wizard.rb	/^  def device_orientation_xml$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
@@ -743,6 +755,7 @@ directional_vector	./dragon/directional_input_helper_methods.rb	/^    def direct
 directional_vector	./dragon/inputs.rb	/^    def directional_vector$/;"	f	class:GTK.GTK.Inputs
 disable	./dragon/console.rb	/^    def disable$/;"	f	class:GTK.Console
 disable_console	./dragon/runtime.rb	/^    def disable_console$/;"	f	class:GTK.Runtime
+disable_controller_config!	./dragon/runtime.rb	/^    def disable_controller_config!$/;"	f	class:GTK.grep_source_file
 disable_nil_coersion!	./dragon/runtime.rb	/^    def disable_nil_coersion!$/;"	f	class:GTK.grep_source_file
 disable_nil_punning!	./dragon/runtime.rb	/^    def disable_nil_punning!$/;"	f	class:GTK.grep_source_file
 display_autocomplete_candidate	./dragon/console_prompt.rb	/^      def display_autocomplete_candidate(candidate)$/;"	f	class:GTK.Console.Prompt
@@ -790,6 +803,7 @@ docs_clicked	./dragon/console_menu.rb	/^      def docs_clicked$/;"	f	class:GTK.C
 docs_create_quad_tree	./dragon/geometry_docs.rb	/^  def docs_create_quad_tree$/;"	f	class:GeometryDocs
 docs_current_framerate	./dragon/runtime_docs.rb	/^  def docs_current_framerate$/;"	f	class:RuntimeDocs.docs_request_quit
 docs_cursor_shown?	./dragon/runtime_docs.rb	/^  def docs_cursor_shown?$/;"	f	class:RuntimeDocs.docs_request_quit
+docs_cvars	./dragon/args_docs.rb	/^  def docs_cvars$/;"	f	class:ArgsDocs
 docs_delete_file	./dragon/runtime_docs.rb	/^  def docs_delete_file$/;"	f	class:RuntimeDocs
 docs_delete_file_if_exist	./dragon/runtime_docs.rb	/^  def docs_delete_file_if_exist$/;"	f	class:RuntimeDocs.docs_request_quit
 docs_deployment	./dragon/readme_docs.rb	/^    def docs_deployment$/;"	f	class:GTK.ReadMeDocs.docs_hello_world.docs_new_project
@@ -876,6 +890,7 @@ docs_request_quit	./dragon/runtime_docs.rb	/^  def docs_request_quit$/;"	f	class
 docs_reset	./dragon/runtime_docs.rb	/^  def docs_reset$/;"	f	class:RuntimeDocs.docs_request_quit
 docs_reset_next_tick	./dragon/runtime_docs.rb	/^  def docs_reset_next_tick$/;"	f	class:RuntimeDocs.docs_request_quit
 docs_reset_sprite	./dragon/runtime_docs.rb	/^  def docs_reset_sprite$/;"	f	class:RuntimeDocs.docs_request_quit
+docs_reset_sprites	./dragon/runtime_docs.rb	/^  def docs_reset_sprites$/;"	f	class:RuntimeDocs.docs_request_quit
 docs_rotate_point	./dragon/geometry_docs.rb	/^  def docs_rotate_point$/;"	f	class:GeometryDocs.docs_create_quad_tree.docs_find_intersect_rect_quad_tree
 docs_say_hello	./dragon/object.rb	/^    def docs_say_hello$/;"	f	class:Object.__pretty_format_exception_text_uninitialized_constant__.method_missing_core.let.docs.PersonDocs
 docs_scale_rect	./dragon/geometry_docs.rb	/^  def docs_scale_rect$/;"	f	class:GeometryDocs.docs_create_quad_tree.docs_find_intersect_rect_quad_tree
@@ -957,6 +972,7 @@ elapsed_time_percent	./dragon/numeric.rb	/^  def elapsed_time_percent duration$/
 embed_mobileprovision	./dragon/ios_wizard.rb	/^  def embed_mobileprovision$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 enable	./dragon/console.rb	/^    def enable$/;"	f	class:GTK.Console
 enable_console	./dragon/runtime.rb	/^    def enable_console$/;"	f	class:GTK.Runtime
+enable_controller_config!	./dragon/runtime.rb	/^    def enable_controller_config!$/;"	f	class:GTK.grep_source_file
 enable_nil_punning!	./dragon/runtime.rb	/^    def enable_nil_punning!$/;"	f	class:GTK.grep_source_file
 end_with?	./dragon/symbol.rb	/^  def end_with? s$/;"	f	class:Symbol
 end_with_bang?	./dragon/string.rb	/^  def end_with_bang?$/;"	f	class:String
@@ -1089,7 +1105,6 @@ global_ease_spline	./dragon/numeric.rb	/^  def global_ease_spline duration, spli
 global_held_at	./dragon/inputs.rb	/^    def global_held_at$/;"	f	class:GTK.GTK.Mouse
 global_tick_count	./dragon/kernel.rb	/^  def self.global_tick_count$/;"	F	class:Kernel
 global_tick_count	./dragon/kernel.rb	/^  def self.global_tick_count= value$/;"	F	class:Kernel
-global_variables	./dragon/runtime.rb	/^    def global_variables$/;"	f	class:GTK.Object
 greater	./dragon/numeric.rb	/^  def greater other$/;"	f	class:Numeric
 greeting	./dragon/object.rb	/^  def greeting$/;"	f	class:Object.__pretty_format_exception_text_uninitialized_constant__.method_missing_core.let
 greeting	./dragon/object.rb	/^  def greeting$/;"	f	class:Object.__pretty_format_exception_text_uninitialized_constant__.method_missing_core.let.greeting
@@ -1146,7 +1161,7 @@ hide_console	./dragon/runtime.rb	/^    def hide_console$/;"	f	class:GTK.Runtime
 hide_cursor	./dragon/runtime.rb	/^    def hide_cursor$/;"	f	class:GTK.grep_source_file
 hide_menu_clicked	./dragon/console_menu.rb	/^      def hide_menu_clicked$/;"	f	class:GTK.Console.Menu
 hmap	./dragon/object.rb	/^  def hmap opts = {}$/;"	f	class:Object.__pretty_format_exception_text_uninitialized_constant__.method_missing_core.let
-hotload_if_needed	./dragon/runtime/hotload.rb	/^      def hotload_if_needed$/;"	f	class:GTK.Runtime.Hotload
+hotload_build?	./dragon/ios_wizard.rb	/^  def hotload_build?$/;"	f	class:IOSWizard
 hotload_init	./dragon/runtime/hotload.rb	/^      def hotload_init$/;"	f	class:GTK.Runtime.Hotload
 hotload_on_write_file	./dragon/runtime/hotload.rb	/^      def hotload_on_write_file file_name$/;"	f	class:GTK.Runtime.Hotload
 hotload_source_files	./dragon/runtime/hotload.rb	/^      def hotload_source_files$/;"	f	class:GTK.Runtime.Hotload
@@ -1228,8 +1243,8 @@ initialize	./dragon/runtime.rb	/^    def initialize platform, production, vrmode
 initialize	./dragon/runtime.rb	/^    def initialize runtime$/;"	f	class:GTK.RemoteHotloadClientWrapper
 initialize	./dragon/strict_entity.rb	/^    def initialize name, init_hash = nil, block = nil$/;"	f	class:GTK.StrictEntity
 initialize	./dragon/tests.rb	/^    def initialize$/;"	f	class:GTK.Tests
-initialize	./dragon/wizards.rb	/^    def initialize$/;"	f	class:GTK.Wizards
-initialize	./dragon/wizards.rb	/^  def initialize *console_primitives$/;"	f	class:WizardException
+initialize	./dragon/wizards.rb	/^    def initialize$/;"	f	class:Wizard.GTK.Wizards
+initialize	./dragon/wizards.rb	/^  def initialize *console_primitives$/;"	f	class:Wizard.WizardException
 inputs	./dragon/attr_gtk.rb	/^  def inputs$/;"	f	class:AttrGTK
 inputs_clear_command?	./dragon/console.rb	/^    def inputs_clear_command? args$/;"	f	class:GTK.Console
 inputs_scroll_down_full?	./dragon/console.rb	/^    def inputs_scroll_down_full? args$/;"	f	class:GTK.Console
@@ -1257,7 +1272,6 @@ inspect	./dragon/runtime.rb	/^      def inspect$/;"	f	class:GTK.Runtime.HTTPRequ
 inspect	./dragon/runtime.rb	/^    def inspect$/;"	f	class:FFI.Draw
 inspect	./dragon/serialize.rb	/^    def inspect$/;"	f	class:GTK.Serialize
 inspect	./dragon/strict_entity.rb	/^    def inspect$/;"	f	class:GTK.StrictEntity
-instance_variables	./dragon/runtime.rb	/^    def instance_variables$/;"	f	class:GTK.grep_source_file.Private
 intersect_rect?	./dragon/inputs.rb	/^    def intersect_rect? other_rect$/;"	f	class:GTK.GTK.Mouse
 intersect_rect?	./dragon/primitive.rb	/^      def intersect_rect? other, tolerance = 0.1$/;"	f	class:GTK.Triangle.ConversionCapabilities.mark_assert!
 intersects_rect	./dragon/geometry.rb	/^    def self.intersects_rect? *args$/;"	F	class:GTK.Geometry
@@ -1451,7 +1465,6 @@ mark_method	./dragon/outputs.rb	/^    def mark_method$/;"	f	class:GTK.SolidsOutp
 mark_method	./dragon/outputs.rb	/^    def mark_method$/;"	f	class:GTK.SpritesOutputsArray
 mark_ruby_file_for_reload	./dragon/runtime/async_require.rb	/^      def mark_ruby_file_for_reload path$/;"	f	class:GTK.Runtime.AsyncRequire
 mark_test_failed	./dragon/tests.rb	/^    def mark_test_failed m, e$/;"	f	class:GTK.Tests
-matching_methods	./dragon/runtime.rb	/^    def matching_methods *opts$/;"	f	class:GTK.grep_source_file.Private
 merge	./dragon/hash.rb	/^  def merge other, &block$/;"	f
 merge	./dragon/open_entity.rb	/^    def merge *opts$/;"	f	class:GTK.OpenEntity
 merge	./dragon/primitive.rb	/^      def merge *args$/;"	f	class:GTK.Primitive.Common
@@ -1463,7 +1476,6 @@ meta!	./dragon/open_entity.rb	/^    def meta! o$/;"	f	class:GTK.OpenEntity
 metadata_file_path	./dragon/metadata.rb	/^  def metadata_file_path$/;"	f	class:Metadata
 metadata_file_path	./dragon/wizards.rb	/^  def metadata_file_path$/;"	f	class:Wizard
 metadata_object_id	./dragon/object.rb	/^  def metadata_object_id$/;"	f	class:Object.__pretty_format_exception_text_uninitialized_constant__.method_missing_core
-method	./dragon/runtime.rb	/^    def method *opts$/;"	f	class:GTK.grep_source_file.Private
 method_candidates	./dragon/console_prompt.rb	/^      def method_candidates(prefix)$/;"	f	class:GTK.Console.Prompt
 method_missing	./dragon/args.rb	/^    def method_missing name, *args, &block$/;"	f	class:GTK.Args
 method_missing	./dragon/directional_input_helper_methods.rb	/^    def method_missing m, *args$/;"	f	class:GTK.DirectionalInputHelperMethods
@@ -1474,7 +1486,6 @@ method_missing	./dragon/open_entity.rb	/^    def method_missing name, *args, &bl
 method_missing	./dragon/strict_entity.rb	/^    def method_missing m, *args$/;"	f	class:GTK.StrictEntity
 method_missing_core	./dragon/object.rb	/^  def method_missing_core name, *args, &block$/;"	f	class:Object.__pretty_format_exception_text_uninitialized_constant__
 method_to_key_hash	./dragon/inputs.rb	/^    def self.method_to_key_hash$/;"	F	class:GTK.KeyboardKeys
-methods	./dragon/runtime.rb	/^    def methods$/;"	f	class:GTK.grep_source_file.Private
 mid?	./dragon/numeric.rb	/^  def mid? l, r$/;"	f	class:Numeric
 migrate_legacy_sounds	./dragon/runtime.rb	/^    def migrate_legacy_sounds$/;"	f	class:GTK.Runtime
 minus	./dragon/numeric.rb	/^  def minus i$/;"	f	class:Numeric
@@ -1541,6 +1552,7 @@ on_tick	./dragon/runtime/deprecated.rb	/^      def on_tick *args$/;"	f	class:GTK
 on_ticks	./dragon/runtime/deprecated.rb	/^      def on_ticks$/;"	f	class:GTK.Runtime.Deprecated
 one	./dragon/numeric.rb	/^  def one$/;"	f	class:Numeric
 open	./dragon/console.rb	/^    def open reason = nil$/;"	f	class:GTK.Console
+open_docs	./dragon/runtime.rb	/^    def open_docs$/;"	f	class:GTK.grep_source_file
 open_game_dir	./dragon/runtime.rb	/^    def open_game_dir additional_directories = ""$/;"	f	class:GTK.grep_source_file
 openurl	./dragon/runtime.rb	/^    def openurl url$/;"	f	class:GTK.grep_source_file
 or	./dragon/fn.rb	/^    def self.or(*vals)$/;"	F	class:GTK.Fn
@@ -1652,9 +1664,8 @@ primitives=	./dragon/outputs_deprecated.rb	/^    def primitives= value$/;"	f	cla
 print	./dragon/log.rb	/^    def self.print *args$/;"	F
 print_console_activation_help	./dragon/runtime.rb	/^    def print_console_activation_help$/;"	f	class:GTK.Runtime
 print_help_when_mouse_clicked	./dragon/runtime/c_bridge.rb	/^      def print_help_when_mouse_clicked$/;"	f	class:GTK.Runtime.CBridge
-print_publish_help	./dragon/ios_wizard.rb	/^  def print_publish_help$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+print_publish_help	./dragon/ios_wizard.rb	/^  def print_publish_help$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 print_summary	./dragon/tests.rb	/^    def print_summary$/;"	f	class:GTK
-private_methods	./dragon/runtime.rb	/^    def private_methods$/;"	f	class:GTK.grep_source_file.Private
 process!	./dragon/api.rb	/^    def process! opts$/;"	f	class:GTK.Api
 process_argsv	./dragon/runtime/process_argsv.rb	/^      def process_argsv$/;"	f	class:GTK.Runtime.ProcessARGSV
 process_inputs	./dragon/console.rb	/^    def process_inputs args$/;"	f	class:GTK.Console
@@ -1662,12 +1673,11 @@ process_load_status	./dragon/runtime/async_require.rb	/^      def process_load_s
 process_single!	./dragon/api.rb	/^    def process_single! opts$/;"	f	class:GTK.Api
 product	./dragon/array.rb	/^  def product other_array = nil$/;"	f	class:Array
 production?	./dragon/runtime.rb	/^    def production?$/;"	f	class:GTK.Runtime
+production_build?	./dragon/ios_wizard.rb	/^  def production_build?$/;"	f	class:IOSWizard
 production_write_info_plist	./dragon/ios_wizard.rb	/^  def production_write_info_plist$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 prompt	./dragon/console.rb	/^    def prompt$/;"	f	class:GTK
-protected_methods	./dragon/runtime.rb	/^    def protected_methods$/;"	f	class:GTK.grep_source_file.Private
 provisioning_profile_path	./dragon/ios_wizard.rb	/^  def provisioning_profile_path environment$/;"	f	class:IOSWizard
 provisioning_profile_xml	./dragon/ios_wizard.rb	/^  def provisioning_profile_xml environment$/;"	f	class:IOSWizard.ios_metadata.game_metadata
-public_methods	./dragon/runtime.rb	/^    def public_methods$/;"	f	class:GTK.grep_source_file.Private
 purge_class	./dragon/object.rb	/^  def purge_class symbol$/;"	f	class:Object
 puts	./dragon/kernel.rb	/^  def puts *args$/;"	f	class:Kernel
 puts	./dragon/log.rb	/^    def self.puts *args$/;"	F	class:GTK.Log
@@ -1823,7 +1833,7 @@ reset	./dragon/args.rb	/^    def reset$/;"	f	class:GTK.Args
 reset	./dragon/itch_wizard.rb	/^  def reset$/;"	f	class:ItchWizard
 reset	./dragon/layout.rb	/^    def reset$/;"	f	class:GTK.Layout
 reset	./dragon/log.rb	/^    def self.reset$/;"	F
-reset	./dragon/runtime.rb	/^    def reset rng_override = nil, seed: seed$/;"	f	class:GTK.Runtime
+reset	./dragon/runtime.rb	/^    def reset rng_override = nil, seed: seed, include_sprites: true$/;"	f	class:GTK.Runtime
 reset_all_mtimes	./dragon/runtime/hotload.rb	/^      def reset_all_mtimes$/;"	f	class:GTK.Runtime.Hotload
 reset_and_replay	./dragon/runtime.rb	/^    def reset_and_replay file_name = nil, speed: 1$/;"	f	class:GTK.Runtime
 reset_autocomplete	./dragon/console_prompt.rb	/^      def reset_autocomplete$/;"	f	class:GTK.Console.Prompt
@@ -1831,13 +1841,11 @@ reset_clicked	./dragon/console_menu.rb	/^      def reset_clicked$/;"	f	class:GTK
 reset_framerate_calculation	./dragon/runtime/framerate.rb	/^      def reset_framerate_calculation$/;"	f	class:GTK.Runtime.Framerate
 reset_next_tick	./dragon/runtime.rb	/^    def reset_next_tick rng_override = nil, seed: seed$/;"	f	class:GTK.Runtime
 reset_sprite	./dragon/runtime.rb	/^    def reset_sprite path$/;"	f	class:GTK.grep_source_file
-reset_sprites	./dragon/runtime.rb	/^    def reset_sprites directory: nil, indentation: 1$/;"	f	class:GTK.Runtime
+reset_sprites	./dragon/runtime.rb	/^    def reset_sprites directory: nil, indentation: 1, suppress_logging: false$/;"	f	class:GTK.Runtime
 reset_state	./dragon/runtime.rb	/^    def reset_state$/;"	f	class:GTK.Runtime
 reset_touch_count	./dragon/runtime.rb	/^    def reset_touch_count$/;"	f	class:GTK.Runtime
 resolved?	./dragon/outputs.rb	/^    def resolved? o$/;"	f	class:GTK.GenericOutputsArray
 respond	./dragon/runtime.rb	/^      def respond httpcode, body=nil, headers=nil$/;"	f	class:GTK.Runtime.HTTPRequest
-respond_to?	./dragon/runtime.rb	/^    def respond_to? *opts$/;"	f	class:GTK.grep_source_file.Private
-respond_to_missing?	./dragon/runtime.rb	/^    def respond_to_missing?$/;"	f	class:GTK.grep_source_file.Private
 rest	./dragon/array.rb	/^  def rest$/;"	f	class:Array.product
 restart	./dragon/ios_wizard.rb	/^  def restart$/;"	f	class:IOSWizard
 restart	./dragon/itch_wizard.rb	/^  def restart$/;"	f	class:ItchWizard
@@ -1944,18 +1952,18 @@ set_command_silent	./dragon/console.rb	/^    def set_command_silent command, sho
 set_command_with_history	./dragon/console.rb	/^    def set_command_with_history command, histories, show_reason = nil$/;"	f	class:GTK.Console
 set_command_with_history_silent	./dragon/console.rb	/^    def set_command_with_history_silent command, histories, show_reason = nil$/;"	f	class:GTK.Console
 set_cursor	./dragon/runtime.rb	/^    def set_cursor fname, hot_x=0, hot_y=0$/;"	f	class:GTK.grep_source_file
-set_dev_id	./dragon/itch_wizard.rb	/^  def set_dev_id value$/;"	f	class:ItchWizard
 set_dev_profile	./dragon/ios_wizard.rb	/^  def set_dev_profile path$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
-set_dev_title	./dragon/itch_wizard.rb	/^  def set_dev_title value$/;"	f	class:ItchWizard
-set_game_id	./dragon/itch_wizard.rb	/^  def set_game_id value$/;"	f	class:ItchWizard
-set_game_title	./dragon/itch_wizard.rb	/^  def set_game_title value$/;"	f	class:ItchWizard
+set_devid	./dragon/itch_wizard.rb	/^  def set_devid value$/;"	f	class:ItchWizard
+set_devtitle	./dragon/itch_wizard.rb	/^  def set_devtitle value$/;"	f	class:ItchWizard
+set_gameid	./dragon/itch_wizard.rb	/^  def set_gameid value$/;"	f	class:ItchWizard
+set_gametitle	./dragon/itch_wizard.rb	/^  def set_gametitle value$/;"	f	class:ItchWizard
 set_icon	./dragon/itch_wizard.rb	/^  def set_icon value$/;"	f	class:ItchWizard
 set_mouse_grab	./dragon/runtime.rb	/^    def set_mouse_grab value$/;"	f	class:GTK.grep_source_file
 set_resize_occurred	./dragon/runtime/c_bridge.rb	/^      def set_resize_occurred value$/;"	f	class:GTK.Runtime.CBridge
 set_rng	./dragon/runtime.rb	/^    def set_rng value$/;"	f	class:GTK.Runtime
 set_system_command	./dragon/console.rb	/^    def set_system_command command, show_reason = nil$/;"	f	class:GTK.Console
 set_system_cursor	./dragon/runtime.rb	/^    def set_system_cursor type$/;"	f	class:GTK.grep_source_file
-set_version	./dragon/ios_wizard.rb	/^  def set_version version$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+set_version	./dragon/ios_wizard.rb	/^  def set_version version$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 set_version	./dragon/itch_wizard.rb	/^  def set_version value$/;"	f	class:ItchWizard
 set_window_fullscreen	./dragon/runtime.rb	/^    def set_window_fullscreen enable=true$/;"	f	class:GTK.grep_source_file
 set_window_scale	./dragon/runtime.rb	/^    def set_window_scale scale$/;"	f	class:GTK.grep_source_file
@@ -1977,6 +1985,10 @@ show_cursor	./dragon/runtime.rb	/^    def show_cursor$/;"	f	class:GTK.grep_sourc
 show_menu_clicked	./dragon/console_menu.rb	/^      def show_menu_clicked$/;"	f	class:GTK.Console.Menu
 sign	./dragon/numeric.rb	/^  def sign$/;"	f	class:Fixnum
 sign	./dragon/numeric.rb	/^  def sign$/;"	f	class:Float
+sim_build?	./dragon/ios_wizard.rb	/^  def sim_build?$/;"	f	class:IOSWizard
+simctl_iphone_device_id_max_version	./dragon/ios_wizard.rb	/^  def simctl_iphone_device_id_max_version$/;"	f	class:IOSWizard.ios_metadata.game_metadata
+simctl_list_devices	./dragon/ios_wizard.rb	/^  def simctl_list_devices$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+simctl_list_devices_max_version	./dragon/ios_wizard.rb	/^  def simctl_list_devices_max_version$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 simulate_render_device_reset	./dragon/runtime.rb	/^    def simulate_render_device_reset$/;"	f	class:GTK.grep_source_file
 simulate_render_targets_reset	./dragon/runtime.rb	/^    def simulate_render_targets_reset$/;"	f	class:GTK.grep_source_file
 sin	./dragon/numeric.rb	/^  def sin$/;"	f	class:Fixnum
@@ -1985,7 +1997,6 @@ sin_d	./dragon/numeric.rb	/^  def sin_d$/;"	f	class:Fixnum
 sin_d	./dragon/numeric.rb	/^  def sin_d$/;"	f	class:Float
 sin_r	./dragon/numeric.rb	/^  def sin_r$/;"	f	class:Fixnum
 sin_r	./dragon/numeric.rb	/^  def sin_r$/;"	f	class:Float
-singleton_methods	./dragon/runtime.rb	/^    def singleton_methods$/;"	f	class:GTK.grep_source_file.Private
 size_enum	./dragon/hash.rb	/^  def size_enum$/;"	f	class:Hash
 size_enum	./dragon/primitive.rb	/^      def size_enum$/;"	f	class:GTK.Triangle.Label
 size_enum=	./dragon/hash.rb	/^  def size_enum= value$/;"	f	class:Hash
@@ -2061,10 +2072,11 @@ sprite_contract	./dragon/help.rb	/^    def self.sprite_contract$/;"	F	class:GTK.
 sprites	./dragon/args.rb	/^    def sprites$/;"	f	class:GTK.Args
 sprites	./dragon/primitive.rb	/^      def sprites$/;"	f	class:GTK.Triangle.ConversionCapabilities.mark_assert!
 sprites=	./dragon/outputs_deprecated.rb	/^    def sprites= value$/;"	f	class:GTK.OutputsDeprecated
-stage_app	./dragon/ios_wizard.rb	/^  def stage_app$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
-stage_native_libs	./dragon/ios_wizard.rb	/^  def stage_native_libs$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+stage_ios_app	./dragon/ios_wizard.rb	/^  def stage_ios_app$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
+stage_native_libs	./dragon/ios_wizard.rb	/^  def stage_native_libs$/;"	f	class:IOSWizard.ios_metadata.game_metadata
 stage_replay_values	./dragon/recording.rb	/^    def stage_replay_values$/;"	f	class:GTK.Recording.stop_recording
 stage_replay_values	./dragon/runtime.rb	/^    def stage_replay_values$/;"	f	class:GTK.Runtime
+stage_sim_app	./dragon/ios_wizard.rb	/^  def stage_sim_app$/;"	f	class:IOSWizard.ios_metadata.game_metadata.provisioning_profile_xml
 start	./dragon/ios_wizard.rb	/^  def start opts = nil$/;"	f	class:IOSWizard
 start	./dragon/itch_wizard.rb	/^  def start$/;"	f	class:ItchWizard
 start	./dragon/recording.rb	/^    def self.start file_name = nil, speed: 1$/;"	F	class:GTK.Replay
@@ -2100,8 +2112,9 @@ static_sprites=	./dragon/outputs_deprecated.rb	/^    def static_sprites= value$/
 static_triangles=	./dragon/outputs_deprecated.rb	/^    def static_triangles= value$/;"	f	class:GTK.OutputsDeprecated
 steps	./dragon/ios_wizard.rb	/^  def steps$/;"	f	class:IOSWizard
 steps	./dragon/itch_wizard.rb	/^  def steps$/;"	f	class:ItchWizard
-steps_development_build	./dragon/ios_wizard.rb	/^  def steps_development_build$/;"	f	class:IOSWizard
-steps_production_build	./dragon/ios_wizard.rb	/^  def steps_production_build$/;"	f	class:IOSWizard
+steps_dev_build	./dragon/ios_wizard.rb	/^  def steps_dev_build$/;"	f	class:IOSWizard
+steps_prod_build	./dragon/ios_wizard.rb	/^  def steps_prod_build$/;"	f	class:IOSWizard
+steps_sim_build	./dragon/ios_wizard.rb	/^  def steps_sim_build$/;"	f	class:IOSWizard
 stop	./dragon/recording.rb	/^    def self.stop$/;"	F	class:GTK.Replay
 stop	./dragon/recording.rb	/^    def stop file_name = nil$/;"	f	class:GTK.Recording
 stop_music	./dragon/runtime.rb	/^    def stop_music$/;"	f	class:GTK.Runtime
@@ -2157,6 +2170,7 @@ third	./dragon/numeric.rb	/^  def third$/;"	f	class:Numeric
 tick	./dragon/api.rb	/^    def tick args$/;"	f	class:GTK.Api
 tick	./dragon/args_docs.rb	/^  def tick args$/;"	f	class:ArgsDocs.docs_audio
 tick	./dragon/args_docs.rb	/^  def tick args$/;"	f	class:ArgsDocs.docs_audio.docs_easing
+tick	./dragon/args_docs.rb	/^  def tick args$/;"	f	class:ArgsDocs.docs_cvars
 tick	./dragon/array_deprecated.rb	/^  def tick args$/;"	f	class:border!
 tick	./dragon/array_deprecated.rb	/^  def tick args$/;"	f	class:label!
 tick	./dragon/array_deprecated.rb	/^  def tick args$/;"	f	class:line!
@@ -2253,6 +2267,10 @@ tick_api	./dragon/runtime.rb	/^    def tick_api$/;"	f	class:GTK.Runtime
 tick_argv	./dragon/runtime/process_argsv.rb	/^      def tick_argv$/;"	f	class:GTK.Runtime.ProcessARGSV
 tick_argv_eval_path	./dragon/runtime/process_argsv.rb	/^      def tick_argv_eval_path$/;"	f	class:GTK.Runtime.ProcessARGSV
 tick_argv_test_path	./dragon/runtime/process_argsv.rb	/^      def tick_argv_test_path$/;"	f	class:GTK.Runtime.ProcessARGSV
+tick_auto_test	./dragon/runtime/auto_test.rb	/^      def tick_auto_test$/;"	f	class:GTK.Runtime.AutoTest
+tick_auto_test_discover_tests	./dragon/runtime/auto_test.rb	/^      def tick_auto_test_discover_tests$/;"	f	class:GTK.Runtime.AutoTest
+tick_auto_test_reset_all_mtimes	./dragon/runtime/auto_test.rb	/^      def tick_auto_test_reset_all_mtimes$/;"	f	class:GTK.Runtime.AutoTest
+tick_auto_test_run_changed	./dragon/runtime/auto_test.rb	/^      def tick_auto_test_run_changed$/;"	f	class:GTK.Runtime.AutoTest
 tick_changes	./dragon/remote_hotload_client.rb	/^    def tick_changes$/;"	f	class:GTK.RemoteHotloadClient
 tick_console	./dragon/runtime.rb	/^    def tick_console$/;"	f	class:GTK.Runtime
 tick_core	./dragon/runtime.rb	/^    def tick_core$/;"	f	class:GTK
@@ -2263,11 +2281,13 @@ tick_count=	./dragon/args.rb	/^    def tick_count= value$/;"	f	class:GTK.Args
 tick_download_stb_rb	./dragon/runtime/download_stb_rb.rb	/^      def tick_download_stb_rb$/;"	f	class:GTK.Runtime.DownloadStbRb
 tick_gtk_engine_after	./dragon/runtime.rb	/^    def tick_gtk_engine_after$/;"	f	class:GTK.Runtime
 tick_gtk_engine_before	./dragon/runtime.rb	/^    def tick_gtk_engine_before$/;"	f	class:GTK.Runtime
+tick_hotload	./dragon/runtime/hotload.rb	/^      def tick_hotload$/;"	f	class:GTK.Runtime.Hotload
 tick_http_boot	./dragon/remote_hotload_client.rb	/^    def tick_http_boot$/;"	f	class:GTK.RemoteHotloadClient
 tick_http_changes	./dragon/remote_hotload_client.rb	/^    def tick_http_changes$/;"	f	class:GTK.RemoteHotloadClient
 tick_notification	./dragon/runtime/notify.rb	/^    def tick_notification$/;"	f	class:GTK.Notify
 tick_process_file_retrieval	./dragon/remote_hotload_client.rb	/^    def tick_process_file_retrieval$/;"	f	class:GTK.RemoteHotloadClient
 tick_process_queue	./dragon/remote_hotload_client.rb	/^    def tick_process_queue$/;"	f	class:GTK.RemoteHotloadClient
+tick_remote_hotload_client	./dragon/runtime.rb	/^    def tick_remote_hotload_client$/;"	f	class:GTK.Runtime
 tick_replay	./dragon/recording.rb	/^    def tick_replay$/;"	f	class:GTK.Recording.stop_recording
 tick_usr_engine	./dragon/runtime.rb	/^    def tick_usr_engine$/;"	f	class:GTK.Runtime
 tick_write_file	./dragon/remote_hotload_client.rb	/^    def tick_write_file$/;"	f	class:GTK.RemoteHotloadClient

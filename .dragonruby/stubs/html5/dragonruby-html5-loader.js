@@ -707,13 +707,14 @@ window.onerror = function(event) {
 };
 
 // sanity check this before downloading anything heavy.
-var hasWebAssembly = false;
-if (typeof WebAssembly==="object" && typeof WebAssembly.Memory==="function") {
-  hasWebAssembly = true;
-}
+var hasWebAssembly = (typeof WebAssembly==="object" && typeof WebAssembly.Memory==="function");
+var hasSharedArrayBuffer = (typeof SharedArrayBuffer!=="undefined");
+
 //console.log("Do we have WebAssembly? " + ((hasWebAssembly) ? "YES" : "NO"));
 if (!hasWebAssembly) {
   Module.setStatus("Your browser doesn't have WebAssembly support. Please upgrade.");
+} else if (!hasSharedArrayBuffer) {
+  Module.setStatus("Your browser doesn't have SharedArrayBuffer support. Please upgrade, or make sure the webserver set proper COOP/COEP headers!");
 } else {
   var buildtype = "wasm";
   var module = "dragonruby-" + buildtype + ".js";

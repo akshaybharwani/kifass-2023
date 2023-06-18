@@ -1,3 +1,57 @@
+* 4.18
+** [Pro] C Extensions has access to more mRuby functions.
+   You now have access to ~300 mRuby functions. For usage example, see the sample located at
+   =samples/12_c_extensions/04_handcrafted_extension_advanced=
+
+   Let us know if there's a function you'd like added that we haven't exposed.
+** [Bugfix] ~Module#purge_class~ takes into consideration the module context as opposed to ~Object~.
+   This function is useful if you want to reinitialize a class without functions that may have been
+   added via hotloading but no longer exist in source code.
+** [Docs] New doc pages have been added.
+   - Both Docs and Samples are located at =index.(html|txt)=
+   - Just Docs are located at =docs.(html|txt)=
+   - Just Samples are located at =samples.(html|txt)=
+   - Open Sourced files are located at =oss.txt=
+
+   The pages above are located locally within the =./docs= directory and online at [[docs.dragonruby.org]]
+
+   Note:
+   This change breaks permalinks to samples. If you have them referenced anywhere, you'll need to update them. :sadpanda:
+* 4.17
+** [Bugfix] Fixed file persistence accross sessions for webbuilds.
+** [Performance] Added caching of symbols used in C (minor performance improvement in load times).
+* 4.16
+** [Pro] [iOS] Http apis have been re-introduced.
+   Http apis have be re-enabled and use standard iOS apis as opposed
+   to libcurl. With this change, TestFlight builds will be accepted by
+   Apple.
+*** IMPORTANT:
+    Apple requires all http requests to be over https and will not allow http
+    requests to unencrypted urls in production packages (they are allowed in
+    dev builds however).
+** [Pro] [iOS] Simulator support added.
+   You can now run your game with hotloading directly on the simulator. From the
+   Console run ~$wizards.ios.start env: :sim~ to do so.
+** [Performance] Web builds now use Emscripten multi-threaded capabilities.
+   Expect to see performance improvements for web builds with this change.
+*** IMPORTANT:
+    Web builds now require the use of SharedArrayBuffer which will require you to
+    enable the ~SharedArrayBuffer~ support on Itch.io. An error message will be presented
+    on your game if we detect that this property has not been set correctly.
+
+    If you are self-hosting your game, your web server must include the COOP and COEP HTTP
+    Headers for your game to work. More info here: [[https://web.dev/coop-coep/]].
+
+    Additionally, because of these headers, you will not be able to issue HTTP requests
+    within a web build that are Cross Origin.
+** [Support] ~Added $gtk.disable_controller_config!~
+   DR presents a wizard for unrecognized controllers. If you want to disable this wizard,
+   you can use this function to do so.
+** [Performance] Label rendering performance improved.
+   Expect to see a performance improvement of over 100% for labels rendered as Hashes, Entities, and Classes.
+** [Support] ~$gtk.reset~ also resets sprites.
+   If you do not want to reset sprites, you can do ~$gtk.reset include_sprites: false~
+** [Support] Current DragonRuby version and changelog can be viewed at [[version.dragonruby.org]] and [[changelog.dragonruby.org]].
 * 4.15
 ** [Bug] Removed mouse wheel debug statements.
 ** [Bug] Fixed regression where ~args.inputs.mouse.click~ no longer returned true for middle and right mouse buttons.

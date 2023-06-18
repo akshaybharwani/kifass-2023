@@ -37,123 +37,124 @@ module GTKGTK20,541
     def static_background_color= valuestatic_background_color=110,2827
     def static_background_colorstatic_background_color114,2954
 
-../../../../dragon/ntime_docs.rbrb,5533
+../../../../dragon/ntime_docs.rbrb,5588
 module RuntimeDocsRuntimeDocs9,241
   def docs_method_sort_orderdocs_method_sort_order10,260
-  def docs_indie_pro_functionsdocs_indie_pro_functions119,2603
-  def docs_classdocs_class126,2758
-  def tick argstick133,2945
-  def docs_get_pixelsdocs_get_pixels141,3046
-  def docs_dlopendocs_dlopen153,3397
-  def docs_environment_functionsdocs_environment_functions163,3598
-  def docs_calcstringboxdocs_calcstringbox170,3771
-  def tick argstick186,4509
-  def docs_request_quitdocs_request_quit220,5209
-  def tick argstick227,5415
-  def docs_quit_requested?docs_quit_requested?237,5578
-  def docs_set_window_scaledocs_set_window_scale245,5781
-  def docs_set_window_fullscreendocs_set_window_fullscreen255,6151
-  def tick argstick262,6371
-  def docs_window_fullscreen?docs_window_fullscreen?277,6705
-  def docs_open_urldocs_open_url284,6838
-  def tick argstick290,6994
-  def docs_systemdocs_system300,7174
-  def tick argstick308,7387
-  def docs_execdocs_exec318,7557
-  def tick argstick325,7749
-  def docs_show_cursordocs_show_cursor337,7991
-  def docs_hide_cursordocs_hide_cursor344,8074
-  def docs_cursor_shown?docs_cursor_shown?351,8154
-  def docs_set_mouse_grabdocs_set_mouse_grab358,8261
-  def docs_set_system_cursordocs_set_system_cursor368,8569
-  def docs_set_cursordocs_set_cursor376,8799
-  def tick argstick383,9050
-  def docs_read_filedocs_read_file394,9296
-  def docs_delete_file_if_existdocs_delete_file_if_exist404,9551
-  def docs_encoding_functionsdocs_encoding_functions412,9717
-  def docs_parse_jsondocs_parse_json419,9837
-  def docs_parse_json_filedocs_parse_json_file432,10129
-  def docs_parse_xmldocs_parse_xml440,10279
-  def docs_parse_xml_filedocs_parse_xml_file456,10543
-  def docs_network_functionsdocs_network_functions464,10728
-  def docs_http_getdocs_http_get471,10863
-  def tick argstick479,11111
-  def docs_http_postdocs_http_post502,11806
-  def tick argstick516,12381
-  def docs_http_post_bodydocs_http_post_body544,13301
-  def tick argstick557,13812
-  def docs_start_server!docs_start_server!585,14776
-  def tick argstick595,15062
-  def tick argstick604,15262
-  def docs_dev_support_functionsdocs_dev_support_functions618,15579
-  def docs_versiondocs_version625,15795
-  def docs_version_pro?docs_version_pro?632,15919
-  def docs_resetdocs_reset639,16049
-  def tick argstick649,16363
-  def docs_reset_next_tickdocs_reset_next_tick662,16637
-  def tick argstick674,17172
-  def docs_reset_spritedocs_reset_sprite688,17512
-  def docs_calcspriteboxdocs_calcspritebox696,17706
-  def docs_current_frameratedocs_current_framerate708,18114
-  def tick argstick716,18349
-  def docs_framerate_diagnostics_primitivesdocs_framerate_diagnostics_primitives725,18624
-  def tick argstick733,18918
-  def docs_warn_array_primitives!docs_warn_array_primitives!740,19032
-  def tick argstick748,19321
-  def docs_notify!docs_notify!770,19869
-  def tick argstick780,20212
-  def docs_notify_extended!docs_notify_extended!794,20513
-  def tick argstick800,20698
-  def docs_slowmo!docs_slowmo!811,20920
-  def tick argstick819,21157
-  def docs_show_consoledocs_show_console832,21495
-  def docs_hide_consoledocs_hide_console840,21645
-  def docs_enable_consoledocs_enable_console848,21795
-  def docs_disable_consoledocs_disable_console856,21981
-  def docs_start_recordingdocs_start_recording864,22170
-  def docs_stop_recordingdocs_stop_recording872,22345
-  def docs_cancel_recordingdocs_cancel_recording880,22530
-  def docs_start_replaydocs_start_replay887,22670
-  def docs_stop_replaydocs_stop_replay905,23261
-  def docs_get_base_dirdocs_get_base_dir912,23373
-  def docs_get_game_dirdocs_get_game_dir922,23648
-  def docs_get_game_dir_urldocs_get_game_dir_url936,24066
-  def docs_open_game_dirdocs_open_game_dir944,24213
-  def docs_write_file_rootdocs_write_file_root952,24377
-  def docs_append_file_rootdocs_append_file_root962,24694
-  def docs_argvdocs_argv970,24874
-  def docs_cli_argumentsdocs_cli_arguments978,25070
-  def docs_reload_historydocs_reload_history987,25349
-  def docs_reload_history_pendingdocs_reload_history_pending996,25589
-  def docs_reload_if_neededdocs_reload_if_needed1005,25824
-  def docs_api_summary_statedocs_api_summary_state1017,26259
-  def tick argstick1022,26468
-  def tick argstick1044,27461
-  def docs_api_summary_inputsdocs_api_summary_inputs1060,28163
-  def docs_api_summary_outputsdocs_api_summary_outputs1253,37919
-  def tick argstick1262,38151
-  def docs_api_summary_easingdocs_api_summary_easing1306,40538
-  def tick argstick1318,41117
-  def tick argstick1334,41890
-  def tick argstick1359,42881
-  def docs_api_summary_griddocs_api_summary_grid1371,43311
-  def docs_production?docs_production?1398,44209
-  def docs_platform?docs_platform?1405,44335
-  def tick argstick1418,44893
-  def docs_platform_mappingsdocs_platform_mappings1443,45941
-  def docs_stat_filedocs_stat_file1465,46638
-  def tick argstick1483,47147
-  def docs_file_access_functionsdocs_file_access_functions1510,47710
-  def docs_list_filesdocs_list_files1517,47861
-  def docs_write_filedocs_write_file1527,48206
-  def tick argstick1535,48581
-  def docs_append_filedocs_append_file1544,48761
-  def tick argstick1553,49195
-  def docs_delete_filedocs_delete_file1562,49375
-  def tick argstick1585,50222
-  def docs_benchmarkdocs_benchmark1594,50402
-  def tick argstick1600,50543
-class GTK::RuntimeGTK1627,51383
+  def docs_indie_pro_functionsdocs_indie_pro_functions120,2630
+  def docs_classdocs_class127,2785
+  def tick argstick134,2972
+  def docs_get_pixelsdocs_get_pixels142,3073
+  def docs_dlopendocs_dlopen154,3424
+  def docs_environment_functionsdocs_environment_functions164,3625
+  def docs_calcstringboxdocs_calcstringbox171,3798
+  def tick argstick187,4536
+  def docs_request_quitdocs_request_quit221,5236
+  def tick argstick228,5442
+  def docs_quit_requested?docs_quit_requested?238,5605
+  def docs_set_window_scaledocs_set_window_scale246,5808
+  def docs_set_window_fullscreendocs_set_window_fullscreen256,6178
+  def tick argstick263,6398
+  def docs_window_fullscreen?docs_window_fullscreen?278,6732
+  def docs_open_urldocs_open_url285,6865
+  def tick argstick291,7021
+  def docs_systemdocs_system301,7201
+  def tick argstick309,7414
+  def docs_execdocs_exec319,7584
+  def tick argstick326,7776
+  def docs_show_cursordocs_show_cursor338,8018
+  def docs_hide_cursordocs_hide_cursor345,8101
+  def docs_cursor_shown?docs_cursor_shown?352,8181
+  def docs_set_mouse_grabdocs_set_mouse_grab359,8288
+  def docs_set_system_cursordocs_set_system_cursor369,8596
+  def docs_set_cursordocs_set_cursor377,8826
+  def tick argstick384,9077
+  def docs_read_filedocs_read_file395,9323
+  def docs_delete_file_if_existdocs_delete_file_if_exist405,9578
+  def docs_encoding_functionsdocs_encoding_functions413,9744
+  def docs_parse_jsondocs_parse_json420,9864
+  def docs_parse_json_filedocs_parse_json_file433,10156
+  def docs_parse_xmldocs_parse_xml441,10306
+  def docs_parse_xml_filedocs_parse_xml_file457,10570
+  def docs_network_functionsdocs_network_functions465,10755
+  def docs_http_getdocs_http_get472,10890
+  def tick argstick480,11138
+  def docs_http_postdocs_http_post503,11833
+  def tick argstick517,12408
+  def docs_http_post_bodydocs_http_post_body545,13328
+  def tick argstick558,13839
+  def docs_start_server!docs_start_server!586,14803
+  def tick argstick596,15089
+  def tick argstick605,15289
+  def docs_dev_support_functionsdocs_dev_support_functions619,15606
+  def docs_versiondocs_version626,15822
+  def docs_version_pro?docs_version_pro?633,15946
+  def docs_resetdocs_reset640,16076
+  def tick argstick650,16390
+  def docs_reset_next_tickdocs_reset_next_tick663,16664
+  def tick argstick675,17199
+  def docs_reset_spritedocs_reset_sprite689,17539
+  def docs_reset_spritesdocs_reset_sprites697,17759
+  def docs_calcspriteboxdocs_calcspritebox705,17958
+  def docs_current_frameratedocs_current_framerate717,18366
+  def tick argstick725,18601
+  def docs_framerate_diagnostics_primitivesdocs_framerate_diagnostics_primitives734,18876
+  def tick argstick742,19170
+  def docs_warn_array_primitives!docs_warn_array_primitives!749,19284
+  def tick argstick757,19573
+  def docs_notify!docs_notify!779,20121
+  def tick argstick789,20464
+  def docs_notify_extended!docs_notify_extended!803,20765
+  def tick argstick809,20950
+  def docs_slowmo!docs_slowmo!820,21172
+  def tick argstick828,21409
+  def docs_show_consoledocs_show_console841,21747
+  def docs_hide_consoledocs_hide_console849,21897
+  def docs_enable_consoledocs_enable_console857,22047
+  def docs_disable_consoledocs_disable_console865,22233
+  def docs_start_recordingdocs_start_recording873,22422
+  def docs_stop_recordingdocs_stop_recording881,22597
+  def docs_cancel_recordingdocs_cancel_recording889,22782
+  def docs_start_replaydocs_start_replay896,22922
+  def docs_stop_replaydocs_stop_replay914,23513
+  def docs_get_base_dirdocs_get_base_dir921,23625
+  def docs_get_game_dirdocs_get_game_dir931,23900
+  def docs_get_game_dir_urldocs_get_game_dir_url945,24318
+  def docs_open_game_dirdocs_open_game_dir953,24465
+  def docs_write_file_rootdocs_write_file_root961,24629
+  def docs_append_file_rootdocs_append_file_root971,24946
+  def docs_argvdocs_argv979,25126
+  def docs_cli_argumentsdocs_cli_arguments987,25322
+  def docs_reload_historydocs_reload_history996,25601
+  def docs_reload_history_pendingdocs_reload_history_pending1005,25841
+  def docs_reload_if_neededdocs_reload_if_needed1014,26076
+  def docs_api_summary_statedocs_api_summary_state1026,26511
+  def tick argstick1031,26720
+  def tick argstick1053,27713
+  def docs_api_summary_inputsdocs_api_summary_inputs1069,28422
+  def docs_api_summary_outputsdocs_api_summary_outputs1262,38178
+  def tick argstick1271,38410
+  def docs_api_summary_easingdocs_api_summary_easing1315,40797
+  def tick argstick1327,41376
+  def tick argstick1343,42149
+  def tick argstick1368,43140
+  def docs_api_summary_griddocs_api_summary_grid1380,43570
+  def docs_production?docs_production?1407,44468
+  def docs_platform?docs_platform?1414,44594
+  def tick argstick1427,45152
+  def docs_platform_mappingsdocs_platform_mappings1452,46200
+  def docs_stat_filedocs_stat_file1474,46897
+  def tick argstick1492,47406
+  def docs_file_access_functionsdocs_file_access_functions1519,47969
+  def docs_list_filesdocs_list_files1526,48120
+  def docs_write_filedocs_write_file1536,48465
+  def tick argstick1544,48840
+  def docs_append_filedocs_append_file1553,49020
+  def tick argstick1562,49454
+  def docs_delete_filedocs_delete_file1571,49634
+  def tick argstick1594,50481
+  def docs_benchmarkdocs_benchmark1603,50661
+  def tick argstick1609,50802
+class GTK::RuntimeGTK1636,51642
 
 ../../../../dragon/outputs.rb,2466
 module GTKGTK1,0
@@ -353,7 +354,7 @@ class ObjectObject63,1074
   def self.attr_rectattr_rect73,1235
   def attr_rectattr_rect77,1284
 
-../../../../dragon/tests.rb,801
+../../../../dragon/tests.rb,846
 module GTKGTK9,230
   class TestsTests10,241
     def initializeinitialize13,306
@@ -370,7 +371,8 @@ def test_game_over args, asserttest_game_over92,2086
     def log_test_running mlog_test_running99,2144
     def test_signature_invalid_exception? e, mtest_signature_invalid_exception?103,2209
     def log_test_signature_incorrect mlog_test_signature_incorrect108,2368
-    def print_summaryprint_summary123,2756
+    def clear_summaryclear_summary123,2756
+    def print_summaryprint_summary129,2853
 
 ../../../../dragon/geometry.rb,2801
 module GTKGTK6,125
@@ -587,22 +589,24 @@ module GTKGTK6,134
       def export_docs!export_docs!41,634
       def evaluate cmdevaluate45,696
 
-../../../../dragon/args_docs.rb,525
+../../../../dragon/args_docs.rb,590
 module ArgsDocsArgsDocs6,126
   def docs_method_sort_orderdocs_method_sort_order7,142
-  def docs_audiodocs_audio15,254
-  def tick argstick23,443
-  def tick argstick83,3212
-  def docs_easingdocs_easing104,3689
-  def tick argstick119,4209
-  def tick argstick156,5764
-  def tick argstick188,6773
-  def tick argstick224,7911
-  module EasingEasing257,8996
-    def self.saw_tooth xsaw_tooth258,9012
-  def tick argstick267,9130
-  def docs_pixel_arraydocs_pixel_array291,9754
-class GTK::ArgsGTK338,11314
+  def docs_cvarsdocs_cvars16,272
+  def tick argstick25,544
+  def docs_audiodocs_audio38,797
+  def tick argstick46,991
+  def tick argstick106,3760
+  def docs_easingdocs_easing127,4237
+  def tick argstick142,4762
+  def tick argstick179,6317
+  def tick argstick211,7326
+  def tick argstick247,8464
+  module EasingEasing280,9549
+    def self.saw_tooth xsaw_tooth281,9565
+  def tick argstick290,9683
+  def docs_pixel_arraydocs_pixel_array314,10307
+class GTK::ArgsGTK359,11786
 
 ../../../../dragon/nil_classalsese_class.rb,698
 module NilClassFalseClassNilClassFalseClass5,76
@@ -629,7 +633,7 @@ module KernelDocsKernelDocs6,128
   def docs_global_tick_countdocs_global_tick_count30,565
   def docs_export_docs!docs_export_docs!39,739
   def export_docs!export_docs!48,880
-module KernelKernel71,1576
+module KernelKernel82,2083
 
 ../../../../dragon/entity.rb,433
 module GTKGTK6,123
@@ -776,22 +780,22 @@ module GTKGTK6,121
       def pixel_arrayspixel_arrays189,6759
       def draw_primitive pdraw_primitive200,7134
 
-../../../../dragon/runme/hotloadad.rb,756
+../../../../dragon/runme/hotloadad.rb,746
 module GTKGTK6,124
   class RuntimeRuntime7,135
     module HotloadHotload9,177
       def hotload_inithotload_init10,196
       def hotload_on_write_file file_namehotload_on_write_file26,688
       def files_to_reloadfiles_to_reload31,831
-      def core_files_to_reloadcore_files_to_reload106,3437
-      def init_mtimes fileinit_mtimes117,3646
-      def hotload_source_fileshotload_source_files122,3812
-      def mailbox_timeoutmailbox_timeout129,4020
-      def check_mailboxcheck_mailbox137,4136
-      def hotload_if_neededhotload_if_needed149,4501
-      def on_load_succeeded fileon_load_succeeded155,4644
-      def reset_all_mtimesreset_all_mtimes161,4791
-      def reload_if_needed file, force = falsereload_if_needed174,5225
+      def core_files_to_reloadcore_files_to_reload107,3480
+      def init_mtimes fileinit_mtimes118,3689
+      def hotload_source_fileshotload_source_files123,3855
+      def mailbox_timeoutmailbox_timeout130,4063
+      def check_mailboxcheck_mailbox138,4179
+      def tick_hotloadtick_hotload150,4544
+      def on_load_succeeded fileon_load_succeeded156,4682
+      def reset_all_mtimesreset_all_mtimes162,4829
+      def reload_if_needed file, force = falsereload_if_needed175,5263
 
 ../../../../dragon/runtime/pcessss_argsv.rb,436
 module GTKGTK6,130
@@ -863,6 +867,19 @@ module GTKGTK6,138
       def framerate_warning_messageframerate_warning_message105,3163
       def current_framerate_primitivescurrent_framerate_primitives123,3525
       def framerate_diagnostics_primitivesframerate_diagnostics_primitives127,3616
+
+../../../../dragon/runti/auto_tetest.rb,573
+module GTKGTK6,126
+  class RuntimeRuntime7,137
+    module AutoTestAutoTest8,153
+      def auto_test_runauto_test_run9,173
+      def can_auto_test?can_auto_test?16,378
+      def tick_auto_testtick_auto_test23,565
+      def auto_test_initializeauto_test_initialize33,861
+      def tick_auto_test_run_changedtick_auto_test_run_changed49,1510
+      def auto_test_run_testsauto_test_run_tests63,1906
+      def tick_auto_test_reset_all_mtimestick_auto_test_reset_all_mtimes69,2031
+      def tick_auto_test_discover_teststick_auto_test_discover_tests76,2213
 
 ../../../../dragon/ruime/notify.y.rb,315
 module GTKGTK6,123
@@ -1616,77 +1633,88 @@ module ArrayDeprecatedArrayDeprecated2,11
   def tick argstick187,4172
   def tick argstick199,4358
 
-../../../../dragon/ios_wizard.rb,3650
+../../../../dragon/ios_wizard.rb,4266
 class IOSWizard < WizardIOSWizard8,209
   def initializeinitialize9,234
   def relative_pathrelative_path13,286
   def stepssteps17,349
   def prerequisite_stepsprerequisite_steps21,386
   def app_metadata_retrieval_stepsapp_metadata_retrieval_steps29,501
-  def steps_development_buildsteps_development_build37,641
-  def steps_production_buildsteps_production_build65,1130
-  def get_reserved_sprite pngget_reserved_sprite93,1645
-  def start opts = nilstart108,1976
-  def always_failalways_fail158,3799
-  def check_for_xcodecheck_for_xcode163,3888
-  def check_for_brewcheck_for_brew177,4502
-  def init_wizard_statusinit_wizard_status190,4984
-  def restartrestart207,5425
-  def check_for_distribution_profilecheck_for_distribution_profile212,5479
-  def check_for_dev_profilecheck_for_dev_profile234,6775
-  def provisioning_profile_path environmentprovisioning_profile_path256,8060
-  def ios_metadata_templateios_metadata_template261,8236
-  def ios_metadataios_metadata279,9192
-  def game_metadatagame_metadata296,9728
-  def raise_ios_metadata_requiredraise_ios_metadata_required308,10107
-  def determine_team_identifierdetermine_team_identifier316,10488
-  def determine_app_namedetermine_app_name322,10678
-  def provisioning_profile_xml environmentprovisioning_profile_xml328,10860
-  def determine_app_iddetermine_app_id348,11334
-  def determine_devcertdetermine_devcert354,11510
-  def determine_prodcertdetermine_prodcert360,11720
-  def set_app_name nameset_app_name366,11954
-  def set_dev_profile pathset_dev_profile371,12016
-  def clear_tmp_directoryclear_tmp_directory381,12241
-  def set_app_id idset_app_id385,12307
-  def check_for_devicecheck_for_device391,12399
-  def check_for_certscheck_for_certs422,13628
-  def codesign_allocate_pathcodesign_allocate_path434,13933
-  def codesign_pathcodesign_path438,14080
-  def idevice_id_pathidevice_id_path442,14131
-  def ideviceinstaller_cli_appideviceinstaller_cli_app446,14177
-  def security_cli_appsecurity_cli_app450,14238
-  def xcodebuild_cli_appxcodebuild_cli_app454,14292
-  def connected_devicesconnected_devices458,14341
-  def cli_app_exist? appcli_app_exist?464,14474
-  def write_entitlements_plistwrite_entitlements_plist468,14543
-  def code_sign_binarycode_sign_binary508,15938
-  def __get_plist_orientation_value____get_plist_orientation_value__520,16813
-  def development_write_info_plistdevelopment_write_info_plist530,17052
-  def production_write_info_plistproduction_write_info_plist652,21156
-  def device_orientation_xmldevice_orientation_xml774,25316
-  def tmp_directorytmp_directory779,25490
-  def app_pathapp_path783,25548
-  def root_folderroot_folder787,25610
-  def embed_mobileprovisionembed_mobileprovision791,25693
-  def clear_payload_directoryclear_payload_directory796,25880
-  def stage_appstage_app806,26181
-  def create_payloadcreate_payload819,26841
-  def write_server_ip_addresswrite_server_ip_address825,27050
-  def create_payload_directory_devcreate_payload_directory_dev831,27302
-  def create_payload_directory_prodcreate_payload_directory_prod843,27662
-  def create_ipacreate_ipa855,27998
-  def do_zipdo_zip860,28125
-  def sh cmdsh870,28316
-  def deploydeploy879,28498
-  def print_publish_helpprint_publish_help884,28620
-  def compile_iconscompile_icons903,29614
-  def stage_native_libsstage_native_libs917,30482
-  def set_version versionset_version922,30881
-  def app_nameapp_name927,30986
-  def app_versionapp_version931,31022
-  def determine_app_versiondetermine_app_version941,31417
-  def certificate_namecertificate_name946,31510
+  def steps_dev_buildsteps_dev_build37,641
+  def steps_sim_buildsteps_sim_build65,1136
+  def steps_prod_buildsteps_prod_build93,1628
+  def get_reserved_sprite pngget_reserved_sprite121,2141
+  def production_build?production_build?136,2472
+  def dev_build?dev_build?140,2528
+  def sim_build?sim_build?144,2594
+  def hotload_build?hotload_build?148,2642
+  def start opts = nilstart152,2712
+  def always_failalways_fail204,4724
+  def check_for_xcodecheck_for_xcode209,4813
+  def check_for_brewcheck_for_brew223,5427
+  def init_wizard_statusinit_wizard_status236,5909
+  def restartrestart253,6350
+  def check_for_distribution_profilecheck_for_distribution_profile258,6404
+  def check_for_dev_profilecheck_for_dev_profile280,7700
+  def provisioning_profile_path environmentprovisioning_profile_path302,8985
+  def ios_metadata_templateios_metadata_template307,9161
+  def ios_metadataios_metadata325,10117
+  def game_metadatagame_metadata342,10653
+  def raise_ios_metadata_requiredraise_ios_metadata_required354,11032
+  def determine_team_identifierdetermine_team_identifier362,11413
+  def determine_app_namedetermine_app_name368,11603
+  def provisioning_profile_xml environmentprovisioning_profile_xml374,11785
+  def determine_app_iddetermine_app_id394,12259
+  def determine_devcertdetermine_devcert400,12435
+  def determine_prodcertdetermine_prodcert406,12645
+  def set_app_name nameset_app_name412,12879
+  def set_dev_profile pathset_dev_profile417,12941
+  def clear_tmp_directoryclear_tmp_directory427,13166
+  def set_app_id idset_app_id431,13232
+  def check_for_devicecheck_for_device437,13324
+  def check_for_certscheck_for_certs468,14553
+  def codesign_allocate_pathcodesign_allocate_path482,14971
+  def codesign_pathcodesign_path486,15118
+  def idevice_id_pathidevice_id_path490,15169
+  def ideviceinstaller_cli_appideviceinstaller_cli_app494,15215
+  def security_cli_appsecurity_cli_app498,15276
+  def xcodebuild_cli_appxcodebuild_cli_app502,15330
+  def connected_devicesconnected_devices506,15379
+  def cli_app_exist? appcli_app_exist?512,15512
+  def write_entitlements_plistwrite_entitlements_plist516,15581
+  def code_sign_binarycode_sign_binary556,16976
+  def __get_plist_orientation_value____get_plist_orientation_value__568,17851
+  def development_write_info_plistdevelopment_write_info_plist578,18090
+  def production_write_info_plistproduction_write_info_plist704,22328
+  def device_orientation_xmldevice_orientation_xml826,26488
+  def tmp_directorytmp_directory831,26662
+  def app_pathapp_path835,26720
+  def root_folderroot_folder839,26782
+  def embed_mobileprovisionembed_mobileprovision843,26865
+  def clear_payload_directoryclear_payload_directory848,27052
+  def stage_ios_appstage_ios_app858,27353
+  def stage_sim_appstage_sim_app871,28017
+  def create_payloadcreate_payload884,28691
+  def write_server_ip_addresswrite_server_ip_address890,28900
+  def create_dev_payload_directorycreate_dev_payload_directory896,29152
+  def create_prod_payload_directorycreate_prod_payload_directory908,29507
+  def create_sim_payload_directorycreate_sim_payload_directory920,29847
+  def create_ipacreate_ipa931,30132
+  def do_zipdo_zip936,30259
+  def sh cmdsh946,30450
+  def deploy_to_devicedeploy_to_device955,30632
+  def simctl_list_devicessimctl_list_devices961,30813
+  def simctl_list_devices_max_versionsimctl_list_devices_max_version1000,31951
+  def simctl_iphone_device_id_max_versionsimctl_iphone_device_id_max_version1008,32249
+  def deploy_to_simdeploy_to_sim1014,32437
+  def print_publish_helpprint_publish_help1024,32863
+  def compile_iconscompile_icons1043,33857
+  def stage_native_libsstage_native_libs1057,34725
+  def set_version versionset_version1062,35124
+  def app_nameapp_name1067,35229
+  def app_versionapp_version1071,35265
+  def determine_app_versiondetermine_app_version1081,35660
+  def certificate_namecertificate_name1086,35753
 
 ../../../../dragon/conoller/keysys.rb,439
 module GTKGTK6,132
@@ -1707,25 +1735,25 @@ module GTKGTK6,132
 module GTKGTK10,362
   class ControllerController11,373
     class ConfigConfig12,392
-      def initialize runtimeinitialize13,409
-      def rawjoystick_connected jid, joystickname, guidrawjoystick_connected56,2201
-      def rawjoystick_disconnected jidrawjoystick_disconnected61,2359
-      def build_binding_stringbuild_binding_string75,2840
-      def move_to_different_part partmove_to_different_part121,4628
-      def previous_partprevious_part128,4849
-      def next_partnext_part138,5188
-      def set_binding bindstrset_binding146,5375
-      def rawjoystick_axis jid, axis, valuerawjoystick_axis154,5636
-      def rawjoystick_hat jid, hat, valuerawjoystick_hat188,6971
-      def rawjoystick_button jid, button, pressedrawjoystick_button199,7392
-      def calc_fadingcalc_fading209,7741
-      def render_basics args, msg, fade=255render_basics229,8288
-      def render_part_highlight args, part, alpha=255render_part_highlight237,8855
-      def choose_targetchoose_target244,9255
-      def render_part_highlight_from_bindstr args, bindstr, alpha=255render_part_highlight_from_bindstr267,10011
-      def play_around argsplay_around273,10224
-      def should_tick?should_tick?341,12607
-      def tick argstick347,12729
+      def initialize runtimeinitialize15,431
+      def rawjoystick_connected jid, joystickname, guidrawjoystick_connected59,2249
+      def rawjoystick_disconnected jidrawjoystick_disconnected64,2407
+      def build_binding_stringbuild_binding_string78,2888
+      def move_to_different_part partmove_to_different_part124,4676
+      def previous_partprevious_part131,4897
+      def next_partnext_part141,5236
+      def set_binding bindstrset_binding149,5423
+      def rawjoystick_axis jid, axis, valuerawjoystick_axis157,5684
+      def rawjoystick_hat jid, hat, valuerawjoystick_hat191,7019
+      def rawjoystick_button jid, button, pressedrawjoystick_button202,7440
+      def calc_fadingcalc_fading212,7789
+      def render_basics args, msg, fade=255render_basics232,8336
+      def render_part_highlight args, part, alpha=255render_part_highlight240,8903
+      def choose_targetchoose_target247,9303
+      def render_part_highlight_from_bindstr args, bindstr, alpha=255render_part_highlight_from_bindstr270,10059
+      def play_around argsplay_around276,10272
+      def should_tick?should_tick?344,12655
+      def tick argstick350,12777
 
 ../../../../dragon/symbol.rb,256
 class SymbolSymbol1,0
@@ -1760,7 +1788,7 @@ module DocsDocs81,2011
   def __docs_append_true_line__ true_lines, true_line, parse_log__docs_append_true_line__266,6760
   def __docs_generate_link_id__ text__docs_generate_link_id__272,6936
   def __docs_to_html__ string__docs_to_html__288,7392
-  def __docs_line_to_html__ line, parse_log__docs_line_to_html__593,18545
+  def __docs_line_to_html__ line, parse_log__docs_line_to_html__596,18747
 
 ../../../../dragon/gmetry_docs.r.rb,1590
 module GeometryDocsGeometryDocs6,130
@@ -1800,7 +1828,7 @@ module GeometryDocsGeometryDocs6,130
   def tick argstick785,19656
 module GeometryGeometry835,20839
 
-../../../../dragon/runtime.rb,11132
+../../../../dragon/runtime.rb,10777
 module FFIFFI4,39
   class DrawDraw6,74
     def serializeserialize7,87
@@ -1812,194 +1840,184 @@ module GTKGTK21,212
     def startstart29,352
     def ticktick38,714
   class RuntimeRuntime45,869
-    def initialize platform, production, vrmode, logical_width, logical_height, argv, binary_path, y_offset, orientation, remote_hotload_enabledinitialize76,1986
-    def production?production?155,4865
-    def register_cvar name, desc, type, defltregister_cvar160,4923
-    def is_vris_vr164,5213
-    def reload_historyreload_history168,5261
-    def reload_history_pendingreload_history_pending172,5320
-    def cli_argumentscli_arguments178,5461
-    def reset_touch_countreset_touch_count199,6038
-    def increase_touch_countincrease_touch_count203,6104
-    def quit!quit!209,6223
-    def request_quitrequest_quit219,6538
-    def quit_requested?quit_requested?224,6688
-    def require filerequire228,6743
-    def log_spam str, subsystem = nillog_spam257,7476
-    def log_debug str, subsystem = nillog_debug261,7555
-    def log_info str, subsystem = nillog_info265,7635
-    def log_warn str, subsystem = nillog_warn269,7714
-    def log_error str, subsystem = nillog_error273,7793
-    def log_unfiltered str, subsystem = nillog_unfiltered277,7873
-    def __log__ subsystem, log_enum, str__log__281,7967
-    def log obj, sender = nil, subsystem=nillog286,8099
-    def disable_consoledisable_console294,8293
-    def enable_consoleenable_console298,8349
-    def show_console reason = nilshow_console302,8403
-    def hide_consolehide_console306,8473
-    def start_replay file_name = nil, speed: speedstart_replay310,8523
-    def reset_and_replay file_name = nil, speed: 1reset_and_replay316,8718
-  def tick argstick336,9221
-    def stop_replaystop_replay362,9865
-    def start_recording seed_valuestart_recording366,9923
-    def game_directory file_namegame_directory371,10031
-    def set_rng valueset_rng382,10319
-    def stop_recording file_name = nilstop_recording397,10657
-    def cancel_recordingcancel_recording401,10747
-    def record_input_history name, value_1, value_2, value_count, clear_cache = falserecord_input_history406,10835
-    def record_input_history_3_params name, value_1, value_2, value_3, clear_cache = falserecord_input_history_3_params411,11042
-    def load_image file_nameload_image416,11245
-    def write_file file_name, textwrite_file421,11338
-    def write_file_root file_name, textwrite_file_root432,11563
-    def append_file file_name, textappend_file438,11704
-    def append_file_root file_name, textappend_file_root449,11932
-    def read_file file_nameread_file455,12075
-    def list_files dirlist_files465,12247
-    def stat_file pathstat_file469,12338
-    def delete_file pathdelete_file473,12396
-    def delete_file_if_exist pathdelete_file_if_exist477,12492
-    def delete_file_if_exist? pathdelete_file_if_exist?483,12638
-    def parse_xml xmlstr, stripcontent=trueparse_xml489,12736
-    def parse_xml_file fname, stripcontent=trueparse_xml_file494,12848
-    def parse_json jsonstrparse_json499,12968
-    def parse_json_file fnameparse_json_file504,13051
-    class HTTPCallbacksHTTPCallbacks511,13384
-      def ready newstateready514,13436
-      def http_response_header key, valuehttp_response_header524,13707
-      def http_response_data newdatahttp_response_data529,13839
-      def http_donehttp_done534,13961
-    def http_get url, extra_headers=nilhttp_get540,14032
-    def http_head url, extra_headers=nilhttp_head546,14192
-    def http_post url, form_fields=nil, extra_headers=nilhttp_post552,14354
-    def http_post_body url, body, extra_headers=nilhttp_post_body565,14771
-    def http_put url, fname, extra_headers=nilhttp_put570,14944
-    def export! with_comments = nil, file_name_override = nilexport!576,15118
-    def passespasses606,15937
-    def toast id, messagetoast613,16074
-    def target passtarget617,16142
-    def render_width passrender_width621,16202
-    def render_height passrender_height625,16265
-    def render_transient passrender_transient629,16330
-    def raise_conversion_for_rendering_failed p, e, name = nilraise_conversion_for_rendering_failed633,16405
-    def reset_statereset_state659,17086
-    def reset rng_override = nil, seed: seedreset665,17199
-    def reset_next_tick rng_override = nil, seed: seedreset_next_tick673,17489
-    def reset_sprites directory: nil, indentation: 1reset_sprites679,17674
-    def __reset__ rng_override = nil, seed: seed__reset__716,18855
-    def last_reset_global_atlast_reset_global_at761,20136
-    def last_tick_exception_global_atlast_tick_exception_global_at765,20208
-    def last_reset_callerlast_reset_caller769,20298
-    def paused?paused?773,20365
-    def pause!pause!777,20404
-    def unpause!unpause!781,20449
-    def queue_key_up keyqueue_key_up787,20555
-    def pin_root_valuespin_root_values791,20623
-    def audioaudio800,20909
-    def queue_sound pathqueue_sound806,21032
-    def queue_music path, repeatqueue_music812,21183
-    def stop_musicstop_music821,21490
-    def dequeue_sounds passdequeue_sounds827,21649
-    def migrate_legacy_soundsmigrate_legacy_sounds841,22085
-    class HTTPRequestHTTPRequest860,22792
-      def initialize runtime, address, method, uri, headers, raw_body, reqcptrinitialize863,22910
-      def serializeserialize890,23827
-      def inspectinspect902,24056
-      def to_sto_s906,24108
-      def rejectreject926,24346
-      def respond httpcode, body=nil, headers=nilrespond930,24489
-    def new_http_request address, method, uri, headers, body, reqcptrnew_http_request937,24718
-    def http_respond req, reqcptr, httpcode, body, headers_hashhttp_respond942,24904
-    def stage_replay_valuesstage_replay_values951,25192
-    def clear_draw_primitives passclear_draw_primitives955,25266
-    def next_keyboard_inputs_before_ticknext_keyboard_inputs_before_tick963,25477
-    def next_keyboard_inputs_after_ticknext_keyboard_inputs_after_tick970,25748
-    def clear_draw_passesclear_draw_passes978,26066
-    def clear_inputsclear_inputs986,26288
-    def tick_consoletick_console1009,27186
-    def print_console_activation_helpprint_console_activation_help1015,27376
-    def console_button_primitiveconsole_button_primitive1025,27700
-    def tick_gtk_engine_beforetick_gtk_engine_before1037,28114
-    def tick_gtk_engine_aftertick_gtk_engine_after1071,29143
-    def tick_apitick_api1102,30519
-    def tick_usr_enginetick_usr_engine1106,30567
-    def skip_tick_usr_engine?skip_tick_usr_engine?1141,31770
-    def calc_wrapper tick_override_lambda = nilcalc_wrapper1151,32017
-    def render_replay_mouserender_replay_mouse1172,32529
-    def __sdl_tick__simulation____sdl_tick__simulation__1210,34247
-    def __sdl_tick__ sdl_tick__sdl_tick__1229,34732
-    def pretty_print_exception_and_export! epretty_print_exception_and_export!1259,35669
-    def tick_coretick_core1280,36480
-    def inside_tick?inside_tick?1286,36620
-    def text_fonttext_font1290,36672
-    def calcstringbox str, size_enum = 0, font = "font.ttf"calcstringbox1295,36720
-    def calcspritebox strcalcspritebox1299,36845
-    def autocomplete_methodsautocomplete_methods1304,36925
-    def ignore_search_term? wordignore_search_term?1308,37034
-    def grep_did_you_mean_recommendations instance, methodgrep_did_you_mean_recommendations1315,37201
-    def grep_did_you_mean instance, method, prefix = ""grep_did_you_mean1326,37536
-    def grep_source_file file, *strings_with_recommendationsgrep_source_file1346,38106
-    def grep_source *strings_with_recommendationsgrep_source1380,39146
-    def teststests1421,40386
-    def log_levellog_level1426,40433
-    def log_levelslog_levels1431,40496
-    def log_level= valuelog_level=1436,40553
-    def seedseed1448,40845
-    def slowmo! factor, should_notify = trueslowmo!1453,40890
-    def system cmdsystem1469,41515
-    def exec cmdexec1473,41565
-    def self.argv_window_scale argvargv_window_scale1478,41617
-    def self.argv_window_position_x argvargv_window_position_x1482,41724
-    def self.argv_window_position_y argvargv_window_position_y1486,41840
-    def self.parse_cli_argument_i argv, name, default = 0parse_cli_argument_i1490,41956
-    def self.parse_cli_argument argv, name, default = nilparse_cli_argument1494,42079
-    def reset_sprite pathreset_sprite1516,42732
-    def show_cursorshow_cursor1521,42813
-    def hide_cursorhide_cursor1528,42949
-    def cursor_shown?cursor_shown?1535,43088
-    def set_system_cursor typeset_system_cursor1540,43150
-    def set_cursor fname, hot_x=0, hot_y=0set_cursor1544,43238
-    def set_mouse_grab valueset_mouse_grab1549,43352
-    def set_window_fullscreen enable=trueset_window_fullscreen1556,43510
-    def set_window_scale scaleset_window_scale1562,43685
-    def window_fullscreen?window_fullscreen?1566,43764
-    def openurl urlopenurl1571,43836
-    def take_screenshottake_screenshot1575,43897
-    def simulate_render_targets_resetsimulate_render_targets_reset1580,43984
-    def simulate_render_device_resetsimulate_render_device_reset1585,44092
-    def serializeserialize1589,44187
-    def get_base_dirget_base_dir1598,44367
-    def get_relative_game_dirget_relative_game_dir1602,44440
-    def get_game_dirget_game_dir1612,44660
-    def open_game_dir additional_directories = ""open_game_dir1616,44748
-    def get_game_dir_url additional_directories = ""get_game_dir_url1620,44867
-    def get_game_idget_game_id1626,45069
-    def get_pixels pathget_pixels1636,45359
-    def disable_nil_punning!disable_nil_punning!1645,45506
-            def tick argstick1653,45771
-    def enable_nil_punning!enable_nil_punning!1679,46347
-            def tick argstick1687,46611
-    def disable_nil_coersion!disable_nil_coersion!1708,46959
-    def versionversion1712,47025
-    def version_pro?version_pro?1716,47068
-    def start_server! opts = {}start_server!1720,47127
-    def platform_mappingsplatform_mappings1741,47689
-    def platform? valueplatform?1753,48134
-    def warn_array_primitives!warn_array_primitives!1758,48263
-    def dlopen namedlopen1762,48339
-  module PrivatePrivate1767,48420
-    def methodsmethods1768,48437
-    def private_methodsprivate_methods1772,48471
-    def protected_methodsprotected_methods1776,48513
-    def public_methodspublic_methods1780,48557
-    def callable_methodscallable_methods1784,48598
-    def respond_to_missing?respond_to_missing?1788,48641
-    def instance_variablesinstance_variables1792,48690
-    def respond_to? *optsrespond_to?1796,48735
-    def method *optsmethod1800,48782
-    def matching_methods *optsmatching_methods1803,48812
-    def singleton_methodssingleton_methods1806,48852
-class ObjectObject1811,48907
-    def global_variablesglobal_variables1813,48966
+    def initialize platform, production, vrmode, logical_width, logical_height, argv, binary_path, y_offset, orientation, remote_hotload_enabledinitialize77,2007
+    def production?production?151,4646
+    def register_cvar name, desc, type, defltregister_cvar156,4704
+    def is_vris_vr160,4994
+    def reload_historyreload_history164,5042
+    def reload_history_pendingreload_history_pending168,5101
+    def cli_argumentscli_arguments174,5242
+    def reset_touch_countreset_touch_count195,5819
+    def increase_touch_countincrease_touch_count199,5885
+    def quit!quit!205,6004
+    def request_quitrequest_quit215,6319
+    def quit_requested?quit_requested?220,6469
+    def require filerequire224,6524
+    def log_spam str, subsystem = nillog_spam253,7257
+    def log_debug str, subsystem = nillog_debug257,7336
+    def log_info str, subsystem = nillog_info261,7416
+    def log_warn str, subsystem = nillog_warn265,7495
+    def log_error str, subsystem = nillog_error269,7574
+    def log_unfiltered str, subsystem = nillog_unfiltered273,7654
+    def __log__ subsystem, log_enum, str__log__277,7748
+    def log obj, sender = nil, subsystem=nillog282,7880
+    def disable_consoledisable_console290,8074
+    def enable_consoleenable_console294,8130
+    def show_console reason = nilshow_console298,8184
+    def hide_consolehide_console302,8254
+    def start_replay file_name = nil, speed: speedstart_replay306,8304
+    def reset_and_replay file_name = nil, speed: 1reset_and_replay312,8499
+  def tick argstick332,9002
+    def stop_replaystop_replay358,9646
+    def start_recording seed_valuestart_recording362,9704
+    def game_directory file_namegame_directory367,9812
+    def set_rng valueset_rng378,10100
+    def stop_recording file_name = nilstop_recording393,10438
+    def cancel_recordingcancel_recording397,10528
+    def record_input_history name, value_1, value_2, value_count, clear_cache = falserecord_input_history402,10616
+    def record_input_history_3_params name, value_1, value_2, value_3, clear_cache = falserecord_input_history_3_params407,10823
+    def load_image file_nameload_image412,11026
+    def write_file file_name, textwrite_file417,11119
+    def write_file_root file_name, textwrite_file_root428,11344
+    def append_file file_name, textappend_file434,11485
+    def append_file_root file_name, textappend_file_root445,11713
+    def read_file file_nameread_file451,11856
+    def list_files dirlist_files461,12028
+    def stat_file pathstat_file465,12119
+    def delete_file pathdelete_file469,12177
+    def delete_file_if_exist pathdelete_file_if_exist473,12273
+    def delete_file_if_exist? pathdelete_file_if_exist?479,12419
+    def parse_xml xmlstr, stripcontent=trueparse_xml485,12517
+    def parse_xml_file fname, stripcontent=trueparse_xml_file490,12629
+    def parse_json jsonstrparse_json495,12749
+    def parse_json_file fnameparse_json_file500,12832
+    class HTTPCallbacksHTTPCallbacks507,13165
+      def ready newstateready510,13217
+      def http_response_header key, valuehttp_response_header520,13488
+      def http_response_data newdatahttp_response_data525,13620
+      def http_donehttp_done530,13742
+    def http_get url, extra_headers=nilhttp_get536,13813
+    def http_head url, extra_headers=nilhttp_head542,13973
+    def http_post url, form_fields=nil, extra_headers=nilhttp_post548,14135
+    def http_post_body url, body, extra_headers=nilhttp_post_body561,14552
+    def http_put url, fname, extra_headers=nilhttp_put566,14725
+    def export! with_comments = nil, file_name_override = nilexport!572,14899
+    def passespasses602,15718
+    def toast id, messagetoast609,15855
+    def target passtarget613,15923
+    def render_width passrender_width617,15983
+    def render_height passrender_height621,16046
+    def render_transient passrender_transient625,16111
+    def raise_conversion_for_rendering_failed p, e, name = nilraise_conversion_for_rendering_failed629,16186
+    def reset_statereset_state655,16867
+    def reset rng_override = nil, seed: seed, include_sprites: truereset661,16980
+    def reset_next_tick rng_override = nil, seed: seedreset_next_tick669,17327
+    def reset_sprites directory: nil, indentation: 1, suppress_logging: falsereset_sprites675,17512
+    def __reset__ rng_override = nil, seed: seed, include_sprites: true__reset__718,18888
+    def last_reset_global_atlast_reset_global_at766,20278
+    def last_tick_exception_global_atlast_tick_exception_global_at770,20350
+    def last_reset_callerlast_reset_caller774,20440
+    def paused?paused?778,20507
+    def pause!pause!782,20546
+    def unpause!unpause!786,20591
+    def queue_key_up keyqueue_key_up792,20697
+    def pin_root_valuespin_root_values796,20765
+    def audioaudio805,21051
+    def queue_sound pathqueue_sound811,21174
+    def queue_music path, repeatqueue_music817,21325
+    def stop_musicstop_music826,21632
+    def dequeue_sounds passdequeue_sounds832,21791
+    def migrate_legacy_soundsmigrate_legacy_sounds846,22227
+    class HTTPRequestHTTPRequest865,22934
+      def initialize runtime, address, method, uri, headers, raw_body, reqcptrinitialize868,23052
+      def serializeserialize895,23969
+      def inspectinspect907,24198
+      def to_sto_s911,24250
+      def rejectreject931,24488
+      def respond httpcode, body=nil, headers=nilrespond935,24631
+    def new_http_request address, method, uri, headers, body, reqcptrnew_http_request942,24860
+    def http_respond req, reqcptr, httpcode, body, headers_hashhttp_respond947,25046
+    def stage_replay_valuesstage_replay_values956,25334
+    def clear_draw_primitives passclear_draw_primitives960,25408
+    def next_keyboard_inputs_before_ticknext_keyboard_inputs_before_tick968,25619
+    def next_keyboard_inputs_after_ticknext_keyboard_inputs_after_tick975,25890
+    def clear_draw_passesclear_draw_passes983,26208
+    def clear_inputsclear_inputs991,26430
+    def tick_consoletick_console1014,27328
+    def print_console_activation_helpprint_console_activation_help1020,27518
+    def console_button_primitiveconsole_button_primitive1030,27842
+    def tick_gtk_engine_beforetick_gtk_engine_before1042,28256
+    def tick_remote_hotload_clienttick_remote_hotload_client1083,29458
+    def tick_gtk_engine_aftertick_gtk_engine_after1103,30081
+    def tick_apitick_api1138,31530
+    def tick_usr_enginetick_usr_engine1142,31578
+    def skip_tick_usr_engine?skip_tick_usr_engine?1177,32781
+    def calc_wrapper tick_override_lambda = nilcalc_wrapper1187,33028
+    def render_replay_mouserender_replay_mouse1208,33540
+    def __sdl_tick__simulation____sdl_tick__simulation__1246,35258
+    def __sdl_tick__ sdl_tick__sdl_tick__1266,35759
+    def pretty_print_exception_and_export! epretty_print_exception_and_export!1296,36696
+    def tick_coretick_core1317,37507
+    def inside_tick?inside_tick?1323,37647
+    def text_fonttext_font1327,37699
+    def calcstringbox str, size_enum = 0, font = "font.ttf"calcstringbox1332,37747
+    def calcspritebox strcalcspritebox1336,37872
+    def autocomplete_methodsautocomplete_methods1341,37952
+    def ignore_search_term? wordignore_search_term?1345,38061
+    def grep_did_you_mean_recommendations instance, methodgrep_did_you_mean_recommendations1352,38228
+    def grep_did_you_mean instance, method, prefix = ""grep_did_you_mean1363,38563
+    def grep_source_file file, *strings_with_recommendationsgrep_source_file1383,39133
+    def grep_source *strings_with_recommendationsgrep_source1417,40173
+    def teststests1458,41413
+    def log_levellog_level1463,41460
+    def log_levelslog_levels1468,41523
+    def log_level= valuelog_level=1473,41580
+    def seedseed1485,41872
+    def slowmo! factor, should_notify = trueslowmo!1490,41917
+    def system cmdsystem1506,42542
+    def exec cmdexec1510,42592
+    def self.argv_window_scale argvargv_window_scale1515,42644
+    def self.argv_window_position_x argvargv_window_position_x1519,42751
+    def self.argv_window_position_y argvargv_window_position_y1523,42867
+    def self.parse_cli_argument_i argv, name, default = 0parse_cli_argument_i1527,42983
+    def self.parse_cli_argument argv, name, default = nilparse_cli_argument1531,43106
+    def reset_sprite pathreset_sprite1553,43759
+    def show_cursorshow_cursor1558,43840
+    def hide_cursorhide_cursor1565,43976
+    def cursor_shown?cursor_shown?1572,44115
+    def set_system_cursor typeset_system_cursor1577,44177
+    def set_cursor fname, hot_x=0, hot_y=0set_cursor1581,44265
+    def set_mouse_grab valueset_mouse_grab1586,44379
+    def set_window_fullscreen enable=trueset_window_fullscreen1593,44537
+    def set_window_scale scaleset_window_scale1599,44712
+    def window_fullscreen?window_fullscreen?1603,44791
+    def openurl urlopenurl1608,44863
+    def take_screenshottake_screenshot1612,44924
+    def simulate_render_targets_resetsimulate_render_targets_reset1617,45011
+    def simulate_render_device_resetsimulate_render_device_reset1622,45119
+    def serializeserialize1626,45214
+    def get_base_dirget_base_dir1635,45394
+    def get_relative_game_dirget_relative_game_dir1639,45467
+    def get_game_dirget_game_dir1649,45687
+    def open_game_dir additional_directories = ""open_game_dir1653,45775
+    def open_docsopen_docs1657,45894
+    def get_game_dir_url additional_directories = ""get_game_dir_url1661,45978
+    def get_game_idget_game_id1667,46180
+    def get_pixels pathget_pixels1677,46470
+    def disable_nil_punning!disable_nil_punning!1686,46617
+            def tick argstick1694,46882
+    def enable_nil_punning!enable_nil_punning!1720,47458
+            def tick argstick1728,47722
+    def disable_nil_coersion!disable_nil_coersion!1749,48070
+    def versionversion1753,48136
+    def version_pro?version_pro?1757,48179
+    def start_server! opts = {}start_server!1761,48238
+    def platform_mappingsplatform_mappings1782,48800
+    def platform? valueplatform?1794,49245
+    def warn_array_primitives!warn_array_primitives!1799,49374
+    def dlopen namedlopen1803,49450
+    def disable_controller_config!disable_controller_config!1807,49511
+    def enable_controller_config!enable_controller_config!1811,49596
 
 ../../../../dragon/geomet_quad_t_tree.rb,306
 module GTKGTK1,0
@@ -2185,26 +2203,26 @@ module OutputsDocsOutputsDocs6,129
   def tick argstick344,8666
 class GTK::OutputsGTK364,9416
 
-../../../../dragon/itch_wizard.rb,772
+../../../../dragon/itch_wizard.rb,764
 class ItchWizard < WizardItchWizard6,128
   def stepssteps7,154
   def write_blank_metadatawrite_blank_metadata14,223
   def check_metadatacheck_metadata25,415
-  def set_dev_id valueset_dev_id80,2383
-  def set_dev_title valueset_dev_title85,2443
-  def set_game_id valueset_game_id90,2509
-  def set_game_title valueset_game_title95,2571
-  def set_version valueset_version100,2639
-  def set_icon valueset_icon105,2701
-  def write_metadatawrite_metadata111,2776
-  def relative_pathrelative_path152,3507
-  def package_commandpackage_command156,3570
-  def deploydeploy160,3658
-  def startstart184,4244
-  def resetreset218,5233
-  def restartrestart228,5390
-  def initializeinitialize233,5431
-  def init_wizard_statusinit_wizard_status237,5465
+  def set_devid valueset_devid80,2363
+  def set_devtitle valueset_devtitle85,2421
+  def set_gameid valueset_gameid90,2485
+  def set_gametitle valueset_gametitle95,2545
+  def set_version valueset_version100,2611
+  def set_icon valueset_icon105,2673
+  def write_metadatawrite_metadata111,2748
+  def relative_pathrelative_path152,3471
+  def package_commandpackage_command156,3534
+  def deploydeploy160,3622
+  def startstart184,4208
+  def resetreset218,5197
+  def restartrestart228,5350
+  def initializeinitialize233,5391
+  def init_wizard_statusinit_wizard_status237,5425
 
 ../../../../dragon/easing.rb,1346
 module GTKGTK6,123
@@ -2382,67 +2400,67 @@ class ObjectObject88,1395
   def self.attributesattributes107,1663
   def self.gtk_argsgtk_args112,1731
   def purge_class symbolpurge_class120,1896
-  def raise_immediately e, m, *argsraise_immediately131,2140
-  def raise_with_caller e, inner_exceptionraise_with_caller142,2335
-  def or otheror150,2455
-  def and otherand154,2495
-  def __supports_ivars__?__supports_ivars__?158,2536
-  def fast_randfast_rand164,2667
-  def __gtk_ruby_source_files____gtk_ruby_source_files__170,2848
-  def __pretty_print_exception__ e, inner_exception = nil__pretty_print_exception__181,3051
-  def __pretty_format_exception_text_uninitialized_constant__ e__pretty_format_exception_text_uninitialized_constant__212,4360
-  def tick argstick260,5911
-  def __caller_to_org__ title, kaller__caller_to_org__273,6227
-  def __pretty_format_exception_text_recommend_reset_next_tick__ e__pretty_format_exception_text_recommend_reset_next_tick__279,6417
-  def __gtk_ruby_string_contains_source_file_path__? s__gtk_ruby_string_contains_source_file_path__?315,7950
-  def __caller_without_noise____caller_without_noise__319,8068
-  def raise_error_with_kind_of_okay_message e, name, *argsraise_error_with_kind_of_okay_message323,8187
-  def better_instance_informationbetter_instance_information344,8671
-  def better_class_hierarchy_informationbetter_class_hierarchy_information348,8747
-  def raise_method_missing_better_error name, *args, &blockraise_method_missing_better_error370,9454
-  def __looks_like_docs__? name, *args, &block__looks_like_docs__?410,10444
-  def __normalized_docs_method__ name, *args, &block__normalized_docs_method__419,10837
-  def __try_invoke_docs_method__ name, *args, &block__try_invoke_docs_method__425,11020
-  def method_missing_core name, *args, &blockmethod_missing_core437,11526
-  def method_missing name, *args, &blockmethod_missing480,12560
-  def numeric_or_default default = 0numeric_or_default484,12652
-  def f_or_default default = 0f_or_default489,12748
-  def s_or_default default = ''s_or_default494,12838
-  def i_or_default default = 0i_or_default499,12922
-  def require filerequire505,13021
-  def __custom_object_methods____custom_object_methods__509,13069
-  def autocomplete_methodsautocomplete_methods514,13227
-  def __object_methods____object_methods__518,13291
-  def helphelp524,16228
-  def to_sto_s539,16612
-  def primitive_markerprimitive_marker545,16828
-  def metadata_object_idmetadata_object_id549,16866
-  def trace! instance = niltrace!554,16921
-  def repl &blockrepl563,17079
-  def repl_silent &blockrepl_silent568,17219
-  def xreplxrepl573,17315
-  def commentcomment576,17334
-  def serializeserialize579,17355
-  def inspectinspect586,17530
-  def idid593,17681
-  def associate hash = nilassociate597,17705
-  def letlet602,17771
-  def greetinggreeting607,17917
-  def greetinggreeting617,18113
-  def ivar mivar629,18325
-  def ivar! m, vivar!633,18386
-  def __help_contract_implementation contract_methods__help_contract_implementation637,18454
-  def __help_contract_implementation__ contract_methods__help_contract_implementation__641,18660
-  def docsdocs655,19120
-  module PersonDocsPersonDocs668,19603
-    def docs_classdocs_class669,19623
-    def docs_say_hellodocs_say_hello676,19732
-  class PersonPerson684,19845
-    def say_hellosay_hello688,19899
-  def into otherinto697,19977
-  def hmap opts = {}hmap701,20019
-  def pretty_print opretty_print705,20056
-  def pretty_format opretty_format709,20107
+  def raise_immediately e, m, *argsraise_immediately131,2136
+  def raise_with_caller e, inner_exceptionraise_with_caller142,2331
+  def or otheror150,2451
+  def and otherand154,2491
+  def __supports_ivars__?__supports_ivars__?158,2532
+  def fast_randfast_rand164,2663
+  def __gtk_ruby_source_files____gtk_ruby_source_files__170,2844
+  def __pretty_print_exception__ e, inner_exception = nil__pretty_print_exception__181,3047
+  def __pretty_format_exception_text_uninitialized_constant__ e__pretty_format_exception_text_uninitialized_constant__212,4356
+  def tick argstick260,5907
+  def __caller_to_org__ title, kaller__caller_to_org__273,6223
+  def __pretty_format_exception_text_recommend_reset_next_tick__ e__pretty_format_exception_text_recommend_reset_next_tick__279,6413
+  def __gtk_ruby_string_contains_source_file_path__? s__gtk_ruby_string_contains_source_file_path__?315,7946
+  def __caller_without_noise____caller_without_noise__319,8064
+  def raise_error_with_kind_of_okay_message e, name, *argsraise_error_with_kind_of_okay_message323,8183
+  def better_instance_informationbetter_instance_information344,8667
+  def better_class_hierarchy_informationbetter_class_hierarchy_information348,8743
+  def raise_method_missing_better_error name, *args, &blockraise_method_missing_better_error370,9450
+  def __looks_like_docs__? name, *args, &block__looks_like_docs__?410,10440
+  def __normalized_docs_method__ name, *args, &block__normalized_docs_method__419,10833
+  def __try_invoke_docs_method__ name, *args, &block__try_invoke_docs_method__425,11016
+  def method_missing_core name, *args, &blockmethod_missing_core437,11522
+  def method_missing name, *args, &blockmethod_missing480,12556
+  def numeric_or_default default = 0numeric_or_default484,12648
+  def f_or_default default = 0f_or_default489,12744
+  def s_or_default default = ''s_or_default494,12834
+  def i_or_default default = 0i_or_default499,12918
+  def require filerequire505,13017
+  def __custom_object_methods____custom_object_methods__509,13065
+  def autocomplete_methodsautocomplete_methods514,13223
+  def __object_methods____object_methods__518,13287
+  def helphelp524,16224
+  def to_sto_s539,16608
+  def primitive_markerprimitive_marker545,16824
+  def metadata_object_idmetadata_object_id549,16862
+  def trace! instance = niltrace!554,16917
+  def repl &blockrepl563,17075
+  def repl_silent &blockrepl_silent568,17215
+  def xreplxrepl573,17311
+  def commentcomment576,17330
+  def serializeserialize579,17351
+  def inspectinspect586,17526
+  def idid593,17677
+  def associate hash = nilassociate597,17701
+  def letlet602,17767
+  def greetinggreeting607,17913
+  def greetinggreeting617,18109
+  def ivar mivar629,18321
+  def ivar! m, vivar!633,18382
+  def __help_contract_implementation contract_methods__help_contract_implementation637,18450
+  def __help_contract_implementation__ contract_methods__help_contract_implementation__641,18656
+  def docsdocs655,19116
+  module PersonDocsPersonDocs668,19599
+    def docs_classdocs_class669,19619
+    def docs_say_hellodocs_say_hello676,19728
+  class PersonPerson684,19841
+    def say_hellosay_hello688,19895
+  def into otherinto697,19973
+  def hmap opts = {}hmap701,20015
+  def pretty_print opretty_print705,20052
+  def pretty_format opretty_format709,20103
 
 ../../../../dragon/directional_input_heer_methodods.rb,370
 module GTKGTK6,149
@@ -2640,15 +2658,21 @@ module GTKGTK9,252
 class ExceptionException1,0
   def __backtrace_to_org____backtrace_to_org__2,16
 
-../../../../dragon/wizards.rb,320
+../../../../dragon/attr_label.rb,135
+module AttrLabelAttrLabel6,126
+class ObjectObject18,359
+  def self.attr_labelattr_label19,372
+  def attr_labelattr_label23,423
+
+../../../../dragon/wizards.rb,321
 class WizardWizard6,124
   def metadata_file_pathmetadata_file_path7,137
   def get_metadataget_metadata11,202
-class WizardException < ExceptionWizardException32,889
-  def initialize *console_primitivesinitialize35,960
-module GTKGTK40,1053
-  class WizardsWizards41,1064
-    def initializeinitialize44,1111
+class WizardException < ExceptionWizardException41,929
+  def initialize *console_primitivesinitialize44,1000
+module GTKGTK49,1093
+  class WizardsWizards50,1104
+    def initializeinitialize53,1151
 
 ../../../../dragon/console.rb,4542
 module GTKGTK11,329
